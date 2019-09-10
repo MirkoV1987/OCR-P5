@@ -1,2 +1,2 @@
 # PHPBlogProject
-PHP Blog followed by SensioLansInsight 
+P5 - PHP Blog  
