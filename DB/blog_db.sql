@@ -51,8 +51,8 @@ DROP TABLE IF EXISTS `post`;
 CREATE TABLE IF NOT EXISTS `post` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(100) COLLATE utf8_bin NOT NULL,
-  `chapo` varchar(100) COLLATE utf8_bin NOT NULL,
-  `date_creation` datetime NOT NULL,
+  `chapeau` varchar(100) COLLATE utf8_bin NOT NULL,
+  `date_add` datetime NOT NULL,
   `date_update` datetime NOT NULL,
   `user_id` int(11) NOT NULL,
   `content` text COLLATE utf8_bin NOT NULL,
