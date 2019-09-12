@@ -30,12 +30,12 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `comment`;
 CREATE TABLE IF NOT EXISTS `comment` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `content` text COLLATE utf8_bin NOT NULL,
-  `date_creation` datetime NOT NULL,
+  `date_add` datetime NOT NULL,
   `user_id` int(11) NOT NULL,
   `post_id` int(11) NOT NULL,
-  `disabled` tinyint(1) NOT NULL,
+  `active` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FOREIGN KEY USER` (`user_id`),
   KEY `FOREIGN KEY POST` (`post_id`)
