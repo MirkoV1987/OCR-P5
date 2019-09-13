@@ -70,12 +70,12 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) COLLATE utf8_bin NOT NULL,
-  `email` varchar(100) COLLATE utf8_bin NOT NULL,
+  `email` varchar(254) COLLATE utf8_bin NOT NULL,
   `password` binary(60) NOT NULL,
-  `activated` tinyint(1) NOT NULL,
+  `active` tinyint(1) NOT NULL,
   `validation_key` binary(32) NOT NULL,
-  `userType` tinyint(1) NOT NULL,
-  `date_creation` datetime NOT NULL,
+  `role` int(11) NOT NULL,
+  `date_add` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
