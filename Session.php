@@ -60,7 +60,7 @@ class Session
      * Renvoie la valeur de l'attribut demandé
      * @param string $name nom de l'attribut
      * @param string $value valeur de l'attribut
-     * @param \Exception si l'attribut n'est pas présent dans 
+     * @param \Exception si l'attribut n'est pas présent 
      */
 
     public function getAttribute($name, $value)
