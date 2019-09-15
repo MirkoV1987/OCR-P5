@@ -10,6 +10,7 @@ class Request
    //Déclaration des attributs 
    private $parameters;
 
+   //objet lié à la requete
    private $session;
 
 
@@ -17,7 +18,8 @@ class Request
    public function __construct($parameters)
    {
 
-
+     $this->parameters = $parameters;
+     $this->session = new Session(); 
 
    }
 
