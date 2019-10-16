@@ -1,0 +1,90 @@
+<?php
+
+class Router
+{
+        
+    private $control;
+    private $view;
+    
+    public function routingRequest()
+	{
+        try
+        {
+           //spl_autoload_register(function($class) //Initialiser la var $class
+           //{
+             // require_once('Model/'.$class.'.php');
+           //});
+
+               $url = "";
+            //    print_r($_GET);
+            //    print_r($_POST);
+ 
+           if (isset($_GET['url'])  )
+           {
+               $url = explode('/', filter_var($_GET['url'],
+               FILTER_SANITIZE_URL));
+                
+               $method = 'index';
+
+               if (isset($url[1])) {
+                  
+                $method = $url[1];
+
+               }
+               $params = [];
+
+               if (isset($url[2])) {
+                  
+                $params['get'] = array($url[2]);
+
+               }
+               if (isset($_POST)) {
+
+                $params['post'] = $_POST;
+
+               } 
+               if (isset($url[3]) == 'delete') {
+
+                $params['delete'] = array($url[3]);
+
+               } 
+
+               $this->createController($url[0], $method, $params);
+               
+           
+            }        
+            else
+            {
+                $this->createController('post','index', []);
+                
+            }
+
+        }
+        catch(Exception $e)
+        {
+              $errorMsg = $e->getMessage();
+              require_once('View/errorView.php');        
+        }
+
+    }
+
+    private function createController($class, $method, $params)
+    {
+        $controller = ucfirst(strtolower($class));
+        $classController = $controller."Controller";
+        $fileController = "Controller/".$classController.".php";
+         //echo $fileController;
+        if(file_exists($fileController))
+        {
+            require_once($fileController);
+            $control = new $classController();
+            $control->$method($params);
+        }
+        else
+        {
+            throw new Exception("Page introuvable");
+        }
+
+    }
+
+} 
