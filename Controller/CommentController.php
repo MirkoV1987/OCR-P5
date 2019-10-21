@@ -18,37 +18,35 @@ class CommentController //extends Controller
    public function index()
    {
       $comments = $this->manager->getList();
-      require_once("View/homeView.php");
+      require_once("View/commentView.php");
+      //header('Location: /OCR-P5/comment/view');
    }
 
    public function view($params)
    {
-      //print_r($params);
       $extract = explode('-', $params['get'][0]);
-      //print_r($extract);
-      $postId = intval($extract[0]);
-      $post = $this->manager->getPost($postId);
-      require_once("View/postView.php");
+      $commentId = intval($extract[0]);
+      $comment = $this->manager->getComment($commentId);
+      header('Location: /OCR-P5/comment');
    }
 
    public function add($params)
    {
-      print_r($params);
-      $post = $this->manager->add($params);
-      require_once("View/homeView.php");
+      $comment = $this->manager->add($params);
+      header('Location: /OCR-P5/comment');
    }
 
-   public function update()
+   public function update($params)
    {
-      $post = $this->manager->update();
-      require_once("View/homeView.php");  
+      $comment= $this->manager->update($params);
+      header('Location: /OCR-P5/comment');
    }
 
    public function delete($params)
    {
       print_r($params);
-      $post = $this->manager->delete($params);
-      require_once("View/homeView.php");
+      $comment = $this->manager->delete($params);
+      header('Location: /OCR-P5/comment');
    }
 
 }   
