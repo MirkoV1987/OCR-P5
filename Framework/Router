@@ -16,12 +16,10 @@ class Router
            //});
 
                $url = "";
-            //    print_r($_GET);
-            //    print_r($_POST);
  
-           if (isset($_GET['url'])  )
-           {
-               $url = explode('/', filter_var($_GET['url'],
+           if (isset($_GET['url'])  ) {
+               
+            $url = explode('/', filter_var($_GET['url'],
                FILTER_SANITIZE_URL));
                 
                $method = 'index';
@@ -35,26 +33,20 @@ class Router
 
                if (isset($url[2])) {
                   
-                $params['get'] = array($url[2]);
+                $params['get'] = array_slice($url, 2);
 
                }
+
                if (isset($_POST)) {
 
                 $params['post'] = $_POST;
 
-               } 
-               if (isset($url[3]) == 'delete') {
-
-                $params['delete'] = array($url[3]);
-
-               } 
+               }
 
                $this->createController($url[0], $method, $params);
-               
-           
+                          
             }        
-            else
-            {
+            else {
                 $this->createController('post','index', []);
                 
             }
@@ -73,18 +65,17 @@ class Router
         $controller = ucfirst(strtolower($class));
         $classController = $controller."Controller";
         $fileController = "Controller/".$classController.".php";
-         //echo $fileController;
-        if(file_exists($fileController))
-        {
+        
+        if(file_exists($fileController) ) {
             require_once($fileController);
             $control = new $classController();
             $control->$method($params);
-        }
-        else
-        {
+        
+        } else {
             throw new Exception("Page introuvable");
         }
 
     }
 
 } 
+
