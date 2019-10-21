@@ -1,10 +1,8 @@
 <?php
 
-
 require_once('Framework/Model.php');
 require_once('Model/Post.php');
 require_once('Framework/Entity.php');
-
 
 class PostManager extends Model 
 {    
@@ -34,33 +32,26 @@ class PostManager extends Model
 
     public function add($params)
     {
+        print_r($params);
         $post = new Post($params['post']);
         $req = $this->getDb()->prepare("INSERT INTO post(title, chapeau, date_add, content) VALUES(:title, :chapeau, :date_add, :content)");
-        $post = $req->execute(array(':title'=>$post->getTitle(), ':chapeau'=>$post->getChapeau(), ':date_add'=>$post->getDate_add(), ':content'=>$post->getContent() ));
+        $post = $req->execute(array(':title'=>$post->getTitle(), ':chapeau'=>$post->getChapeau(), ':date_add'=>date("Y-m-d H:i:s"), ':content'=>$post->getContent() ));
         return $post;
     }
 
-    public function update()
+    public function update($params)
     {
-        if(isset($_GET['update'])) {
-
-        $req = $this->getDb()->prepare("UPDATE post SET(title = :title, chapeau = :chapeau, date_update_fr = :date_update_fr, content = :content) WHERE(id = :id, user_id = :user_id)");
-        $post = $this->execute($req, array($post->getTitle(), $post->getChapeau(), $post->getDate_update(), $post->getContent()));
-
-        }
-        
+        $post = new Post($params['post']);
+        $req = $this->getDb()->prepare("UPDATE post SET title = :title, chapeau = :chapeau, date_update = :date_update, content = :content WHERE id = :id");
+        $post = $req->execute(array(':id'=>$post->getId(),':title'=>$post->getTitle(), ':chapeau'=>$post->getChapeau(), ':date_update'=>date("Y-m-d H:i:s"), ':content'=>$post->getContent()));
+        return $post;
     }
 
     public function delete($params)
     { 
-        $post = new Post($params['post']);
         $req = $this->getDb()->prepare('DELETE FROM post WHERE id = :id');
-        //$req->bindValue(':id', $postId, \PDO::PARAM_INT);
-        $post = $req->execute(array(':id'=>$post->getId() ) );
-        
-        print_r($post);
+        $post = $req->execute(array(':id'=>$params['get'][0]) );   
         return $post;
-        
     }
     
 
