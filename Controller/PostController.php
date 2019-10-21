@@ -23,9 +23,7 @@ class PostController //extends Controller
 
    public function view($params)
    {
-      //print_r($params);
       $extract = explode('-', $params['get'][0]);
-      //print_r($extract);
       $postId = intval($extract[0]);
       $post = $this->manager->getPost($postId);
       require_once("View/postView.php");
@@ -33,22 +31,20 @@ class PostController //extends Controller
 
    public function add($params)
    {
-      print_r($params);
       $post = $this->manager->add($params);
-      require_once("View/homeView.php");
+      header('Location: /OCR-P5/post');
    }
 
-   public function update()
+   public function update($params)
    {
-      $post = $this->manager->update();
-      require_once("View/homeView.php");  
+      $post = $this->manager->update($params); 
+      header('Location: /OCR-P5/post'); 
    }
 
    public function delete($params)
    {
-      print_r($params);
       $post = $this->manager->delete($params);
-      require_once("View/homeView.php");
+      header('Location: /OCR-P5/post');
    }
 
 }   
