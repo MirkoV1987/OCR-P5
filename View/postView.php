@@ -17,19 +17,19 @@
             <div class="news">
       <!-- SHOW POST-->
             <h2 style="color:red">Post</h2>
-            <?php// var_dump($post); ?>
             <h2><?= htmlspecialchars($post['title']); ?></h2>
             <h3><?= htmlspecialchars($post['chapeau']); ?></h3>
             <time><?= $post['date_add_fr'] ?></time>
             <p><?= htmlspecialchars($post['content']); ?></p>
-
+            <a href="http://hostmirko/OCR-P5/comment/index/<?= $post['id'] ?>" method="GET"  target=""><button class="btn btn-success btn-xs"><span class="glyphicon glyphicon-zoom-in">AFFICHER LES COMMENTAIRES</button></a><br/>
           </div>
         </div>
       <div class="col-xs-offset-2 col-xs-8 col-sm-offset-3 col-sm-6">
 
       <!--UPDATE POST-->
       <h2 style="color:red">Mettre à jour le post</h2>
-      <form action="" method="post">
+      <form action="/OCR-P5/post/update/" method="post">
+            <input type="hidden" class="form-control" name="id" id="id" value="<?= htmlspecialchars($post['id']); ?>">
         <div class="form-group">
             <label for="title">Title :</label>
             <input type="text" class="form-control" name="title" id="title" placeholder="Entrez le titre" value="<?= htmlspecialchars($post['title']); ?>">
@@ -39,10 +39,6 @@
             <input type="text" class="form-control" name="chapeau" id="chapeau" placeholder="Entrez le chapeau" value="<?= htmlspecialchars($post['chapeau']); ?>">
         </div>
         <div class="form-group">
-              <label for="text">Date :</label>
-            <input type="text" class="form-control" name="date" id="date" placeholder="Entrez la date" value="<?= htmlspecialchars($post['date_add_fr']); ?>">
-        </div>
-        <div class="form-group">
               <label for="text">Content :</label>
               <textarea type="textarea" class="form-control" name="content" id="content" rows="8" placeholder="Écrivez ici votre message" value=""><?= htmlspecialchars($post['content']); ?></textarea>
         </div>
@@ -50,38 +46,6 @@
                <button type="submit" class="btn btn-primary" name="btn-update">UPDATE</button>
         </div>
        </form>
-    
-
-<h2>Commentaires</h2>
-
-       <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
-        <div class="form-group">
-            <label for="pseudo">Pseudo :</label>
-            <input type="text" class="form-control" name="author" id="pseudo" aria-describedby="emailHelp" placeholder="Entrez votre pseudo" value="">
-        </div>
-        <div class="form-group">
-              <label for="message">Message :</label>
-              <textarea type="textarea" class="form-control" name="comment" id="message" rows="12" placeholder="Écrivez ici votre message"></textarea>
-        </div>
-        <div class="row text-center">
-               <button type="submit" class="btn btn-primary">ENVOYER</button>
-        </div>
-       </form>
-    </div>
-  <div></div>
-  <div class="col-xs-offset-2 col-xs-8 col-sm-offset-3 col-sm-6">
-<div class="row text-center">
-<!-- <?php foreach($comments as $comment): ?>
-
-<p><strong><?= htmlspecialchars($comment['author']); ?></strong> le <?= $comment['comment_date_fr']; ?><a href="index.php?action=viewComment&amp;ticket_id=<?= $comment['ticket_id']?>&amp;id=<?= $comment['id']?>">(modifier)</a>
-<p><?= nl2br(htmlspecialchars($comment['comment'])); ?>
-
-<?php endforeach ?> -->
- </div>
-   </div>
-     </div>
-       </div>
-
 
 </body>
 </html>
