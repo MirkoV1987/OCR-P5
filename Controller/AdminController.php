@@ -143,9 +143,29 @@ require_once('Model/User.php');
 
     public function resetPassword()
     {
+        $user = $this->userManager->getId($id);
+        //Génération d'un nouveau token qu'on attribue à l'utilisateur
+        $validation_key = md5(microtime(TRUE)*100000);
+        $user->setValidation_key($validation_key);
+        $this->userManager->update($user);
 
-        //Envoi du mail à l'utilisateur (getUser($id) )
+        //Création et envoi d'un mail
+        $to = $user->getEmail();
+        $email_subject = "Réinitialisation de votre mot de passe";
+        $email_body = 'Blog de Mirko Venturi. \n\n'
+                    .'Bonjour'. $user->getUsername()
+                    .', veuillez cliquer sur le lien ci-dessous pour réinitialiser votre mot de passe.\n\n '
+                    . 'http://hostmirko/OCR-P5/'. 'login/reset'. urlencode($user->getUsername()). '/' . urlencode($user->getValidation_key())
+                    .'
+                     ----------------------
+                     Ceci est un mail automatique, merci de ne pas y répondre.';
 
+        $headers = "From: noreply@yourdomain.com \n";
+        $headers .= "Reply-to:" . $user->getEmail();
+        mail($to, $email_subject, $email_body, $headers).
+
+        $this->successMsg = "Mail de réinitialisation de mot de passé envoyé !";
+        //$this->executeAction(); TO DO: Add view "sent email"
     }
 
     
