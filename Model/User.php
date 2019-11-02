@@ -4,11 +4,20 @@ use Model;
 
 /**
  * Cette classe hydrate les entités de type User
- * 
+ * Cette classe utilise les méthodes de la classe mère Entity
  */
 
-class User 
+require_once("Framework/Entity.php");
+
+class User extends Entity
 {
+
+  const ROLE = [
+    
+    1 => 'Member',
+    2 => 'Admin'
+    
+  ];
 
     private $id;
     private $username;
@@ -54,6 +63,11 @@ class User
     public function getRole()
     {
       return $this->role;
+    }
+
+    public function getRoleString(): string
+    {
+      return self::ROLE[$this->role];
     }
 
     public function getDate_add($lg = "")
