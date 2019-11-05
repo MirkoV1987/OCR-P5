@@ -1,6 +1,9 @@
 <?php
 
 // A pour rôle de modéliser une requête
+
+require_once("Session.php");
+
 class Request 
 {
 	// Paramètres de la requête
