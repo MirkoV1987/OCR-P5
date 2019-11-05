@@ -1,5 +1,7 @@
 <?php
 
+require_once("Request.php");
+
 class Router
 {
         
@@ -70,7 +72,7 @@ class Router
         if (!empty($class) && !empty($method) && !empty($params) ) 
         {
            require_once("Request.php"); 
-           $request = new Request(); //on crée un nouvel objet Request
+           $request = new Request($params); //on crée un nouvel objet Request
 
            if ($request->existsParams('controller') ) {
                
