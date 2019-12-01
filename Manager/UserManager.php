@@ -9,28 +9,40 @@ require_once('Framework/Entity.php');
 class UserManager extends Model 
 {    
 
+    public function register($data)
+    {
+        $password = password_hash($data['post']['password'], PASSWORD_BCRYPT);
+        $req = $this->getDb()->prepare("INSERT INTO user (username, email, password, active, role, date_add) VALUES (:username, :email, :password, :active, :role, :date_add)");
+        $req->execute(array(':username'=>$data['post']['username'],
+                            ':email'=>$data['post']['email'], 
+                            ':password'=>$password,
+                            ':active'=> 1,
+                            ':role'=> 1,
+                            ':date_add'=>date("Y-m-d H:i:s") 
+                            ) );
+    }  
+
     public function login($username, $password)
     {
-        $req = $this->getDb()->prepare("SELECT id, password FROM user WHERE username = :username");
-        $user = $req->execute(array($username));
+        $req = $this->getDb()->prepare("SELECT id, username, password, active, role FROM user WHERE username = :username LIMIT 1");
+        $req->execute(array(':username' => $username) );
         
-        if ($user->rowCount() == 1) {
-
-            $user = $user->fetch(\PDO::FETCH_ASSOC);
-             
-            return (password_verify($password, $user['password']));
-        }
+        $user = $req->fetch(\PDO::FETCH_ASSOC);
+         
+        $checkPassword = password_verify($password, $user['password']);
+     
+        return $checkPassword;  
     }    
 
     public function getList()
     {
-        $req = $this->getDb()->prepare("SELECT id, username, email, password, active, validation_key, role, date_add FROM user ORDER BY date_add desc");
-        $users = $req->execute();
         $usersTab = [];
+        $req = $this->getDb()->prepare("SELECT id, imageUrl, username, email, password, active, role, date_add FROM user ORDER BY date_add desc");
+        $req->execute();
 
-        while ($data = $users->fetch(\PDO::FETCH_ASSOC))
+        while ($data = $req->fetch(\PDO::FETCH_ASSOC))
         {
-            $usersTab[] = new User($data);
+            array_push($usersTab, new User($data));
         }
 
         return $usersTab;
@@ -38,87 +50,65 @@ class UserManager extends Model
 
     public function getUser($id)
     {
-        $req = $this->getDb()->prepare("SELECT id, username, email, password, active, validation_key, role, date_add FROM user WHERE id = :id");
-        $user = $req->execute(array($id));
-        
-        if ($user->rowCount() == 1) {
-            $data = $user->fetch(\PDO::FETCH_ASSOC);
-        
-            return new User($data);
-        
-        } else {
-
-            throw new \Exception("Aucun utilisateur ne correspond à l'identifiant '$id'");
-        }
-    }
-
-    public function getUserByUsername($username)
-    {
-        $req = $this->getDb()->prepare("SELECT id, username, email, password, active, validation_key, role, date_add FROM user WHERE username = :username");
-        $user = $req->execute(array($username));
-        
-        if ($user->rowCount() == 1) {
-            $data = $user->fetch(\PDO::FETCH_ASSOC);
-        
-            return new User($data);
-        
-        } else {
-
-            throw new \Exception("Aucun utilisateur ne correspond à l'username '$username'");
-        }
-    }
-
-    public function getUserByEmail($email)
-    {
-        $req = $this->getDb()->prepare("SELECT id, username, email, password, active, validation_key, role, date_add FROM user WHERE email = :email");
-        $user = $req->execute(array($email));
-        
-        if ($user->rowCount() == 1) {
-            $data = $user->fetch(\PDO::FETCH_ASSOC);
-        
-            return new User($data);
-        
-        } else {
-
-            throw new \Exception("Aucun utilisateur ne correspond à l'e-mail '$email'");
-        }
+        $user = [];
+        $req = $this->getDb()->prepare("SELECT id, imageUrl, username, email, password, active, validation_key, role, date_add FROM user WHERE id = :id");
+        $req->execute(array(':id' => $id));
+        $req->setFetchMode(\PDO::FETCH_ASSOC);
+        $user = $req->fetch();
+        return $user;
     }
 
     public function add($params)
     {
+        $password = password_hash($data['post']['password'], PASSWORD_BCRYPT);
         $user = new User($params['post']);
-        $req = $this->getDb()->prepare("INSERT INTO user (username, email, password, active, validation_key, role, date_add) VALUES (:username, :email, :password, :active, :validation_key, :role, :date_add)");
-        $user = $req->execute(array(':username'=>$user->getUsername(),
+        $req = $this->getDb()->prepare("INSERT INTO user (imageUrl, username, email, password, active, role, date_add) VALUES (:imageUrl, :username, :email, :password, :active, :role, :date_add)");
+        $user = $req->execute(array(':imageUrl'=>$user->getImageUrl(),
+                                    ':username'=>$user->getUsername(),
                                     ':email'=>$user->getEmail(), 
-                                    ':password'=>$user->getPassword(),
+                                    ':password'=>$password,
                                     ':active'=>$user->getActive(),
-                                    ':validation_key'=>$user->getValidation_key(),
                                     ':role'=>$user->getRole(),
-                                    ':date_add'=>date("Y-m-d H:i:s")  )  );
-        return $user;
+                                    ':date_add'=>date("Y-m-d H:i:s") 
+                                    ) );
     }
 
     public function update($params)
     {
+        if (!empty($params['post']['password']) ) {
+
+        $password = password_hash($data['post']['password'], PASSWORD_BCRYPT);
         $user = new User($params['post']);
-        $req = $this->getDb()->prepare("UPDATE user SET id, username, email, password, active, validation_key, role WHERE id = :id");
+        $req = $this->getDb()->prepare("UPDATE user SET id = :id, imageUrl = :imageUrl, username = :username, email = :email, password = :password, active = :active, role = :role WHERE id = :id");
         $user = $req->execute(array(':id'=>$user->getId(),
+                                    ':imageUrl'=>$user->getImageUrl(),
                                     ':username'=>$user->getUsername(),
                                     ':email'=>$user->getEmail(), 
-                                    ':password'=>$user->getPassword(),
-                                    ':active'=>$user->getActive(),
-                                    ':validation_key'=>$user->getValidation_key(),
-                                    ':role'=>$user->getRole()  )  );
-        return $user;
+                                    ':password'=>$password,
+                                    ':active'=> 1,
+                                    ':role'=> 2  
+                                    ) );
+       }
+
+       if (empty($params['post']['password']) ) {
+
+        $user = new User($params['post']);
+        $req = $this->getDb()->prepare("UPDATE user SET id = :id, imageUrl = :imageUrl, username = :username, email = :email, active = :active, role = :role WHERE id = :id");
+        $user = $req->execute(array(':id'=>$user->getId(),
+                                    ':imageUrl'=>$user->getImageUrl(),
+                                    ':username'=>$user->getUsername(),
+                                    ':email'=>$user->getEmail(),
+                                    ':active'=> 1,
+                                    ':role'=> 2  
+                                    ) );
+       }
+
     }
 
     public function delete($params)
     { 
         $req = $this->getDb()->prepare('DELETE FROM user WHERE id = :id');
-        $user = $req->execute(array(':id'=>$params['get'][0]) );   
-        return $user;
-        
+        $req->execute(array(':id'=>$params['get'][0]) );   
     }
     
-
 }
