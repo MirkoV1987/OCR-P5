@@ -1,16 +1,12 @@
 <?php
 
-namespace \Model;
+require_once("Framework/Entity.php");
 
-/**
- * Cette classe hydrate les entités de type Comment
- * 
- */
-
-class Comment 
+class Comment extends Entity
 {
 
     private $id;
+    private $pseudo;
     private $content;
     private $date_add;
     private $date_update;
@@ -20,12 +16,19 @@ class Comment
 
     //SETTERS
     
-    public function setId(int $id)
+    public function setId($id)
     {
-      $this->id = $id;
+      $id = (int) $id;
+        if($id > 0)
+           $this->id = $id;
     }
 
-    public function setContent(int $content)
+    public function setPseudo(string $pseudo)
+    {
+      $this->pseudo = $pseudo;
+    }
+
+    public function setContent(string $content)
     {
       $this->content = $content;
     }
@@ -40,19 +43,25 @@ class Comment
       $this->date_update = $date_update;
     }
 
-    public function setUser_id(int $user_id)
+    public function setUser_id($user_id)
     {
-      $this->user_id = $user_id;
+      $user_id = (int) $user_id;
+      if($user_id > 0)
+         $this->user_id = $user_id;
     }
 
-    public function setPost_id(int $post_id)
+    public function setPost_id($post_id)
     {
-      $this->post_id = $post_id;
+      $post_id = (int) $post_id;
+      if($post_id > 0)
+         $this->post_id = $post_id;
     }
 
-    public function setActive(tinyint $active)
+    public function setActive($active)
     {
-      $this->active = $active;
+      $active = (int) $active;
+      if($active > 0)
+         $this->active = $active;
     }  
 
     //GETTERS
@@ -62,19 +71,24 @@ class Comment
       return $this->id;
     }
 
+    public function getPseudo()
+    {
+      return $this->pseudo;
+    }
+
     public function getContent()
     {
       return $this->content;
     }
 
-    public function getDate_add()
+    public function getDate_add($lg = "")
     {
-      return $this->date_add;
+      return date("d/m/Y h:m", strtotime($this->date_add));
     }
 
-    public function getDate_update()
+    public function getDate_update($lg = "")
     {
-      return $this->date_update;
+      return date("d/m/Y h:m", strtotime($this->date_update));
     }
 
     public function getUser_id()
