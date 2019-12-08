@@ -1,17 +1,22 @@
 <?php
 
-
 require_once('Framework/Model.php');
 require_once('Model/User.php');
 require_once('Framework/Entity.php');
 
-
 class UserManager extends Model 
-{    
+{  
+    private $encrypt = PASSWORD_BCRYPT;
+
+    public function __construct()
+    {
+      $this->encrypt;
+    }
 
     public function register($data)
     {
-        $password = password_hash($data['post']['password'], PASSWORD_BCRYPT);
+        $password = password_hash($data['post']['password'], $this->encrypt);
+
         $req = $this->getDb()->prepare("INSERT INTO user (username, email, password, active, role, date_add) VALUES (:username, :email, :password, :active, :role, :date_add)");
         $req->execute(array(':username'=>$data['post']['username'],
                             ':email'=>$data['post']['email'], 
@@ -24,20 +29,35 @@ class UserManager extends Model
 
     public function login($username, $password)
     {
-        $req = $this->getDb()->prepare("SELECT id, username, password, active, role FROM user WHERE username = :username LIMIT 1");
+        $req = $this->getDb()->prepare("SELECT id, imageUrl, username, password, active, role FROM user WHERE username = :username LIMIT 1");
         $req->execute(array(':username' => $username) );
         
         $user = $req->fetch(\PDO::FETCH_ASSOC);
-         
+ 
         $checkPassword = password_verify($password, $user['password']);
-     
-        return $checkPassword;  
+
+        if (password_needs_rehash($user['password'], $this->encrypt) ) {
+
+            $password = password_hash($user['password'], $this->encrypt);
+            $req = $this->getDb()->prepare("UPDATE user SET password = :password WHERE id = :id");
+            $req->execute(array(':password' => $password, ':id' => $user['id']) );
+
+        }
+
+        if ($checkPassword) {
+
+            return $user;
+
+        }
+        
+        return false; 
+         
     }    
 
     public function getList()
     {
         $usersTab = [];
-        $req = $this->getDb()->prepare("SELECT id, imageUrl, username, email, password, active, role, date_add FROM user ORDER BY date_add desc");
+        $req = $this->getDb()->prepare("SELECT id, imageUrl, username, email, password, active, role, DATE_FORMAT(date_add, '%d/%m/%Y à %Hh%imin') AS date_add_fr FROM user ORDER BY date_add desc");
         $req->execute();
 
         while ($data = $req->fetch(\PDO::FETCH_ASSOC))
@@ -51,7 +71,7 @@ class UserManager extends Model
     public function getUser($id)
     {
         $user = [];
-        $req = $this->getDb()->prepare("SELECT id, imageUrl, username, email, password, active, validation_key, role, date_add FROM user WHERE id = :id");
+        $req = $this->getDb()->prepare("SELECT id, imageUrl, username, email, password, active, validation_key, role, DATE_FORMAT(date_add, '%d/%m/%Y à %Hh%imin') AS date_add_fr FROM user WHERE id = :id");
         $req->execute(array(':id' => $id));
         $req->setFetchMode(\PDO::FETCH_ASSOC);
         $user = $req->fetch();
@@ -60,7 +80,7 @@ class UserManager extends Model
 
     public function add($params)
     {
-        $password = password_hash($data['post']['password'], PASSWORD_BCRYPT);
+        $password = password_hash($data['post']['password'], $this->encrypt);
         $user = new User($params['post']);
         $req = $this->getDb()->prepare("INSERT INTO user (imageUrl, username, email, password, active, role, date_add) VALUES (:imageUrl, :username, :email, :password, :active, :role, :date_add)");
         $user = $req->execute(array(':imageUrl'=>$user->getImageUrl(),
@@ -77,7 +97,7 @@ class UserManager extends Model
     {
         if (!empty($params['post']['password']) ) {
 
-        $password = password_hash($data['post']['password'], PASSWORD_BCRYPT);
+        $password = password_hash($data['post']['password'], $this->encrypt);
         $user = new User($params['post']);
         $req = $this->getDb()->prepare("UPDATE user SET id = :id, imageUrl = :imageUrl, username = :username, email = :email, password = :password, active = :active, role = :role WHERE id = :id");
         $user = $req->execute(array(':id'=>$user->getId(),
@@ -85,8 +105,8 @@ class UserManager extends Model
                                     ':username'=>$user->getUsername(),
                                     ':email'=>$user->getEmail(), 
                                     ':password'=>$password,
-                                    ':active'=> 1,
-                                    ':role'=> 2  
+                                    ':active'=>1,
+                                    ':role'=>$user->getRole()  
                                     ) );
        }
 
@@ -98,8 +118,8 @@ class UserManager extends Model
                                     ':imageUrl'=>$user->getImageUrl(),
                                     ':username'=>$user->getUsername(),
                                     ':email'=>$user->getEmail(),
-                                    ':active'=> 1,
-                                    ':role'=> 2  
+                                    ':active'=>1,
+                                    ':role'=>$user->getRole() 
                                     ) );
        }
 
