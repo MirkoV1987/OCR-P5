@@ -4,7 +4,6 @@ require_once('Framework/Model.php');
 require_once('Model/Post.php');
 require_once('Framework/Entity.php');
 
-
 class PostManager extends Model 
 {    
 
