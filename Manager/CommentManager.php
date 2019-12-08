@@ -4,13 +4,13 @@ require_once('Framework/Model.php');
 require_once('Model/Comment.php');
 require_once('Framework/Entity.php');
 
-
 class CommentManager extends Model 
 {    
 
     public function getList($post_id = 0)
     {
         $comments = [];
+
         if ($post_id == 0) {
 
             $req = $this->getDb()->prepare("SELECT id, pseudo, content, date_add, active FROM comment ORDER BY id desc"); 
@@ -38,28 +38,54 @@ class CommentManager extends Model
             $req = $this->getDb()->prepare("SELECT id, post_id, pseudo, content, date_add, active FROM comment"); 
             $req->execute();
 
-        } else {
+        } 
 
-            $req = $this->getDb()->prepare("SELECT id, pseudo, content, DATE_FORMAT(date_add, '%d/%m/%Y à %Hh%imin%ss') AS date_add_fr, active FROM comment WHERE post_id = :post_id ORDER BY date_add DESC"); 
-            $req->execute(array(':post_id' => $post_id) );
-        }
-
+        $req = $this->getDb()->prepare("SELECT id, pseudo, content, DATE_FORMAT(date_add, '%d/%m/%Y à %Hh%imin%ss') AS date_add_fr, post_id FROM comment WHERE post_id = :post_id ORDER BY date_add DESC"); 
+        $req->execute(array(':post_id' => $post_id) );
         $req->setFetchMode(\PDO::FETCH_ASSOC);
         $comment = $req->fetchAll();
         return $comment;
     }
 
-    public function add($params, $post_id = 0)
+    public function add($params)
     {
+        $post_id = explode('-', $params['get'][0]);
         $comment = new Comment($params['post']);
+
+        if ($_SESSION['user']['role'] == 1) { 
+        
         $req = $this->getDb()->prepare("INSERT INTO comment(pseudo, content, date_add, post_id, user_id, active) VALUES(:pseudo, :content, :date_add, :post_id, :user_id, :active)");
         $comment = $req->execute(array(':pseudo'=>$comment->getPseudo(),
                                        ':content'=>$comment->getContent(), 
                                        ':date_add'=>date("Y-m-d H:i:s"), 
-                                       ':post_id'=>$comment->getPost_id(),
-                                       ':user_id'=>$comment->getUser_id(), 
-                                       ':active'=>$comment->getActive() 
+                                       ':post_id'=> $post_id[0],
+                                       ':user_id'=>$_SESSION['user']['id'], 
+                                       ':active'=> 0 
                                        ) );
+        }
+
+        if ($_SESSION['user']['role'] == 2) { 
+        
+            $req = $this->getDb()->prepare("INSERT INTO comment(pseudo, content, date_add, post_id, user_id, active) VALUES(:pseudo, :content, :date_add, :post_id, :user_id, :active)");
+            $comment = $req->execute(array(':pseudo'=>$comment->getPseudo(),
+                                           ':content'=>$comment->getContent(), 
+                                           ':date_add'=>date("Y-m-d H:i:s"), 
+                                           ':post_id'=> $post_id[0],
+                                           ':user_id'=>$_SESSION['user']['id'], 
+                                           ':active'=> 1 
+                                           ) );
+            return $comment;   
+        }
+    
+        
+    }
+
+    public function validate($params)
+    {
+        $comment = new Comment($params['post']);
+        $post_id = explode('-', $params['get'][0]);
+        $req = $this->getDb()->prepare("UPDATE comment SET id = :id, active = 1 WHERE id = :id");
+        $comment = $req->execute(array(':id' => $comment->getId(), ':active' => 1 ) );
         return $comment;
     }
 
