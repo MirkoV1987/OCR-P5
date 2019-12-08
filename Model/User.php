@@ -1,22 +1,15 @@
 <?php
 
-use Model;
-
-/**
- * Cette classe hydrate les entités de type User
- * Cette classe utilise les méthodes de la classe mère Entity
- */
-
 require_once("Framework/Entity.php");
 
 class User extends Entity
 {
-
+  
   const ROLE = [
-    
-    1 => 'Member',
-    2 => 'Admin'
-    
+   
+  1 => 'member',
+  2 => 'admin'  
+
   ];
 
     private $id;
@@ -28,11 +21,74 @@ class User extends Entity
     private $role;
     private $date_add;
 
+    //SETTERS
+
+    public function setId(int $id)
+    {
+      $this->id = $id;
+    }
+
+    public function setImageUrl($imageUrl)
+    {
+        $imageUrl = (string) $imageUrl;
+        if(is_string($imageUrl))
+           $this->imageUrl = $imageUrl;
+    }
+
+    public function setUsername(string $username)
+    {
+      $this->username = $username;
+    }
+
+    public function setEmail(string $email)
+    {
+      $this->email = $email;
+    }
+
+    public function setPassword(string $password)
+    {
+      $password = (string) $password;
+      if (is_string($password)) { 
+      $this->password = $password;
+      }
+    }
+
+    public function setActive($active)
+    {
+      $active = (int) $active;
+      if (is_int($active)) { 
+        $this->active = $active;
+        }
+    }
+
+    public function setValidation_key(binary $validation_key)
+    {
+      $this->validation_key = $validation_key;
+    }
+
+    public function setRole(int $role)
+    {
+      $role = (int) $role;
+      if (is_int($role)) { 
+        $this->role = $role;
+        }
+    }  
+
+    public function setDate_add(string $date_add)
+    {
+      $this->date_add = $date_add;
+    }
+
     //GETTERS
 
     public function getId()
     {
       return $this->id;
+    }
+
+    public function getImageUrl()
+    {
+        return $this->imageUrl;
     }
 
     public function getUsername()
@@ -50,9 +106,9 @@ class User extends Entity
       return $this->password;
     }
 
-    public function getActive()
+    public function getActive() : int
     {
-      return $this->active;
+      return (int) $this->active;
     }
 
     public function getValidation_key()
@@ -65,56 +121,15 @@ class User extends Entity
       return $this->role;
     }
 
-    public function getRoleString(): string
-    {
-      return self::ROLE[$this->role];
-    }
+    public function getRoleString(): int
+  	{
+	    return self::ROLE[$this->role];
+	  }
 
     public function getDate_add($lg = "")
     {
-      return date("d/m/Y h:m", strtotime($this->date_add));
-    }
-
-    //SETTERS
-
-    public function setId(int $id)
-    {
-      $this->id = $id;
-    }
-
-    public function setUsername(string $username)
-    {
-      $this->username = $username;
-    }
-
-    public function setEmail(string $email)
-    {
-      $this->email = $email;
-    }
-
-    public function setPassword(binary $password)
-    {
-      $this->password = $password;
-    }
-
-    public function setActive(tinyint $active)
-    {
-      $this->active = $active;
-    }
-
-    public function setValidation_key(binary $validation_key)
-    {
-      $this->validation_key = $validation_key;
-    }
-
-    public function setRole(int $role)
-    {
-      $this->role = $role;
-    }  
-
-    public function setDate_add(string $date_add)
-    {
-      $this->date_add = $date_add;
+        return date("d/m/Y h:m", strtotime($this->date_add));
+        return $this->date_add;
     }
     
 }
