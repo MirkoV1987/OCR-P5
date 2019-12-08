@@ -1,21 +1,17 @@
 <?php
 
-/**
- * Cette classe hydrate les entités de type Post
- * Cette classe utilise les méthodes de la classe mère Entity
- */
-
 require_once("Framework/Entity.php");
 
 class Post extends Entity
 {
 
     private $id;
+    private $user_id;
+    private $author;
     private $title;
     private $chapeau;
     private $date_add;
     private $date_update;
-    private $user_id;
     private $content;
 
     //SETTERS
@@ -24,6 +20,20 @@ class Post extends Entity
         $id = (int) $id;
         if($id > 0)
            $this->id = $id;
+    }
+
+    public function setUser_id($user_id)
+    {
+        $user_id = (int) $user_id;
+        if($user_id > 0)
+           $this->user_id = $user_id;
+    }
+
+    public function setAuthor($author)
+    {
+        $author = (string) $author;
+        if(is_string($author))
+           $this->author = $author;
     }
 
     public function setTitle($title)
@@ -40,6 +50,13 @@ class Post extends Entity
            $this->chapeau = $chapeau;
     }
 
+    public function setImageUrl($imageUrl)
+    {
+        $imageUrl = (string) $imageUrl;
+        if(is_string($imageUrl))
+           $this->imageUrl = $imageUrl;
+    }
+
     public function setDate_add($date_add)
     {
            $this->date_add = $date_add;
@@ -48,13 +65,6 @@ class Post extends Entity
     public function setDate_update($date_update)
     {
            $this->date_update = $date_update;
-    }
-
-    public function setUser_id($user_id)
-    {
-        $user_id = (int) $user_id;
-        if($user_id > 0)
-           $this->user_id = $user_id;
     }
 
     public function setContent($content)
@@ -71,6 +81,16 @@ class Post extends Entity
         return $this->id;
     }
 
+    public function getUser_id()
+    {
+        return $this->user_id;
+    }
+
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
     public function getTitle()
     {
         return $this->title;
@@ -81,22 +101,21 @@ class Post extends Entity
         return $this->chapeau;
     }
 
+    public function getImageUrl()
+    {
+        return $this->imageUrl;
+    }
+
     public function getDate_add($lg = "")
     {
-        // return date("d/m/Y h:m", strtotime($this->date_add));
+        return date("d/m/Y h:m", strtotime($this->date_add));
         return $this->date_add;
-           
-
     }
 
     public function getDate_update()
     {
+        return date("d/m/Y h:m", strtotime($this->date_update));
         return $this->date_update;
-    }
-
-    public function getUser_id()
-    {
-        return $this->user_id;
     }
 
     public function getContent()
