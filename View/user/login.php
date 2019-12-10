@@ -53,6 +53,9 @@
             <a class="nav-link js-scroll-trigger" href="/OCR-P5/#portfolio">Portfolio</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/OCR-P5/#cv">Parcours</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="/OCR-P5/#contact">Me contacter</a>
           </li>
           <li class="nav-item">
@@ -95,9 +98,9 @@
           <button type="submit" name="submit" id="login" value="connexion" class="btn btn-primary btn-user btn-block">Connexion</button>
         </form>
           <hr>
-            <div class="text-center">
+            <!-- <div class="text-center">
               <a class="small" href="forgot-password.html">Password oublié ?</a>
-            </div>
+            </div> -->
             <div class="text-center">
               <a class="small" href="/OCR-P5/user/register/">Créer un compte!</a>
             </div>
@@ -107,8 +110,8 @@
     </div>
   </div>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="/OCR-P5/Public/vendor/jquery/jquery.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script src="/OCR-P5/Public/vendor/jquery/jquery.min.js"></script>
   <script src="/OCR-P5/Public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Plugin JavaScript -->
