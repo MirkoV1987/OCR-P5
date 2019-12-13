@@ -10,17 +10,14 @@ class View
 
     public function __construct($action) 
     {
-        //$this->file = 'View/'.$action.'View.php';
-        $this->file = 'View/'.$view.'.php';
+     $this->file = 'View/'.$view.'.php';
     }
 
-    //Génère et affiche la vue
     public function generate($data)
     {
         $content = $this->generateFile($this->file, $data);
 
-        //Template
-        $view = $this->generateFile('View/'.$folder.'/'.'template.php', array('title' => $this->title, 'content' => $content));
+        $view = $this->generateFile('View/'.$folder.'/'.'template.php', array('title' => $this->title, 'content' => $content) );
         
         echo $view;
     }
@@ -28,16 +25,15 @@ class View
     //Génère un fichier view et renvoie le résultat
     private function generateFile($file, $data)
     {
-          if(file_exists($file))
+          if (file_exists($file) )
           {
-              extract($data);
+           extract($data);
 
-              ob_start();
+           ob_start();
 
-              //On inclut le fichier view
-              require $file;
+           require $file;
 
-              return ob_get_clean();
+           return ob_get_clean();
           }
           else
                throw new Exception('Fichier '.$file.' introuvable');
@@ -46,14 +42,13 @@ class View
     public function render($view)
     {
        ob_start();
-       
-       //$vars = $this->vars;
 
        foreach($this->vars as $key => $value) {
 
        $$key = $value;
         
        }
+        
        require_once($view);
 
        ob_end_flush();
@@ -61,14 +56,13 @@ class View
 
     public function set($name, $value)
     {
-       $this->vars[$name] = $value;
-
+     $this->vars[$name] = $value;
     }
 
     public function redirect($url)
     {
-       header("Location: $url"); 
-       exit;
+     header("Location: $url"); 
+     exit;
     }
 
 }
