@@ -9,28 +9,28 @@ class Request
 
 	public function __construct($params)
 	{
-		$this->params = $params;
+         $this->params = $params;
 	}
 	
 	public function getSession()
 	{
-	    return $this->session;
+	 return $this->session;
 	}
 
 	public function existsParams($name)
 	{
-		return (!empty($this->params[$name]));
+	 return (!empty($this->params[$name]));
 	}
 
 	public function getParams($name)
 	{
 		if ($this->existsParams($name))
 		{
-		  return htmlspecialchars($this->params[$name]);
+		 return htmlspecialchars($this->params[$name]);
 		}
 		else 
 		{
-		  throw new \Exception("Paramètre '$name' absent de la requête");
+		 throw new \Exception("Paramètre '$name' absent de la requête");
 		}
 	}
 }
