@@ -85,13 +85,6 @@ class CommentController extends \Framework\Controller
 
    }
 
-   public function update($params)
-   {
-      $comment= $this->manager->update($params);
-      $view = $this->executeAction("index");
-   }
-
-
    public function delete($params)
    {
       if ($_SESSION['user']['role'] != 2) {
