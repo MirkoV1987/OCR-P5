@@ -50,6 +50,9 @@
             <a class="nav-link js-scroll-trigger" href="/OCR-P5/#portfolio">Portfolio</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/OCR-P5/#cv">Parcours</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="/OCR-P5/#contact">Me contacter</a>
           </li>
           <li class="nav-item">

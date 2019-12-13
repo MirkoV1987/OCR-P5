@@ -65,19 +65,22 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav text-uppercase ml-auto">
         <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="http://hostmirko/OCR-P5/">Home</a>
+          <a class="nav-link js-scroll-trigger" href="/OCR-P5/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="http://hostmirko/OCR-P5/#skills">Compétences</a>
+          <a class="nav-link js-scroll-trigger" href="/OCR-P5/#about">Présentation</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="http://hostmirko/OCR-P5/#portfolio">Portfolio</a>
+          <a class="nav-link js-scroll-trigger" href="/OCR-P5/#skills">Compétences</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="http://hostmirko/OCR-P5/#about">Présentation</a>
+          <a class="nav-link js-scroll-trigger" href="/OCR-P5/#portfolio">Portfolio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="http://hostmirko/OCR-P5/#contact">Me contacter</a>
+          <a class="nav-link js-scroll-trigger" href="/OCR-P5/#cv">Parcours</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="/OCR-P5/#contact">Me contacter</a>
         </li>
       </ul>
     </div>
