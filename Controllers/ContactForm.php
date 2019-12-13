@@ -1,8 +1,16 @@
 <?php
 
+namespace Controllers;
+
+class ContactForm
+{
 
     // Vérification des champs vides
-    if (empty($_POST['name']) || empty($_POST['email']) || empty($_POST['phone']) || empty($_POST['message']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) ) {
+    if (empty($_POST['name']) 
+    || empty($_POST['email']) 
+    || empty($_POST['phone']) 
+    || empty($_POST['message']) 
+    || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) ) {
 
     return false;
 
@@ -16,11 +24,12 @@
     
     // Création du mail et envoi du message
     $to = 'mirkoventuri.web@gmail.com';
-    $email_subject = "Website Contact Form:  $name";
-    $email_body = "You have received a new message from your website contact form.\n\n"."Here are the details:\n\nName: $name\n\nEmail: $email_address\n\nPhone: $phone\n\nMessage:\n$message";
+    $email_subject = "Blog de Mirko Venturi :  $name";
+    $email_body = "Vous avez reçu un message depuis le formulaire de contact du Blog.\n\n"."Détails :\n\nNom : $name\n\nEmail : $email_address\n\nTélephone : $phone\n\nMessage:\n$message";
     $headers = "From: noreply@gmail.com\n"; // This is the email address the generated message will be from. We recommend using something like noreply@yourdomain.com.
-    $headers .= "Reply-To: $email_address";   
+    $headers .= "Répondre à : $email_address";   
     mail($to,$email_subject,$email_body,$headers);
 
     return true;
-            
+
+}
