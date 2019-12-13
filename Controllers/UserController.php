@@ -67,7 +67,7 @@ class UserController extends \Framework\Controller
 
     public function view($params)
     {
-      if(!isset($_SESSION['user']['role']) OR $_SESSION['user']['role'] != 2) {
+      if(!isset($_SESSION['user']['role']) || $_SESSION['user']['role'] != 2) {
 
       echo "Vous ne pouvez pas modifier les données des utilisateurs";
     
