@@ -1,0 +1,19 @@
+{
+    "name": "mirko/p5",
+    "authors": [
+        {
+            "name": "Mirko Venturi",
+            "email": "mirkoventuri.web@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Framework\\":"Framework/",
+            "Controllers\\":"Controllers/",
+            "Manager\\":"Manager/",
+            "Model\\":"Model/"
+        }
+    },
+    "require": {}
+
+}
