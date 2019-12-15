@@ -75,7 +75,7 @@
           <i class="fas fa-sign-out-alt px-1"></i>
           <span>Déconnexion</span>
         </a>
-      <img class="img-fluid my-4 px-2 py-2 " src="/OCR-P5/Public/img/user/<?= $_SESSION['user']['imageUrl']; ?>" alt="ImgResponsive" />
+      <img class="img-fluid my-4 px-2 py-2 " src="/OCR-P5/Public/img/user/<?= filter_var($_SESSION['user']['imageUrl']); ?>" alt="ImgResponsive" />
       <!--User add-->
         <a class="btn btn-md btn-warning mx-2 my-2 px-2 text-lowercase text-center" href="/OCR-P5/user/add/">
           <i class="fas fa-user px-1"></i>
@@ -209,14 +209,14 @@
                           <?php foreach($users as $user): ?>   
                             <tr>
                               <th scope="row">
-                              <?= $user->getId(); ?>
+                              <?= filter_var($user->getId() ); ?>
                               </th>
-                              <td><?= $user->getUsername(); ?></td>
-                              <td><?= $user->getEmail(); ?></td>
-                              <td><?= $user->getRole(); ?></td>
-                              <td><a class="btn btn-sm btn-success shadow-sm" data-toggle="modal" href="http://localhost/OCR-P5/user/view/<?= $user->getId(); ?>">Voir</a>
-                              <a class="btn btn-sm btn-primary shadow-sm" data-toggle="modal" href="http://localhost/OCR-P5/user/update/<?= $user->getId(); ?>">Modifier</a>
-                              <a class="btn btn-sm btn-danger shadow-sm" data-toggle="modal" href="http://localhost/OCR-P5/user/delete/<?= $user->getId(); ?>">Supprimer</a>
+                              <td><?= filter_var($user->getUsername() ); ?></td>
+                              <td><?= filter_var($user->getEmail() ); ?></td>
+                              <td><?= filter_var($user->getRole() ); ?></td>
+                              <td><a class="btn btn-sm btn-success shadow-sm" data-toggle="modal" href="http://localhost/OCR-P5/user/view/<?= filter_var($user->getId() ); ?>">Voir</a>
+                              <a class="btn btn-sm btn-primary shadow-sm" data-toggle="modal" href="http://localhost/OCR-P5/user/update/<?= filter_var($user->getId() ); ?>">Modifier</a>
+                              <a class="btn btn-sm btn-danger shadow-sm" data-toggle="modal" href="http://localhost/OCR-P5/user/delete/<?= filter_var($user->getId() ); ?>">Supprimer</a>
                               </td>
                               </td>
                             </tr>
