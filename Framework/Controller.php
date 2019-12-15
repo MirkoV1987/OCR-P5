@@ -4,7 +4,6 @@ namespace Framework;
 
 abstract class Controller extends View
 {
-	private $action;
 	protected $request;
 	
 	/** Définit la requête entrante
