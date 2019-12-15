@@ -2,9 +2,13 @@
 <hr>
 <h2>Informations</h2><br>
 
-![frontend.png](../OCR-P5/Public/img/readme/frontend.png)
+![frontend screenshot](https://github.com/MirkoV1987/OCR-P5/blob/master/Public/img/readme/frontend.png?raw=true "Frontend Screenshot")
 
-Les aggrégations ne sont volontairement pas indiquées sur le diagramme de classe UML de l'application pour gagner en lisibilité. Celui-ci me sert principalement d'aide visuel et n'est pas forcemment complet.
+
+![backend screenshot](https://user-images.githubusercontent.com/52068274/70866765-e6112100-1f6d-11ea-995a-7ccc82edf81a.png "Backend Screenshot")
+
+Les diagrammes UML représentent les fonctionnalités de type view, add, update et delete.
+Celles-ci sont les mêmes pour les articles, les commentaires et les utilisateurs.
 
 La manipulation des données stockés (Hydratation : Entité/Manager) a été effectué en suivant le cours de Victor Thuillier.
 
