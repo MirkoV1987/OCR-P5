@@ -2,9 +2,13 @@
 <hr>
 <h2>Informations</h2><br>
 
-![img1](https://github.com/MirkoV1987/OCR-P5/blob/master/Public/img/readme/frontend.png?raw=true "Frontend Screenshot")
+<h3>Frontend Screenshot</h3>
 
-![img2](https://user-images.githubusercontent.com/52068274/70866765-e6112100-1f6d-11ea-995a-7ccc82edf81a.png?raw=true "Backend Screenshot")
+![frontend](https://user-images.githubusercontent.com/52068274/70866962-3a1d0500-1f70-11ea-9927-f292b1e7a3b0.png)
+
+<h3>Backend Screenshot</h3>
+
+![backend](https://user-images.githubusercontent.com/52068274/70866973-70f31b00-1f70-11ea-91c0-6137ab2b57db.png)
 
 Les diagrammes UML représentent les fonctionnalités de type view, add, update et delete.
 Celles-ci sont les mêmes pour les articles, les commentaires et les utilisateurs.
