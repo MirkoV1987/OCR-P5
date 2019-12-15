@@ -45,7 +45,7 @@
       </ul>
     </div>
     <div>
-      <span class="mr-2 d-none d-lg-inline text-white">Bonjour, <?= isset(filter_var($_SESSION['user']['username']) ) ? filter_var($_SESSION['user']['username'] ) : ''; ?> 
+      <span class="mr-2 d-none d-lg-inline text-white">Bonjour, <?= isset($_SESSION['user']['username']) ? $_SESSION['user']['username'] : ''; ?> 
         <img class="img-profile rounded-circle img-thumbnail" src="/OCR-P5/Public/img/user/<?= $_SESSION['user']['imageUrl']; ?>" width="30px" height="auto" alt="ImgResponsive" /> 
       </span>
         <a class="btn btn-md btn-danger mx-2 px-2 text-lowercase text-center" href="/OCR-P5/user/logout">Déconnexion</a>
@@ -93,14 +93,14 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-justify">
-        <h1 class="section-heading text-uppercase"><?= htmlspecialchars(filter_var($post['title']) ); ?></h1>
+        <h1 class="section-heading text-uppercase"><?= filter_var($post['title']); ?></h1>
         <div class="elem-demo"></div>
-        <h2 class="section-subheading text-muted"><?= htmlspecialchars(filter_var($post['chapeau']) ); ?></h2>
+        <h2 class="section-subheading text-muted"><?= filter_var($post['chapeau']); ?></h2>
         <div class="row my-6 py-4">
-        <img class="img-fluid" src="/OCR-P5/Public/img/<?= htmlspecialchars(filter_var($post['imageUrl']) ); ?>" alt="ImgResponsive" />
+        <img class="img-fluid" src="/OCR-P5/Public/img/<?= filter_var($post['imageUrl']); ?>" alt="ImgResponsive" />
         </div>
         <div class="row my-6 py-4">
-        <h4 class="section-subheading">De <?= htmlspecialchars(filter_var($post['author']) ); ?> - <time class="section-subheading text-muted">Publié le <?= filter_var($post['date_add_fr']) ?></time></h4>
+        <h4 class="section-subheading">De <?= filter_var($post['author']); ?> - <time class="section-subheading text-muted">Publié le <?= filter_var($post['date_add_fr']) ?></time></h4>
         <p class="text-justify"><?= $post['content']; ?></p>
         </div>
       </div>
@@ -140,12 +140,12 @@
         <div class="my-4 shadow-lg p-3 mb-1 bg-white rounded">
           <div class="row">
             <div class="col-lg-4 text-center">
-              <h4 class="section-subheading text-uppercase text-left"><?= htmlspecialchars(filter_var($comment['pseudo']) ); ?></h4><time><?= isset(filter_var($date_add) ) ? filter_var($comment['date_add_fr']) : ''; ?></time>
+              <h4 class="section-subheading text-uppercase text-left"><?= filter_var($comment['pseudo']); ?></h4><time><?= isset($date_add) ? $comment['date_add_fr'] : ''; ?></time>
             </div>
           </div>
           <div class="row my-4">
             <div class="col-lg-12 text-left">
-              <p class="text-justify"><?= htmlspecialchars(filter_var($comment['content']) ); ?></p>
+              <p class="text-justify"><?= filter_var($comment['content']); ?></p>
             </div>
           </div>
         </div>
