@@ -1,11 +1,10 @@
 <h1>P5 - OpenClassRooms</h1>
 <hr>
 <h2>Informations</h2><br>
-<h4><b>Frontend screenshot</b></h4>
-![frontend screenshot](https://github.com/MirkoV1987/OCR-P5/blob/master/Public/img/readme/frontend.png?raw=true "Frontend Screenshot")
 
-<h4><b>Backend screenshot</b></h4>
-![backend screenshot](https://user-images.githubusercontent.com/52068274/70866765-e6112100-1f6d-11ea-995a-7ccc82edf81a.png "Backend Screenshot")
+![img1](https://github.com/MirkoV1987/OCR-P5/blob/master/Public/img/readme/frontend.png?raw=true "Frontend Screenshot")
+
+![img2](https://user-images.githubusercontent.com/52068274/70866765-e6112100-1f6d-11ea-995a-7ccc82edf81a.png?raw=true "Backend Screenshot")
 
 Les diagrammes UML représentent les fonctionnalités de type view, add, update et delete.
 Celles-ci sont les mêmes pour les articles, les commentaires et les utilisateurs.
