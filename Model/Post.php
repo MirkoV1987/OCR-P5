@@ -108,7 +108,7 @@ class Post extends \Framework\Entity
         return $this->imageUrl;
     }
 
-    public function getDate_add($lg = "")
+    public function getDate_add()
     {
         return date("d/m/Y h:m:s", strtotime($this->date_add));
         return $this->date_add;

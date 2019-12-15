@@ -83,12 +83,12 @@ class Comment extends \Framework\Entity
       return $this->content;
     }
 
-    public function getDate_add($lg = "")
+    public function getDate_add()
     {
       return date("d/m/Y h:m", strtotime($this->date_add));
     }
 
-    public function getDate_update($lg = "")
+    public function getDate_update()
     {
       return date("d/m/Y h:m", strtotime($this->date_update));
     }

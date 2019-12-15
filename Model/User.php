@@ -126,7 +126,7 @@ class User extends \Framework\Entity
 	    return self::ROLE[$this->role];
 	  }
 
-    public function getDate_add($lg = "")
+    public function getDate_add()
     {
         return date("d/m/Y h:m", strtotime($this->date_add));
         return $this->date_add;
