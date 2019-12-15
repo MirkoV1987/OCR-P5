@@ -40,7 +40,7 @@
     <!-- Nav Item - User Information -->
     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <span class="mr-2 d-none d-lg-inline text-white middle">Bonjour, <?= $_SESSION['user']['username']; ?></span>
-      <img class="img-profile rounded-circle img-thumbnail" src="/OCR-P5/Public/img/user.png" width="30px" height="auto">
+      <img class="img-profile rounded-circle img-thumbnail" src="/OCR-P5/Public/img/user/<?= $_SESSION['user']['imageUrl']; ?>" width="30px" height="auto">
     </a>
   </nav>
 
