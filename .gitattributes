@@ -1,0 +1,3 @@
+special-vendored-path/* linguist-vendored
+Public/vendor/* linguist-vendored
+*.scss linguist-vendored
