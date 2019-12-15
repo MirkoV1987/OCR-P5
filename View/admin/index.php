@@ -33,8 +33,8 @@
         </button>
       </div>
       <a class="nav-link dropdown-toggle">
-        <span class="mr-1 d-none d-lg-inline text-white middle">Bonjour, <?= $_SESSION['user']['username']; ?></span>
-        <img class="img-profile rounded-circle img-thumbnail" src="/OCR-P5/Public/img/user/<?= $_SESSION['user']['imageUrl']; ?>" width="30px" height="auto">
+        <span class="mr-1 d-none d-lg-inline text-white middle">Bonjour, <?= filter_var($_SESSION['user']['username']); ?></span>
+        <img class="img-profile rounded-circle img-thumbnail" src="/OCR-P5/Public/img/user/<?= filter_var($_SESSION['user']['imageUrl']); ?>" width="30px" height="auto">
       </a>
     </nav>
 
@@ -124,15 +124,15 @@
               <tbody>
                 <?php foreach($posts as $post) :  ?> 
                   <tr> 
-                    <th scope="row"><?= $post->getId(); ?></th>
-                      <td><?= $post->getAuthor(); ?></td>
-                      <td><?= $post->getTitle(); ?></td>
-                      <td><?= $post->getChapeau(); ?></td>
-                      <td><?= $post->getDate_add(); ?></td>
+                    <th scope="row"><?= filter_var($post->getId() ); ?></th>
+                      <td><?= filter_var($post->getAuthor() ); ?></td>
+                      <td><?= filter_var($post->getTitle() ); ?></td>
+                      <td><?= filter_var($post->getChapeau() ); ?></td>
+                      <td><?= filter_var($post->getDate_add() ); ?></td>
                       <td>
-                      <a class="btn btn-sm btn-success shadow-sm" data-toggle="modal" href="http://localhost/OCR-P5/post/view/<?= $post->getId(); ?>-<?= $post->getTitle(); ?>">Voir</a>
-                      <a class="btn btn-sm btn-primary shadow-sm" data-toggle="modal" href="http://localhost/OCR-P5/post/update/<?= $post->getId(); ?>">Modifier</a>
-                      <a class="btn btn-sm btn-danger shadow-sm" data-toggle="modal" href="http://localhost/OCR-P5/post/delete/<?= $post->getId(); ?>">Supprimer</a>
+                      <a class="btn btn-sm btn-success shadow-sm" data-toggle="modal" href="http://localhost/OCR-P5/post/view/<?= filter_var($post->getId() ); ?>-<?= filter_var($post->getTitle() ); ?>">Voir</a>
+                      <a class="btn btn-sm btn-primary shadow-sm" data-toggle="modal" href="http://localhost/OCR-P5/post/update/<?= filter_var($post->getId() ); ?>">Modifier</a>
+                      <a class="btn btn-sm btn-danger shadow-sm" data-toggle="modal" href="http://localhost/OCR-P5/post/delete/<?= filter_var($post->getId() ); ?>">Supprimer</a>
                       </td>
                   </tr>
                 <?php endforeach; ?>
@@ -168,16 +168,16 @@
                           <?php foreach($comments as $comment): ?>   
                             <tr>
                               <th scope="row">
-                              <?= $comment->getId(); ?>
+                              <?= filter_var($comment->getId() ); ?>
                               </th>
-                              <td><?= $comment->getPseudo(); ?></td>
-                              <td><?= $comment->getContent(); ?></td>
-                              <td><?= $comment->getDate_add(); ?></td>
+                              <td><?= filter_var($comment->getPseudo() ); ?></td>
+                              <td><?= filter_var($comment->getContent() ); ?></td>
+                              <td><?= filter_var($comment->getDate_add() ); ?></td>
                               <td>
                               <?php if(!$comment->getActive()) : ?> 
-                              <a class="btn btn-sm btn-success shadow-sm my-2" data-toggle="modal" href="http://localhost/OCR-P5/comment/validate/<?= $comment->getId(); ?>">Valider</a>
+                              <a class="btn btn-sm btn-success shadow-sm my-2" data-toggle="modal" href="http://localhost/OCR-P5/comment/validate/<?= filter_var($comment->getId() ); ?>">Valider</a>
                               <?php endif ?>
-                              <a class="btn btn-sm btn-danger shadow-sm" data-toggle="modal" href="http://localhost/OCR-P5/comment/delete/<?= $comment->getId(); ?>">Supprimer</a>
+                              <a class="btn btn-sm btn-danger shadow-sm" data-toggle="modal" href="http://localhost/OCR-P5/comment/delete/<?= filter_var($comment->getId() ); ?>">Supprimer</a>
                               </td>
                             </tr>
                           <?php endforeach; ?>
