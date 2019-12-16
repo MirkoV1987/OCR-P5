@@ -14,10 +14,9 @@ class Router
 	    
 	try
         {
-
             $url = "";
          
-            if (isset($_GET['url']) ) {
+            if (filter_input(INPUT_GET, 'url', FILTER_SANITIZE_SPECIAL_CHARS) ) {
                
             $url = explode('/', filter_var($_GET['url'], FILTER_SANITIZE_URL) );
                 
@@ -37,9 +36,9 @@ class Router
 
              }
                
-             if (isset($_POST)) {
+             if (filter_input(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS) ) {
 
-             $params['post'] = $_POST;
+             $params['post'] = filter_input(INPUT_POST);
 
              }
         
