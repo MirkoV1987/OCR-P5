@@ -9,7 +9,8 @@ class Request
 
 	public function __construct($params)
 	{
-         $this->params = $params;
+		$this->params = $params;
+		$this->session = new Session;
 	}
 	
 	public function getSession()
