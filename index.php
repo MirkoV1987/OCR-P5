@@ -1,7 +1,9 @@
 <?php
-session_start();
 
-require_once('vendor/autoload.php');
+use \Framework\Session;
+use \Framework\View;
+
+include('vendor/autoload.php');
 
 $router = new \Framework\Router();
 $router->routingRequest();
