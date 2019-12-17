@@ -33,8 +33,8 @@
         </button>
       </div>
       <a class="nav-link dropdown-toggle">
-        <span class="mr-1 d-none d-lg-inline text-white middle">Bonjour, <?= filter_var($_SESSION['user']['username']); ?></span>
-        <img class="img-profile rounded-circle img-thumbnail" src="/OCR-P5/Public/img/user/<?= filter_var($_SESSION['user']['imageUrl']); ?>" width="30px" height="auto">
+        <span class="mr-1 d-none d-lg-inline text-white middle">Bonjour, <?= \Framework\Session::getSession()->getKey('user')['username']; ?></span>
+        <img class="img-profile rounded-circle img-thumbnail" src="/OCR-P5/Public/img/user/<?= \Framework\Session::getSession()->getKey('user')['imageUrl']; ?>" width="30px" height="auto">
       </a>
     </nav>
 
@@ -75,7 +75,7 @@
           <i class="fas fa-sign-out-alt px-1"></i>
           <span>Déconnexion</span>
         </a>
-      <img class="img-fluid my-4 px-2 py-2 " src="/OCR-P5/Public/img/user/<?= filter_var($_SESSION['user']['imageUrl']); ?>" alt="ImgResponsive" />
+      <img class="img-fluid my-4 px-2 py-2 " src="/OCR-P5/Public/img/user/<?= \Framework\Session::getSession()->getKey('user')['imageUrl']; ?>" alt="user" />
       <!--User add-->
         <a class="btn btn-md btn-warning mx-2 my-2 px-2 text-lowercase text-center" href="/OCR-P5/user/add/">
           <i class="fas fa-user px-1"></i>
