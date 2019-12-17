@@ -53,26 +53,26 @@ class CommentManager extends \Framework\Model
         $post_id = explode('-', $params['get'][0]);
         $comment = new \Model\Comment($params['post']);
 
-        if ($_SESSION['user']['role'] == 1) { 
+        if (filter_var(\Framework\Session::getSession()->getKey('user')['role']) == 1) { 
         
         $req = $this->getDb()->prepare("INSERT INTO comment(pseudo, content, date_add, post_id, user_id, active) VALUES(:pseudo, :content, :date_add, :post_id, :user_id, :active)");
         $comment = $req->execute(array(':pseudo'=>$comment->getPseudo(),
                                        ':content'=>$comment->getContent(), 
                                        ':date_add'=>date("Y-m-d H:i:s"), 
                                        ':post_id'=> $post_id[0],
-                                       ':user_id'=>$_SESSION['user']['id'], 
+                                       ':user_id'=>\Framework\Session::getSession()->getKey('user')['id'], 
                                        ':active'=> 0 
                                        ) );
         }
 
-        if ($_SESSION['user']['role'] == 2) { 
+        if (filter_var(\Framework\Session::getSession()->getKey('user')['role']) == 2) { 
         
         $req = $this->getDb()->prepare("INSERT INTO comment(pseudo, content, date_add, post_id, user_id, active) VALUES(:pseudo, :content, :date_add, :post_id, :user_id, :active)");
         $comment = $req->execute(array( ':pseudo'=>$comment->getPseudo(),
                                         ':content'=>$comment->getContent(), 
                                         ':date_add'=>date("Y-m-d H:i:s"), 
                                         ':post_id'=> $post_id[0],
-                                        ':user_id'=>$_SESSION['user']['id'], 
+                                        ':user_id'=>\Framework\Session::getSession()->getKey('user')['id'], 
                                         ':active'=> 1 
                                         ) );
             return $comment;   
@@ -81,13 +81,11 @@ class CommentManager extends \Framework\Model
         
     }
 
-    public function validate($active = 1)
+    public function validate($id)
     {
         $comment = [];
-        //$comment = new \Model\Comment($params['post']);
-        //$post_id = explode('-', $params['get'][0]);
-        $req = $this->getDb()->prepare("UPDATE comment SET post_id = :post_id, active = 1 WHERE post_id = :post_id AND active = :active");
-        $comment = $req->execute(array(':post_id' => $post_id, ':active' => 1 ) );
+        $req = $this->getDb()->prepare("UPDATE comment SET active = 1 WHERE id = :id");
+        $comment = $req->execute(array(':id' => $id) );
         return $comment;
     }
 
