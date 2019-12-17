@@ -45,8 +45,8 @@
       </ul>
     </div>
     <div>
-      <span class="mr-2 d-none d-lg-inline text-white">Bonjour, <?= esc_url(\Framework\Session::getSession()->getKey('user')['username']); ?> 
-        <img class="img-profile rounded-circle img-thumbnail" src="/OCR-P5/Public/img/user/<?= esc_url(\Framework\Session::getSession()->getKey('user')['imageUrl']); ?>" width="30px" height="auto" alt="ImgResponsive" /> 
+      <span class="mr-2 d-none d-lg-inline text-white">Bonjour, <?= filter_var(\Framework\Session::getSession()->getKey('user')['username']); ?> 
+        <img class="img-profile rounded-circle img-thumbnail" src="/OCR-P5/Public/img/user/<?= filter_var(\Framework\Session::getSession()->getKey('user')['imageUrl']); ?>" width="30px" height="auto" alt="ImgResponsive" /> 
       </span>
         <a class="btn btn-md btn-danger mx-2 px-2 text-lowercase text-center" href="/OCR-P5/user/logout">Déconnexion</a>
     </div>
