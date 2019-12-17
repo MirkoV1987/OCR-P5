@@ -33,8 +33,8 @@
       <a class="navbar-brand" href="#page-top" style="font-family: 'Vladimir Script'; font-size: 1.6em;">Blog de Mirko Venturi</a>
     </div>
       <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="mr-2 d-none d-lg-inline text-white middle">Bonjour, <?= \Framework\Session::getSession()->getKey('user')['username']; ?></span>
-        <img class="img-profile rounded-circle img-thumbnail" src="/OCR-P5/Public/img/user/<?= \Framework\Session::getSession()->getKey('user')['imageUrl']; ?>" width="30px" height="auto">
+        <span class="mr-2 d-none d-lg-inline text-white middle">Bonjour, <?= esc_url(\Framework\Session::getSession()->getKey('user')['username']); ?></span>
+        <img class="img-profile rounded-circle img-thumbnail" src="/OCR-P5/Public/img/user/<?= esc_url(\Framework\Session::getSession()->getKey('user')['imageUrl']); ?>" width="30px" height="auto">
       </a>
   </nav>
 
