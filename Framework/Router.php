@@ -6,17 +6,20 @@ use Controllers;
 
 class Router
 { 
+    // private $control;
+    // private $view;
     
     public function routingRequest()
     {
 	    
 	try
         {
+
             $url = "";
          
-            if (filter_input(INPUT_GET, 'url', FILTER_SANITIZE_SPECIAL_CHARS) ) {
+            if (isset($_GET['url']) ) {
                
-            $url = explode('/', filter_input(INPUT_GET, 'url', FILTER_SANITIZE_URL) );
+            $url = explode('/', filter_var($_GET['url'], FILTER_SANITIZE_URL) );
                 
             $method = 'index';
 
@@ -24,7 +27,7 @@ class Router
                   
             $method = $url[1];
 
-            }
+         }
 		   
             $params = [];
 
@@ -32,13 +35,13 @@ class Router
                   
             $params['get'] = array_slice($url, 2);
 
-            }
+             }
                
-            if (filter_input(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS) ) {
+             if (isset($_POST)) {
 
-            $params['post'] = filter_input(INPUT_POST);
+             $params['post'] = $_POST;
 
-            }
+             }
         
                $this->createController($url[0], $method, $params);   
            
@@ -52,8 +55,8 @@ class Router
         }
         catch(Exception $e)
         {
-            $e->getMessage();
-            //require_once 'View/errorView.php';        
+            $errorMsg = $e->getMessage();
+            require_once('View/errorView.php');        
         }
 
     }
