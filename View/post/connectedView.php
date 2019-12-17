@@ -45,8 +45,8 @@
       </ul>
     </div>
     <div>
-      <span class="mr-2 d-none d-lg-inline text-white">Bonjour, <?= isset($_SESSION['user']['username']) ? $_SESSION['user']['username'] : ''; ?> 
-        <img class="img-profile rounded-circle img-thumbnail" src="/OCR-P5/Public/img/user/<?= $_SESSION['user']['imageUrl']; ?>" width="30px" height="auto" alt="ImgResponsive" /> 
+      <span class="mr-2 d-none d-lg-inline text-white">Bonjour, <?= esc_url(\Framework\Session::getSession()->getKey('user')['username']); ?> 
+        <img class="img-profile rounded-circle img-thumbnail" src="/OCR-P5/Public/img/user/<?= esc_url(\Framework\Session::getSession()->getKey('user')['imageUrl']); ?>" width="30px" height="auto" alt="ImgResponsive" /> 
       </span>
         <a class="btn btn-md btn-danger mx-2 px-2 text-lowercase text-center" href="/OCR-P5/user/logout">Déconnexion</a>
     </div>
@@ -101,7 +101,7 @@
         </div>
         <div class="row my-6 py-4">
         <h4 class="section-subheading">De <?= filter_var($post['author']); ?> - <time class="section-subheading text-muted">Publié le <?= filter_var($post['date_add_fr']) ?></time></h4>
-        <p class="text-justify"><?= $post['content']; ?></p>
+        <p class="text-justify"><?= filter_var($post['content']); ?></p>
         </div>
       </div>
     </div> 
@@ -140,7 +140,7 @@
         <div class="my-4 shadow-lg p-3 mb-1 bg-white rounded">
           <div class="row">
             <div class="col-lg-4 text-center">
-              <h4 class="section-subheading text-uppercase text-left"><?= filter_var($comment['pseudo']); ?></h4><time><?= isset($date_add) ? $comment['date_add_fr'] : ''; ?></time>
+              <h4 class="section-subheading text-uppercase text-left"><?= filter_var($comment['pseudo']); ?></h4><time><?= isset($date_add) ? filter_var($comment['date_add_fr']) : ''; ?></time>
             </div>
           </div>
           <div class="row my-4">
