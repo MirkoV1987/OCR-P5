@@ -9,7 +9,6 @@ class PostController extends \Framework\Controller
 {
 
    private $manager;
-   private $view; 
 
    public function __construct()
    {
@@ -18,7 +17,7 @@ class PostController extends \Framework\Controller
       $this->userManager = new \Manager\UserManager;
    }  
 
-   public function index($params)
+   public function index()
    {
       $posts = $this->manager->getList();
       $this->set('posts', $posts);
@@ -28,22 +27,22 @@ class PostController extends \Framework\Controller
    public function view($params)
    {
       $extract = explode('-', $params['get'][0]);
-      $id = intval($extract[0]);
+      $id = (int)($extract[0]);
 
-      if (!empty($params['get'][0]) && isset($_SESSION['user']['role']) ) {
+      if ($params['get'][0] && \Framework\Session::getSession()->getKey('user')['role'] )  {
 
-      $user = $_SESSION['user']['role'];
-
-         if (isset($_SESSION['user']['role']) == 1 || $_SESSION['user']['role'] == 2) {
+         if (\Framework\Session::getSession()->getKey('user')['role'] == 1 
+            || \Framework\Session::getSession()->getKey('user')['role'] == 2) {
 
          $post = $this->manager->getPost($id); 
          $comments = $this->commentManager->getComment($id); 
          $this->set('comments', $comments);
          $this->set('post', $post);
          $this->render('view/post/connectedView.php');
-         exit;
 
          }
+
+         return false;
       
       }
 
@@ -61,9 +60,10 @@ class PostController extends \Framework\Controller
    {
       if (!empty($params['post']) ) { 
 
-         if (!isset($_SESSION['user']['role']) || $_SESSION['user']['role'] == 2) {
+         if (!empty(\Framework\Session::getSession()->getKey('user')['role'] ) 
+            || \Framework\Session::getSession()->getKey('user')['role'] == 2) {
 
-         $post = $this->manager->add($params);
+         $this->manager->add($params);
          $this->redirect('/OCR-P5/admin/index');
    
          }          
@@ -76,7 +76,7 @@ class PostController extends \Framework\Controller
 
    public function update($params)
    {
-      if ($_SESSION['user']['role'] != 2) {
+      if (\Framework\Session::getSession()->getKey('user')['role'] != 2) {
 
       $this->redirect('/OCR-P5');
 
@@ -92,20 +92,20 @@ class PostController extends \Framework\Controller
       $postId = $params['get'][0];
       $post = $this->manager->getPost($postId);
       $this->set('post', $post);
-      $view = $this->render('View/post/update.php');
+      $this->render('View/post/update.php');
 
    }
 
    public function delete($params)
    {
-      if ($_SESSION['user']['role'] != 2) {
+      if (\Framework\Session::getSession()->getKey('user')['role'] != 2) {
 
       $this->redirect('/OCR-P5');
 
       }
 
-      $post = $this->manager->delete($params);
-      $view = $this->redirect('/OCR-P5/admin');
+      $this->manager->delete($params);
+      $this->redirect('/OCR-P5/admin');
 
    }
 
