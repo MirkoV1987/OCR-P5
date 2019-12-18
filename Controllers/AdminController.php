@@ -9,8 +9,6 @@ class AdminController extends \Framework\Controller
 {
 
 private $userManager;
-private $successMsg;
-private $errorMsg;
 
     public function __construct()
     {
@@ -20,19 +18,20 @@ private $errorMsg;
 
     public function index() 
     {
-        if (!isset($_SESSION['user']) ) {
+    
+        if (empty(\Framework\Session::getSession('user') ) ) { 
 
             $this->render("view/user/login.php");
 
         }
 
-        if ($_SESSION['user']['role'] != 2) { 
+        if (filter_var(\Framework\Session::getSession()->getKey('user')['role'] ) != 2) { 
 
             $this->render("view/user/index.php");
 
         }
 
-        if ($_SESSION['user']['role'] == 1) { 
+        if (filter_var(\Framework\Session::getSession()->getKey('user')['role'] ) == 1) { 
 
             $this->render("view/post/ConnectedView.php");
 
@@ -58,7 +57,8 @@ private $errorMsg;
 
         $userManager = new \Manager\UserManager();
         $extract = explode('-', ['get'][0]);
-        $id = intval($extract[0]);
+        //$id = intval($extract[0]);
+        $id = (int)($extract[0]);
         $user = $userManager->getUser($id);
         $this->set('user', $user);
 
