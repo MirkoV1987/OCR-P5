@@ -9,7 +9,6 @@ class CommentController extends \Framework\Controller
 {
    
    private $manager;
-   private $view; 
 
    public function __construct()
    {
@@ -22,29 +21,25 @@ class CommentController extends \Framework\Controller
 
       $comments = $this->manager->getList();
 
-      } else {
+      } 
 
       $comments = $this->manager->getList($params['get'][0]); 
-
-      }
      
    }
 
    public function view($params)
    {
-      print_r($params);
       $extract = explode('-', $params['get'][0]);
-      $post_id = intval($extract[0]);
+      $post_id = (int)($extract[0]);
 
-      $comments = $this->manager->getComment($post_id);
+      $this->manager->getComment($post_id);
       $this->set('comments', $comments);
       $this->set('post', $post);
 
-      $user = $_SESSION['user']['role'];
+      if (!empty(\Framework\Session::getSession()->getKey('user')['role'] ) 
+         && \Framework\Session::getSession()->getKey('user')['role'] == 2) {
 
-      if (isset($_SESSION['user']['role']) && $_SESSION['user']['role'] == 2) {
-
-      $comments = $this->manager->getComment($post_id);
+      $this->manager->getComment($post_id);
       $this->set('comments', $comments);
       $this->set('post', $post);
 
@@ -58,9 +53,9 @@ class CommentController extends \Framework\Controller
 
    public function add($params)
    {
-      if (!empty($params['post']) && isset($_SESSION['user']['role']) ) {
+      if (!empty($params['post']) && !empty(\Framework\Session::getSession()->getKey('user')['role'] ) ) {
 
-      $comment = $this->manager->add($params);
+      $this->manager->add($params);
       $post_id = $params['get'][0]; 
       $this->redirect('/OCR-P5/post/view/'.$post_id);
   
@@ -72,11 +67,11 @@ class CommentController extends \Framework\Controller
 
    public function validate($params)
    {
-      if ($_SESSION['user']['role'] == 2) {
+      if (\Framework\Session::getSession()->getKey('user')['role'] == 2) {
 
-      $extract = explode('-', $params['get'][0]);
+      explode('-', $params['get'][0]);
       $post_id = $params['get'][0];
-      $comment = $this->manager->validate($post_id);
+      $this->manager->validate($post_id);
       $this->redirect('/OCR-P5/admin/index');
 
       }
@@ -87,14 +82,14 @@ class CommentController extends \Framework\Controller
 
    public function delete($params)
    {
-      if ($_SESSION['user']['role'] != 2) {
+      if (\Framework\Session::getSession()->getKey('user')['role'] != 2) {
 
       $this->redirect('/OCR-P5/post');
  
       }
 
-      $comment = $this->manager->delete($params);
-      $view = $this->redirect('/OCR-P5/admin');
+      $this->manager->delete($params);
+      $this->redirect('/OCR-P5/admin');
    }
 
 }   
