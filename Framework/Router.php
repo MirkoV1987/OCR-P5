@@ -6,8 +6,6 @@ use Controllers;
 
 class Router
 { 
-    // private $control;
-    // private $view;
     
     public function routingRequest()
     {
@@ -46,16 +44,13 @@ class Router
                $this->createController($url[0], $method, $params);   
            
             }        
-            else {
 
-               $this->createController('post','index', []);
-                
-            }
+            $this->createController('post','index', []);
 
         }
         catch(Exception $e)
         {
-            $errorMsg = $e->getMessage();
+            $e->getMessage();
             require_once('View/errorView.php');        
         }
 
