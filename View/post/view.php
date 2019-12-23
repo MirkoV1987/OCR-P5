@@ -69,14 +69,14 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-justify">
-        <h1 class="section-heading text-uppercase"><?= filter_var($post['title']); ?></h1>
-        <h2 class="section-subheading text-muted"><?= filter_var($post['chapeau']); ?></h2>
+        <h1 class="section-heading text-uppercase"><?= $post['title']; ?></h1>
+        <h2 class="section-subheading text-muted"><?= $post['chapeau']; ?></h2>
         <div class="row my-6 py-4">
-        <img class="img-fluid" src="/OCR-P5/Public/img/<?= filter_var($post['imageUrl']); ?>" alt="ImgResponsive" />
+        <img class="img-fluid" src="/OCR-P5/Public/img/<?= $post['imageUrl']; ?>" alt="ImgResponsive" />
         </div>
         <div class="row my-6 py-4">
-        <h4 class="section-subheading">De <?= filter_var($post['author']); ?> - <time class="section-subheading text-muted">Publié le <?= filter_var($post['date_add_fr']) ?></time></h4>
-        <p class="text-justify"><?= filter_var($post['content']); ?></p>
+        <h4 class="section-subheading">De <?= $post['author']; ?> - <time class="section-subheading text-muted">Publié le <?= $post['date_add_fr']; ?></time></h4>
+        <p class="text-justify"><?= $post['content']; ?></p>
       </div>
     </div>
   </div> 
@@ -91,12 +91,12 @@
         <div class="my-4 shadow-lg p-3 mb-1 bg-white rounded">
           <div class="row">
             <div class="col-lg-4 text-center">
-              <h4 class="section-subheading text-uppercase text-left"><?= filter_var($comment['pseudo']); ?></h4><time><?= isset($date_add) ? filter_var($comment['date_add_fr']) : ''; ?></time>
+              <h4 class="section-subheading text-uppercase text-left"><?= $comment['pseudo']; ?></h4><time><?= isset($date_add) ? $comment['date_add_fr'] : ''; ?></time>
             </div>
           </div>
           <div class="row my-4">
             <div class="col-lg-12 text-left">
-              <p class="text-justify"><?= filter_var($comment['content']); ?></p>
+              <p class="text-justify"><?= $comment['content']; ?></p>
             </div>
           </div>
         </div>
@@ -142,7 +142,7 @@
               <a href="#">Privacy Policy</a>
             </li>
             <li class="list-inline-item">
-              <a href="#">Terms of Use</a>
+              <a href="#">Mentions légales</a>
             </li>
           </ul>
         </div>

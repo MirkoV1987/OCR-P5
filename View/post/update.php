@@ -39,8 +39,8 @@
     </div>
     <!-- Nav Item - User Information -->
     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <span class="mr-2 d-none d-lg-inline text-white middle">Bonjour, <?= filter_var(\Framework\Session::getSession()->getKey('user')['username']); ?></span>
-      <img class="img-profile rounded-circle img-thumbnail" src="/OCR-P5/Public/img/user/<?= filter_var(\Framework\Session::getSession()->getKey('user')['imageUrl']); ?>" width="30px" height="auto">
+      <span class="mr-2 d-none d-lg-inline text-white middle">Bonjour, <?= $user['username']; ?></span>
+      <img class="img-profile rounded-circle img-thumbnail" src="/OCR-P5/Public/img/user/<?= $user['imageUrl']; ?>" width="30px" height="auto">
     </a>
   </nav>
 
@@ -127,25 +127,25 @@
                   </div>
                     <div class="card-body block-center">
                       <form action="/OCR-P5/post/update/" method="post">
-                        <input type="hidden" class="form-control" name="id" id="id" value="<?= isset($post) ? filter_var($post['id']) : '' ?>">
+                        <input type="hidden" class="form-control" name="id" id="id" value="<?= isset($post) ? $post['id'] : '' ?>">
                         <div class="form-group">
                         <label for="title">Auteur :</label>
-                        <input type="text" class="form-control" name="author" id="author" placeholder="Auteur" value="<?= isset($post) ? filter_var($post['author']) : '' ?>">
+                        <input type="text" class="form-control" name="author" id="author" placeholder="Auteur" value="<?= isset($post) ? $post['author'] : '' ?>">
                         </div>
                         <div class="form-group">
                         <label for="title">Title :</label>
-                        <input type="text" class="form-control" name="title" id="title" placeholder="Entrez le titre" value="<?= isset($post) ? filter_var($post['title']) : '' ?>">
+                        <input type="text" class="form-control" name="title" id="title" placeholder="Entrez le titre" value="<?= isset($post) ? $post['title'] : '' ?>">
                         </div>
                         <div class="form-group">
                         <label for="text">Chapeau :</label>
-                        <input type="text" class="form-control" name="chapeau" id="chapeau" placeholder="Entrez le chapeau" value="<?= isset($post) ? filter_var($post['chapeau']) : '' ?>">
+                        <input type="text" class="form-control" name="chapeau" id="chapeau" placeholder="Entrez le chapeau" value="<?= isset($post) ? $post['chapeau'] : '' ?>">
                         </div>
                         <div class="form-group">
                         <label for="text">Content :</label>
                         <textarea type="textarea" class="form-control" name="content" id="content" rows="8" placeholder="Écrivez ici votre message" value=""><?= isset($post) ? $post['content'] : '' ?></textarea>
                         </div>
                         <label for="image">Téléverser une image :</label>
-                        <input type="file" name="imageUrl" id="fileToUpload" value="<?= filter_var($post['imageUrl']); ?>">
+                        <input type="file" name="imageUrl" id="fileToUpload" value="<?= $post['imageUrl']; ?>">
                         <div class="text-center">
                         <input type="submit" name="submit" class="btn btn-primary" value="mettre à jour">
                         </div>
