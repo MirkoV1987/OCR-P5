@@ -1,5 +1,6 @@
-<h1>P5 - OpenClassRooms</h1>
+<h1>P5 - OpenClassRooms<h1>
 <hr>
+<a style="text-align: right;" href="https://www.codacy.com/manual/MirkoV1987/OCR-P5?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=MirkoV1987/OCR-P5&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/11b430b676854d3cb275b5160edfcd07"/></a>
 <h2>Informations</h2><br>
 
 <h3>Frontend Screenshot</h3>
