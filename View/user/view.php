@@ -41,8 +41,8 @@
     </div>
   <div>
     <a class="nav-link" href="/OCR-P5/admin/index">
-      <span class="mr-2 d-none d-lg-inline text-white">Bonjour, <?= $user['username']; ?> 
-        <img class="img-profile rounded-circle img-thumbnail" src="/OCR-P5/Public/img/user/<?= filter_var(\Framework\Session::getSession()->getKey('user')['imageUrl']); ?>" width="30px" height="auto">
+      <span class="mr-2 d-none d-lg-inline text-white">Bonjour, <?= \$user['username']; ?> 
+        <img class="img-profile rounded-circle img-thumbnail" src="/OCR-P5/Public/img/user/<?= \$user['imageUrl']); ?>" width="30px" height="auto">
       </span>
     </a>
   </div>
