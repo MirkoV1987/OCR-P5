@@ -9,8 +9,6 @@ class UserController extends \Framework\Controller
 {
 
   private $userManager;
-  private $successMsg;
-  private $errorMsg;
 
     public function __construct()
     {
@@ -98,7 +96,7 @@ class UserController extends \Framework\Controller
 
       if (!empty($params['post']) && $_SESSION['user']['role'] == 2) {
 
-      $user = $this->userManager->add($params);
+      $this->userManager->add($params);
       $this->redirect('/OCR-P5/admin/index');
 
       }  
@@ -137,7 +135,7 @@ class UserController extends \Framework\Controller
  
       }
  
-    $user = $this->userManager->delete($params);
+    $this->userManager->delete($params);
     $this->redirect('/OCR-P5/admin');
 
     }
