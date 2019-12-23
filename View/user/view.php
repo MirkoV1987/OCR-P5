@@ -41,8 +41,8 @@
     </div>
   <div>
     <a class="nav-link" href="/OCR-P5/admin/index">
-      <span class="mr-2 d-none d-lg-inline text-white">Bonjour, <?= \$user['username']; ?> 
-        <img class="img-profile rounded-circle img-thumbnail" src="/OCR-P5/Public/img/user/<?= \$user['imageUrl']); ?>" width="30px" height="auto">
+      <span class="mr-2 d-none d-lg-inline text-white">Bonjour, <?= $user['username']; ?> 
+        <img class="img-profile rounded-circle img-thumbnail" src="/OCR-P5/Public/img/user/<?= $user['imageUrl']; ?>" width="30px" height="auto">
       </span>
     </a>
   </div>
@@ -70,12 +70,12 @@
             <div class="card-body">
               <div class="row my-6 py-4">
                 <div class="col-lg-4">
-                  <img class="img-fluid" src="/OCR-P5/Public/img/user/<?= filter_var(\Framework\Session::getSession()->getKey('user')['imageUrl']); ?>" alt="ImgResponsive" width="260px" height="auto" />
+                  <img class="img-fluid" src="/OCR-P5/Public/img/user/<?= $user['imageUrl']; ?>" alt="ImgResponsive" width="260px" height="auto" />
                 </div>
               <div class="col-lg-6 py-2">
-                <h3 class="section-heading text-regular"><i class="fas fa-user"></i> Pseudo : <?= filter_var($user['username']); ?></h3>
-                <h4 class="section-subheading text-regular"><i class="fas fa-at"></i> Email : <?= filter_var($user['email']); ?></h4>
-                <h4 class="section-subheading text-regular"><i class="far fa-calendar-alt"></i> Date de création : <?= filter_var($user['date_add_fr']); ?></h4>
+                <h3 class="section-heading text-regular"><i class="fas fa-user"></i> Pseudo : <?= $user['username']; ?></h3>
+                <h4 class="section-subheading text-regular"><i class="fas fa-at"></i> Email : <?= $user['email']; ?></h4>
+                <h4 class="section-subheading text-regular"><i class="far fa-calendar-alt"></i> Date de création : <?= $user['date_add_fr']; ?></h4>
               </div>
             </div> 
           </div>
