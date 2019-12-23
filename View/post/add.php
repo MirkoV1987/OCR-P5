@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
 <meta charset="utf-8">
@@ -31,8 +31,8 @@
     <a class="navbar-brand" href="#page-top" style="font-family: 'Vladimir Script'; font-size: 1.6em;">Blog de Mirko Venturi</a>
     </div>
     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <span class="mr-2 d-none d-lg-inline text-white middle">Bonjour, <?= /* @noEscape */  \Framework\Session::getSession()->getKey('user')['username']; ?></span>
-      <img class="img-profile rounded-circle img-thumbnail" src="/OCR-P5/Public/img/user/<?= /* @noEscape */ \Framework\Session::getSession()->getKey('user')['imageUrl']; ?>" width="30px" height="auto">
+      <span class="mr-2 d-none d-lg-inline text-white middle">Bonjour, <?= $user['username']; ?></span>
+      <img class="img-profile rounded-circle img-thumbnail" src="/OCR-P5/Public/img/user/<?= $user['imageUrl']; ?>" width="30px" height="auto">
     </a>
   </nav>
 
@@ -113,7 +113,7 @@
               <textarea type="textarea" class="form-control" name="content" id="message" rows="12" placeholder="Écrivez ici votre post"></textarea>
               </div>
               <label for="image">Téléverser une image :</label>
-              <input type="file" name="imageUrl" id="fileToUpload" value="<?= isset($post) ? htmlspecialchars($post['imageUrl']) : '' ; ?>"> 
+              <input type="file" name="imageUrl" id="fileToUpload" value="<?= isset($post) ? $post['imageUrl'] : '' ; ?>"> 
               <div class="text-center">
               <input type="submit" name="submit" class="btn btn-warning" value="ajouter">
             </div>
