@@ -35,8 +35,8 @@
       </div>
     </div>
     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <span class="mr-2 d-none d-lg-inline text-white middle">Bonjour, <?= filter_var(\Framework\Session::getSession()->getKey('user')['username']); ?></span>
-      <img class="img-profile rounded-circle img-thumbnail" src="/OCR-P5/Public/img/user/<?= filter_var(\Framework\Session::getSession()->getKey('user')['imageUrl']); ?>" width="30px" height="auto">
+    <span class="mr-2 d-none d-lg-inline text-white middle">Bonjour, <?= $user['username']; ?></span>
+      <img class="img-profile rounded-circle img-thumbnail" src="/OCR-P5/Public/img/user/<?= $user['imageUrl']); ?>" width="30px" height="auto">
     </a>
   </nav>
 
@@ -108,14 +108,14 @@
     <!-- Card Start -->      
     <div class="card-body block-center">
       <form action="/OCR-P5/user/update" method="post">
-        <input type="hidden" class="form-control" name="id" id="id" value="<?= isset($user) ? filter_var($user['id']) : ''; ?>">
+        <input type="hidden" class="form-control" name="id" id="id" value="<?= isset($user) ? $user['id'] : ''; ?>">
           <div class="form-group">
             <label for="pseudo">Pseudo :</label>
-            <input type="text" class="form-control" name="username" id="username" placeholder="Insérer votre pseudo" value="<?= isset($user) ? filter_var($user['username']) : ''; ?>">
+            <input type="text" class="form-control" name="username" id="username" placeholder="Insérer votre pseudo" value="<?= isset($user) ? $user['username'] : ''; ?>">
           </div>
           <div class="form-group">
             <label for="email">Email :</label>
-            <input type="email" class="form-control" name="email" id="email" placeholder="Insérer email" value="<?= isset($user) ? filter_var($user['email']) : ''; ?>">
+            <input type="email" class="form-control" name="email" id="email" placeholder="Insérer email" value="<?= isset($user) ? $user['email'] : ''; ?>">
           </div>
           <div class="form-group">
             <label for="date">Role :</label>
@@ -137,7 +137,7 @@
               <input type="password" class="form-control" name="password" id="password" value="">
           </div>
             <label for="image">Téléverser une image :</label>
-              <input type="file" name="imageUrl" id="fileToUpload" value="<?= isset($user) ? filter_var($user['imageUrl']) : ''; ?>">
+              <input type="file" name="imageUrl" id="fileToUpload" value="<?= isset($user) ? $user['imageUrl'] : ''; ?>">
             <div class="text-center">
               <input type="submit" name="submit" class="btn btn-primary" value="mettre à jour">
             </div>
