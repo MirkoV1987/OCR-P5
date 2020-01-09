@@ -21,7 +21,8 @@ class PostController extends \Framework\Controller
    {
       $posts = $this->manager->getList();
       $this->set('posts', $posts);
-      $this->render('view/index.php');
+      //$this->render($_SERVER['DOCUMENT_ROOT'].'/'.'view/index.php');
+      $this->render('View/index.php');
    }
 
    public function view($params)
@@ -38,7 +39,7 @@ class PostController extends \Framework\Controller
          $comments = $this->commentManager->getComment($id); 
          $this->set('comments', $comments);
          $this->set('post', $post);
-         $this->render('view/post/connectedView.php');
+         $this->render('View/post/connectedView.php');
 
          }
 
@@ -50,7 +51,7 @@ class PostController extends \Framework\Controller
       $comments = $this->commentManager->getComment($id); 
       $this->set('comments', $comments);
       $this->set('post', $post);
-      $this->render('view/post/view.php');
+      $this->render('View/post/view.php');
       
    }
 
@@ -64,13 +65,13 @@ class PostController extends \Framework\Controller
             || \Framework\Session::getSession()->getKey('user')['role'] == 2) {
 
          $this->manager->add($params);
-         $this->redirect('/OCR-P5/admin/index');
+         $this->redirect('/admin/index');
    
          }          
 
       }  
       
-      $this->render('view/post/add.php');
+      $this->render('View/post/add.php');
 
    }
 
@@ -78,14 +79,14 @@ class PostController extends \Framework\Controller
    {
       if (\Framework\Session::getSession()->getKey('user')['role'] != 2) {
 
-      $this->redirect('/OCR-P5');
+      $this->redirect('/admin/index');
 
       }
 
       if (!empty($params['post']) ) {
 
       $post = $this->manager->update($params);
-      $this->redirect('/OCR-P5/admin/index');
+      $this->redirect('/admin/index');
 
       }  
 
@@ -100,12 +101,12 @@ class PostController extends \Framework\Controller
    {
       if (\Framework\Session::getSession()->getKey('user')['role'] != 2) {
 
-      $this->redirect('/OCR-P5');
+      $this->redirect('/');
 
       }
 
       $this->manager->delete($params);
-      $this->redirect('/OCR-P5/admin');
+      $this->redirect('/admin/index');
 
    }
 

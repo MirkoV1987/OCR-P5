@@ -19,21 +19,25 @@ private $userManager;
     public function index() 
     {
     
-        if (empty(\Framework\Session::getSession('user') ) ) { 
+        if (empty(\Framework\Session::getSession()->getKey('user')['role'] ) ) {
 
-            $this->render("view/user/login.php");
-
-        }
-
-        if (filter_var(\Framework\Session::getSession()->getKey('user')['role'] ) != 2) { 
-
-            $this->render("view/user/index.php");
+            $this->render("View/user/login.php");
 
         }
 
-        if (filter_var(\Framework\Session::getSession()->getKey('user')['role'] ) == 1) { 
+        if (\Framework\Session::getSession()->getKey('user')['role'] != 2) { 
 
-            $this->render("view/post/ConnectedView.php");
+            $this->render("View/user/login.php");
+
+        }
+
+        if (\Framework\Session::getSession()->getKey('user')['role'] == 1) { 
+
+            $extract = explode('-', $params['get'][0]);
+            $id = intval($extract[0]);
+            $user = $this->userManager->getUser($id);
+            $this->set('user', $user);
+            $this->render("View/post/ConnectedView.php");
 
         }
 
@@ -57,13 +61,13 @@ private $userManager;
 
         $userManager = new \Manager\UserManager();
         $extract = explode('-', ['get'][0]);
-        //$id = intval($extract[0]);
-        $id = (int)($extract[0]);
+        $id = intval($extract[0]);
+        //$id = (int)($extract[0]);
         $user = $userManager->getUser($id);
         $this->set('user', $user);
 
        
-        $this->render('view/admin/index.php');  
+        $this->render('View/admin/index.php');  
               
     }
 

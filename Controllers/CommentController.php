@@ -43,11 +43,11 @@ class CommentController extends \Framework\Controller
       $this->set('comments', $comments);
       $this->set('post', $post);
 
-      $this->render('view/post/connectedView.php');
+      $this->render('View/post/connectedView.php');
 
       }
       
-      $this->render('view/post/view.php');
+      $this->render('View/post/view.php');
       
    }
 
@@ -57,11 +57,11 @@ class CommentController extends \Framework\Controller
 
       $this->manager->add($params);
       $post_id = $params['get'][0]; 
-      $this->redirect('/OCR-P5/post/view/'.$post_id);
+      $this->redirect('/post/view/'.$post_id);
   
       }
 
-      $this->redirect('/OCR-P5/post/view/'.$post_id);
+      $this->redirect('/post/view/'.$post_id);
 
    }
 
@@ -72,11 +72,11 @@ class CommentController extends \Framework\Controller
       explode('-', $params['get'][0]);
       $post_id = $params['get'][0];
       $this->manager->validate($post_id);
-      $this->redirect('/OCR-P5/admin/index');
+      $this->redirect('/admin/index');
 
       }
 
-      $this->redirect('/OCR-P5');
+      $this->redirect('/');
 
    }
 
@@ -84,12 +84,12 @@ class CommentController extends \Framework\Controller
    {
       if (\Framework\Session::getSession()->getKey('user')['role'] != 2) {
 
-      $this->redirect('/OCR-P5/post');
+      $this->redirect('/post');
  
       }
 
       $this->manager->delete($params);
-      $this->redirect('/OCR-P5/admin');
+      $this->redirect('/admin');
    }
 
 }   

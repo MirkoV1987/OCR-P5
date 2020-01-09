@@ -20,11 +20,11 @@ class UserController extends \Framework\Controller
       if (isset($params['post']['submit']) ) {
 
       $this->userManager->register($params);
-      $this->redirect('/OCR-P5/user/login');
+      $this->redirect('/user/login');
 
       }
 
-    $this->render('view/user/register.php');
+    $this->render('View/user/register.php');
 
     } 
 
@@ -39,41 +39,44 @@ class UserController extends \Framework\Controller
 
       $_SESSION['user'] = $user;
         
-        if ($user && $user['role'] == 2) {
+        if (\Framework\Session::getSession()->getKey('user')['role'] 
+        && \Framework\Session::getSession()->getKey('user')['role'] == 2) {
            
-          $this->redirect('/OCR-P5/admin/index'); 
+        $this->redirect('/admin/index');
               
         }
         
-        if ($user && $user['role'] == 1) {
+        if (\Framework\Session::getSession()->getKey('user')['role'] 
+        && \Framework\Session::getSession()->getKey('user')['role'] == 1) {
 
-        $this->redirect('/OCR-P5/index');
+        $this->redirect('/');
 
         }
             
       }
 
-    $this->render('view/user/login.php');
+    $this->render('View/user/login.php');
 
     }
 
     public function logout()
     {
     session_destroy();
-    $this->redirect('/OCR-P5');
+    $this->redirect('/');
     }
 
     public function view($params)
     {
-      if(!isset($_SESSION['user']['role']) || $_SESSION['user']['role'] != 2) {
+      if(empty(\Framework\Session::getSession()->getKey('user')['role'])
+        || \Framework\Session::getSession()->getKey('user')['role'] != 2) {
 
-      echo "Vous ne pouvez pas modifier les données des utilisateurs";
+      return false;
     
       }  
 
       if (empty($params['get'][0]) ) {
 
-      $this->redirect('/OCR-P5/admin/index');
+      $this->redirect('/View/index');
 
       }
 
@@ -82,41 +85,40 @@ class UserController extends \Framework\Controller
 
     $user = $this->userManager->getUser($id); 
     $this->set('user', $user);
-    $this->render('view/user/view.php');
+    $this->render('View/user/view.php');
       
     }
 
-    public function add($params)
+    public function add($params) 
     {
-      if(!isset($_SESSION['user']['role']) || $_SESSION['user']['role'] != 2) {
+      if (!empty($params['post']) ) { 
 
-      $this->redirect('/OCR-P5/user/login');
-    
-      }
+        if (!empty(\Framework\Session::getSession()->getKey('user')['role'] ) 
+           || \Framework\Session::getSession()->getKey('user')['role'] == 2) {
 
-      if (!empty($params['post']) && $_SESSION['user']['role'] == 2) {
+          $this->userManager->add($params);
+          $this->redirect('/admin/index');
 
-      $this->userManager->add($params);
-      $this->redirect('/OCR-P5/admin/index');
+        }          
 
       }  
-      
-    $this->render('view/user/add.php');
+   
+      $this->render('View/user/add.php');
 
     }
 
     public function update($params)
     {
-      if($_SESSION['user']['role'] != 2) {
+      if (\Framework\Session::getSession()->getKey('user')['role'] != 2) {
     
-      $this->redirect('/OCR-P5/user/login');
+      $this->redirect('/admin/index');
 
       }
 
       if (!empty($params['post']) ) {
 
       $user = $this->userManager->update($params);
-      $this->redirect('/OCR-P5/admin/index');
+      $this->redirect('/admin/index');
 
       }  
 
@@ -129,14 +131,14 @@ class UserController extends \Framework\Controller
 
     public function delete($params)
     {
-      if($_SESSION['user']['role'] != 2) {
+      if (\Framework\Session::getSession()->getKey('user')['role'] != 2) {
  
-      $this->redirect('/OCR-P5/user/login');
+      $this->redirect('/user/login');
  
       }
  
     $this->userManager->delete($params);
-    $this->redirect('/OCR-P5/admin');
+    $this->redirect('/admin/index');
 
     }
 
