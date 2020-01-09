@@ -11,17 +11,17 @@
   <title>Blog - Mirko Venturi</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="/OCR-P5/Public/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/Public/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom fonts for this template -->
-  <link href="/OCR-P5/Public/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="/Public/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
   <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
   <!-- Custom styles for this template -->
-  <link href="/OCR-P5/Public/css/agency.min.css" rel="stylesheet">
+  <link href="/Public/css/agency.min.css" rel="stylesheet">
 
 </head>
 
@@ -33,16 +33,16 @@
     <div class="navbar navbar-expand-lg navbar-dark navbar-fixed-top" id="">
       <ul class="navbar-nav text-lowercase">
         <li class="nav-item active">
-        <a class="nav-link" href="/OCR-P5/admin/index">
+        <a class="nav-link" href="/admin/index">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
         </li>
       </ul>
     </div>
   <div>
-    <a class="nav-link" href="/OCR-P5/admin/index">
+    <a class="nav-link" href="/admin/index">
       <span class="mr-2 d-none d-lg-inline text-white">Bonjour, <?= $user['username']; ?> 
-        <img class="img-profile rounded-circle img-thumbnail" src="/OCR-P5/Public/img/user/<?= $user['imageUrl']; ?>" width="30px" height="auto">
+        <img class="img-profile rounded-circle img-thumbnail" src="/Public/img/user/<?= $user['imageUrl']; ?>" width="30px" height="auto">
       </span>
     </a>
   </div>
@@ -52,7 +52,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark navbar-fixed-top" id="mainNav" style="background-color:#000;">
   <div class="container">
     <a class="navbar-brand js-scroll-trigger" href="#page-top">Mirko Venturi</a>
-      <a class="btn btn-md btn-danger mx-2 px-2 text-lowercase text-center" href="/OCR-P5/user/logout">
+      <a class="btn btn-md btn-danger mx-2 px-2 text-lowercase text-center" href="/user/logout">
         <i class="fas fa-sign-out-alt px-1"></i><span>Déconnexion</span>
       </a>
   </div>
@@ -70,7 +70,7 @@
             <div class="card-body">
               <div class="row my-6 py-4">
                 <div class="col-lg-4">
-                  <img class="img-fluid" src="/OCR-P5/Public/img/user/<?= $user['imageUrl']; ?>" alt="ImgResponsive" width="260px" height="auto" />
+                  <img class="img-fluid" src="/Public/img/user/<?= $user['imageUrl']; ?>" alt="ImgResponsive" width="260px" height="auto" />
                 </div>
               <div class="col-lg-6 py-2">
                 <h3 class="section-heading text-regular"><i class="fas fa-user"></i> Pseudo : <?= $user['username']; ?></h3>
@@ -123,18 +123,18 @@
 </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="/OCR-P5/Public/vendor/jquery/jquery.min.js"></script>
-  <script src="/OCR-P5/Public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/Public/vendor/jquery/jquery.min.js"></script>
+  <script src="/Public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Plugin JavaScript -->
-  <script src="/OCR-P5/Public/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="/Public/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Contact form JavaScript -->
-  <script src="/OCR-P5/Public/js/jqBootstrapValidation.js"></script>
-  <script src="/OCR-P5/Public/js/contact_me.js"></script>
+  <script src="/Public/js/jqBootstrapValidation.js"></script>
+  <script src="/Public/js/contact_me.js"></script>
 
   <!-- Custom scripts for this template -->
-  <script src="/OCR-P5/Public/js/agency.min.js"></script>
+  <script src="/Public/js/agency.min.js"></script>
 
 </body>
 </html>

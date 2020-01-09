@@ -13,11 +13,11 @@
 
   <!-- Custom fonts for this template-->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link href="/OCR-P5/Public/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="/Public/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="/OCR-P5/Public/assets/css/sb-admin-2.css" rel="stylesheet">
+  <link href="/Public/assets/css/sb-admin-2.css" rel="stylesheet">
 
 </head>
 
@@ -32,9 +32,9 @@
           <i class="fas fa-bars"></i>
         </button>
       </div>
-      <a class="nav-link dropdown-toggle">
+      <a class="nav-link dropdown-toggle" href="/admin/index">
         <span class="mr-1 d-none d-lg-inline text-white middle">Bonjour, <?= $user['username']; ?></span>
-        <img class="img-profile rounded-circle img-thumbnail" src="/OCR-P5/Public/img/user/<?= $user['imageUrl']; ?>" width="30px" height="auto">
+        <img class="img-profile rounded-circle img-thumbnail" src="/Public/img/user/<?= $user['imageUrl']; ?>" width="30px" height="auto">
       </a>
     </nav>
 
@@ -55,7 +55,7 @@
     <!-- End of Sidebar -->
 
       <li class="nav-item active">
-        <a class="nav-link" href="/OCR-P5/admin/index">
+        <a class="nav-link" href="/admin/index">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
       </li>
@@ -67,17 +67,17 @@
       <hr class="sidebar-divider d-none d-md-block">
 
       <!-- Sidebar Toggler (Sidebar) -->
-        <a class="btn btn-md btn-warning mx-2 my-2 px-2 text-lowercase text-center" href="/OCR-P5/post/add/">
+        <a class="btn btn-md btn-warning mx-2 my-2 px-2 text-lowercase text-center" href="/post/add/">
           <i class="fas fa-plus px-1"></i>
           <span>Ajouter un post</span>
         </a>
-        <a class="btn btn-md btn-danger mx-2 px-2 text-lowercase text-center" href="/OCR-P5/user/logout">
+        <a class="btn btn-md btn-danger mx-2 px-2 text-lowercase text-center" href="/user/logout">
           <i class="fas fa-sign-out-alt px-1"></i>
           <span>Déconnexion</span>
         </a>
-      <img class="img-fluid my-4 px-2 py-2 " src="/OCR-P5/Public/img/user/<?= $user['imageUrl']; ?>" alt="user" />
+      <img class="img-fluid my-4 px-2 py-2 " href="/public_html/Public/img/user/<?= $user['imageUrl']; ?>" alt="user" />
       <!--User add-->
-        <a class="btn btn-md btn-warning mx-2 my-2 px-2 text-lowercase text-center" href="/OCR-P5/user/add/">
+        <a class="btn btn-md btn-warning mx-2 my-2 px-2 text-lowercase text-center" href="/user/add/">
           <i class="fas fa-user px-1"></i>
           <span>Ajouter un profil</span>
         </a>
@@ -130,9 +130,9 @@
                       <td><?= $post->getChapeau(); ?></td>
                       <td><?= $post->getDate_add(); ?></td>
                       <td>
-                      <a class="btn btn-sm btn-success shadow-sm" data-toggle="modal" href="http://localhost/OCR-P5/post/view/<?= $post->getId(); ?>-<?= $post->getTitle(); ?>">Voir</a>
-                      <a class="btn btn-sm btn-primary shadow-sm" data-toggle="modal" href="http://localhost/OCR-P5/post/update/<?= $post->getId(); ?>">Modifier</a>
-                      <a class="btn btn-sm btn-danger shadow-sm" data-toggle="modal" href="http://localhost/OCR-P5/post/delete/<?= $post->getId(); ?>">Supprimer</a>
+                      <a class="btn btn-sm btn-success shadow-sm" data-toggle="modal" href="/post/view/<?= $post->getId(); ?>-<?= $post->getTitle(); ?>">Voir</a>
+                      <a class="btn btn-sm btn-primary shadow-sm" data-toggle="modal" href="/post/update/<?= $post->getId(); ?>">Modifier</a>
+                      <a class="btn btn-sm btn-danger shadow-sm" data-toggle="modal" href="/post/delete/<?= $post->getId(); ?>">Supprimer</a>
                       </td>
                   </tr>
                 <?php endforeach; ?>
@@ -175,9 +175,9 @@
                               <td><?= $comment->getDate_add(); ?></td>
                               <td>
                               <?php if(!$comment->getActive()) : ?> 
-                              <a class="btn btn-sm btn-success shadow-sm my-2" data-toggle="modal" href="http://localhost/OCR-P5/comment/validate/<?= $comment->getId(); ?>">Valider</a>
+                              <a class="btn btn-sm btn-success shadow-sm my-2" data-toggle="modal" href="/comment/validate/<?= $comment->getId(); ?>">Valider</a>
                               <?php endif ?>
-                              <a class="btn btn-sm btn-danger shadow-sm" data-toggle="modal" href="http://localhost/OCR-P5/comment/delete/<?= $comment->getId(); ?>">Supprimer</a>
+                              <a class="btn btn-sm btn-danger shadow-sm" data-toggle="modal" href="/comment/delete/<?= $comment->getId(); ?>">Supprimer</a>
                               </td>
                             </tr>
                           <?php endforeach; ?>
@@ -209,14 +209,14 @@
                           <?php foreach($users as $user): ?>   
                             <tr>
                               <th scope="row">
-                              <?= $user->getId() ); ?>
+                              <?= $user->getId(); ?>
                               </th>
                               <td><?= $user->getUsername(); ?></td>
                               <td><?= $user->getEmail(); ?></td>
                               <td><?= $user->getRole(); ?></td>
-                              <td><a class="btn btn-sm btn-success shadow-sm" data-toggle="modal" href="http://localhost/OCR-P5/user/view/<?= $user->getId(); ?>">Voir</a>
-                              <a class="btn btn-sm btn-primary shadow-sm" data-toggle="modal" href="http://localhost/OCR-P5/user/update/<?= $user->getId(); ?>">Modifier</a>
-                              <a class="btn btn-sm btn-danger shadow-sm" data-toggle="modal" href="http://localhost/OCR-P5/user/delete/<?= $user->getId(); ?>">Supprimer</a>
+                              <td><a class="btn btn-sm btn-success shadow-sm" data-toggle="modal" href="/user/view/<?= $user->getId(); ?>">Voir</a>
+                              <a class="btn btn-sm btn-primary shadow-sm" data-toggle="modal" href="/user/update/<?= $user->getId(); ?>">Modifier</a>
+                              <a class="btn btn-sm btn-danger shadow-sm" data-toggle="modal" href="/user/delete/<?= $user->getId(); ?>">Supprimer</a>
                               </td>
                               </td>
                             </tr>
@@ -254,21 +254,21 @@
   </a>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="OCR-P5/Public/assets/vendor/jquery/jquery.min.js"></script>
-  <script src="OCR-P5/Public/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/Public/assets/vendor/jquery/jquery.min.js"></script>
+  <script src="/Public/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="OCR-P5/Public/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="/Public/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="OCR-P5/Public/js/sb-admin-2.min.js"></script>
+  <script src="/Public/js/sb-admin-2.min.js"></script>
 
   <!-- Page level plugins -->
-  <script src="OCR-P5/Public/vendor/chart.js/Chart.min.js"></script>
+  <script src="/Public/vendor/chart.js/Chart.min.js"></script>
 
   <!-- Page level custom scripts -->
-  <script src="OCR-P5/Public/js/demo/chart-area-demo.js"></script>
-  <script src="OCR-P5/Public/js/demo/chart-pie-demo.js"></script>
+  <script src="/Public/js/demo/chart-area-demo.js"></script>
+  <script src="/Public/js/demo/chart-pie-demo.js"></script>
 
 </body>
 
