@@ -110,13 +110,13 @@ class Post extends \Framework\Entity
 
     public function getDate_add()
     {
-        return date("d/m/Y h:m:s", strtotime($this->date_add));
+        return date("d/m/Y h:m", strtotime($this->date_add));
         return $this->date_add;
     }
 
     public function getDate_update()
     {
-        return date("d/m/Y h:m:s", strtotime($this->date_update));
+        return date("d/m/Y h:m", strtotime($this->date_update));
         return $this->date_update;
     }
 
