@@ -80,7 +80,7 @@
     <div class="container">
       <div class="row my-6">
         <div class="col-lg-4 text-center" style="margin-top: 6%">
-          <img class="img-fluid " width="" src="/Public/img/user/mirko.jpg" alt="">
+          <img class="img-fluid " width="" src="/Public/img/user/mirko-venturi.jpg" alt="mirko venturi">
         </div>
         <div class="col-lg-8 text-center">
           <h2 class="section-heading text-uppercase text-left text-warning">À propos</h2>
@@ -331,7 +331,7 @@
       </div>
       <div class="row">
         <div class="col-lg-12">
-          <form id="contactForm" name="sentMessage"  action="Controllers/ContactForm.php" method="POST">
+          <form id="contactForm" name="sentMessage"  action="/contact/checkForm" method="POST">
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">

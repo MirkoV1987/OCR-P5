@@ -75,7 +75,7 @@
           <i class="fas fa-sign-out-alt px-1"></i>
           <span>Déconnexion</span>
         </a>
-      <img class="img-fluid my-4 px-2 py-2 " href="/public_html/Public/img/user/<?= $user['imageUrl']; ?>" alt="user" />
+      <img class="img-fluid my-4 px-2 py-2 " src="/Public/img/user/<?= $user['imageUrl']; ?>" alt="user" />
       <!--User add-->
         <a class="btn btn-md btn-warning mx-2 my-2 px-2 text-lowercase text-center" href="/user/add/">
           <i class="fas fa-user px-1"></i>

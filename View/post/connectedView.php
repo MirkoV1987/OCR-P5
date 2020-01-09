@@ -100,7 +100,7 @@
         <img class="img-fluid" src="/Public/img/<?= $post['imageUrl']; ?>" alt="ImgResponsive" />
         </div>
         <div class="row my-6 py-4">
-        <h4 class="section-subheading">De <?= $post['author']; ?> - <time class="section-subheading text-muted">Publié le <?= $post['date_add_fr']; ?></time></h4>
+        <h4 class="section-subheading">De <?= $post['author']; ?> - <time class="section-subheading text-muted">Publié le <?= $post['date_add']; ?></time></h4>
         <p class="text-justify"><?= $post['content']; ?></p>
         </div>
       </div>

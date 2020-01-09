@@ -1,10 +1,7 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]><html lang="ru" class="lt-ie9 lt-ie8 lt-ie7"><![endif]-->
-<!--[if IE 7]><html lang="ru" class="lt-ie9 lt-ie8"><![endif]-->
-<!--[if IE 8]><html lang="ru" class="lt-ie9"><![endif]-->
-<!--[if gt IE 8]><!-->
+
 <html lang="fr">
-<!--<![endif]-->
+
 <head>
   <meta charset="utf-8" />
   <title>404</title>
@@ -12,7 +9,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="view/styles.css">
+  <link rel="stylesheet" href="/Public/css/styles.css">
 </head>
 
 <body> 
@@ -35,7 +32,7 @@
     <img class="ag-canvas-404_img" src="https://raw.githubusercontent.com/SochavaAG/example-mycode/master/pens/404-error-smoke-from-toaster/images/smoke.png">
   </div>
 </div>
-<section class="text-center"><button class="btn btn-success text-center"><a href="post">Revenir à la page d'accueil</a></button></section> 
+<section class="text-center"><a class="btn btn-success white text-center" href="/">Revenir à la page d'accueil</a></section> 
  
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
 <script id="rendered-js">
