@@ -27,6 +27,7 @@ class PostController extends \Framework\Controller
 
    public function view($params)
    {
+      $this->set('user', \Framework\Session::getSession()->getKey('user') );
       $extract = explode('-', $params['get'][0]);
       $id = (int)($extract[0]);
 
@@ -59,6 +60,8 @@ class PostController extends \Framework\Controller
    
    public function add($params)
    {
+      $this->set('user', \Framework\Session::getSession()->getKey('user') );
+
       if (!empty($params['post']) ) { 
 
          if (!empty(\Framework\Session::getSession()->getKey('user')['role'] ) 
@@ -77,6 +80,8 @@ class PostController extends \Framework\Controller
 
    public function update($params)
    {
+      $this->set('user', \Framework\Session::getSession()->getKey('user') );
+      
       if (\Framework\Session::getSession()->getKey('user')['role'] != 2) {
 
       $this->redirect('/admin/index');

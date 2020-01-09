@@ -31,12 +31,10 @@ private $userManager;
 
         }
 
+        $this->set('user', \Framework\Session::getSession()->getKey('user') );
+
         if (\Framework\Session::getSession()->getKey('user')['role'] == 1) { 
 
-            $extract = explode('-', $params['get'][0]);
-            $id = intval($extract[0]);
-            $user = $this->userManager->getUser($id);
-            $this->set('user', $user);
             $this->render("View/post/ConnectedView.php");
 
         }
@@ -58,13 +56,6 @@ private $userManager;
         $userManager = new \Manager\UserManager();
         $users = $userManager->getList();
         $this->set('users', $users);
-
-        $userManager = new \Manager\UserManager();
-        $extract = explode('-', ['get'][0]);
-        $id = intval($extract[0]);
-        //$id = (int)($extract[0]);
-        $user = $userManager->getUser($id);
-        $this->set('user', $user);
 
        
         $this->render('View/admin/index.php');  

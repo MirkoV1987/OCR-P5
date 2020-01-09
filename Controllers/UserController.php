@@ -67,7 +67,9 @@ class UserController extends \Framework\Controller
 
     public function view($params)
     {
-      if(empty(\Framework\Session::getSession()->getKey('user')['role'])
+      $this->set('user', \Framework\Session::getSession()->getKey('user') );
+
+      if (empty(\Framework\Session::getSession()->getKey('user')['role'])
         || \Framework\Session::getSession()->getKey('user')['role'] != 2) {
 
       return false;
@@ -79,12 +81,11 @@ class UserController extends \Framework\Controller
       $this->redirect('/View/index');
 
       }
-
+      
     $extract = explode('-', $params['get'][0]);
     $id = intval($extract[0]);
-
     $user = $this->userManager->getUser($id); 
-    $this->set('user', $user);
+    $this->set('user', $user);  
     $this->render('View/user/view.php');
       
     }
@@ -102,7 +103,8 @@ class UserController extends \Framework\Controller
         }          
 
       }  
-   
+      
+      $this->set('user', \Framework\Session::getSession()->getKey('user') );
       $this->render('View/user/add.php');
 
     }
@@ -122,8 +124,9 @@ class UserController extends \Framework\Controller
 
       }  
 
-    $id = $params['get'][0];
-    $user = $this->userManager->getUser($id);
+    $extract = explode('-', $params['get'][0]);
+    $id = intval($extract[0]);
+    $user = $this->userManager->getUser($id); 
     $this->set('user', $user);
     $this->render('View/user/update.php');
 
