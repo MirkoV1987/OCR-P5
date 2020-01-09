@@ -23,7 +23,7 @@ class PostManager extends \Framework\Model
     public function getPost($id) 
     {
         $post = []; 
-        $req = $this->getDb()->prepare("SELECT id, author, title, chapeau, imageUrl, DATE_FORMAT(date_add, '%d/%m/%Y à %Hh%imin') AS date_add_fr, date_update, content FROM post WHERE id = :id");
+        $req = $this->getDb()->prepare("SELECT id, author, title, chapeau, imageUrl, date_add, date_update, content FROM post WHERE id = :id");
         $req->bindValue(':id', $id, \PDO::PARAM_INT);
         $req->execute();
         $req->setFetchMode(\PDO::FETCH_ASSOC);
