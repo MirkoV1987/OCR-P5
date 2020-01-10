@@ -32,7 +32,6 @@
     <div class="row">
         <div class="xs-12 md-6 mx-auto">
             <div id="countUp">
-                <div class="number" data-count="404">0</div>
                 <div class="text">Votre message a été envoyé dans l'espace !</div>
                 <div class="text">Il est en train de voyager pour atteindre de nouveaux horizons !</div>
                 <a class="btn rounded btn-md btn-warning text-center js-scroll-trigger my-1 text-uppercase text-white font-weight-bold" href="/#home">Revenir sur terre</a>
