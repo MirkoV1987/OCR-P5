@@ -159,7 +159,6 @@
 
   <!-- Contact form JavaScript -->
   <script src="/Public/js/jqBootstrapValidation.js"></script>
-  <script src="/Public/js/contact_me.js"></script>
 
   <!-- Custom scripts for this template -->
   <script src="/Public/js/agency.min.js"></script>
