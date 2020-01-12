@@ -101,6 +101,8 @@
         </div>
         <div class="row my-6 py-4">
         <h4 class="section-subheading">De <?= $post['author']; ?> - <time class="section-subheading text-muted">Publié le <?= $post['date_add']; ?></time></h4>
+        </div>
+        <div class="row my-6 py-4">
         <p class="text-justify"><?= $post['content']; ?></p>
         </div>
       </div>
@@ -118,8 +120,14 @@
           <!-- Comment Form -->
           <form action="/comment/add/<?= $post['id']; ?>" method="POST">
             <div class="form-group">
-            <label for="pseudo">Pseudo :</label>
-            <input type="text" class="form-control my-2" name="pseudo" placeholder="Insérez votre pseudo" value="" required>
+            <div>
+            <p class="m-0 font-weight-bold text-black text-left text-uppercase my-4">
+              <img class="img-profile rounded-circle" src="/Public/img/user/<?= $user['imageUrl']; ?>" width="80px" height="auto" alt="img" /> <?= $user['username']; ?>
+            </p>
+            <input type="hidden" id="pseudo" name="pseudo" value="<?= $user['username']; ?>">
+            <input type="hidden" id="date_add" name="date_add" value="<?= $comment['date_add']; ?>">
+            </div>
+            <input type="hidden" value="<?= $comment['pseudo']; ?>" />
             <textarea type="textarea" class="form-control" name="content" id="message" rows="12" placeholder="Écrivez ici votre commentaire" required></textarea>
             </div>
             <div class="text-right">
@@ -139,8 +147,9 @@
       <?php foreach($comments as $comment): ?> 
         <div class="my-4 shadow-lg p-3 mb-1 bg-white rounded">
           <div class="row">
-            <div class="col-lg-4 text-center">
-              <h4 class="section-subheading text-uppercase text-left"><?= $comment['pseudo']; ?></h4><time><?= isset($date_add) ? $comment['date_add_fr'] : ''; ?></time>
+            <div class="col-lg-4 text-left font-weight-bold">
+              <h4 class="section-subheading text-uppercase text-left"><?= $comment['pseudo']; ?></h4>
+              <time class="section-subheading text-muted text-bold">Publié le <?= $comment['date_add']; ?></time>
             </div>
           </div>
           <div class="row my-4">
