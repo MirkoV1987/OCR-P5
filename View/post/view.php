@@ -76,7 +76,10 @@
         </div>
         <div class="row my-6 py-4">
         <h4 class="section-subheading">De <?= $post['author']; ?> - <time class="section-subheading text-muted">Publié le <?= $post['date_add']; ?></time></h4>
+        </div>
+        <div class="row my-6 py-4">
         <p class="text-justify"><?= $post['content']; ?></p>
+        </div>
       </div>
     </div>
   </div> 
