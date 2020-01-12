@@ -53,7 +53,7 @@ class UserManager extends \Framework\Model
     public function getList()
     {
         $usersTab = [];
-        $req = $this->getDb()->prepare("SELECT id, imageUrl, username, email, password, active, role, DATE_FORMAT(date_add, '%d/%m/%Y à %Hh%imin') AS date_add_fr FROM user ORDER BY date_add desc");
+        $req = $this->getDb()->prepare("SELECT id, imageUrl, username, email, password, active, role, DATE_FORMAT(date_add, '%d/%m/%Y à %Hh%i') AS date_add_fr FROM user ORDER BY date_add desc");
         $req->execute();
 
         while ($data = $req->fetch(\PDO::FETCH_ASSOC))
@@ -67,7 +67,7 @@ class UserManager extends \Framework\Model
     public function getUser($id)
     {
         $user = [];
-        $req = $this->getDb()->prepare("SELECT id, imageUrl, username, email, password, active, validation_key, role, DATE_FORMAT(date_add, '%d/%m/%Y à %Hh%imin') AS date_add_fr FROM user WHERE id = :id");
+        $req = $this->getDb()->prepare("SELECT id, imageUrl, username, email, password, active, validation_key, role, DATE_FORMAT(date_add, '%d/%m/%Y à %Hh%i') AS date_add_fr FROM user WHERE id = :id");
         $req->execute(array(':id' => $id));
         $req->setFetchMode(\PDO::FETCH_ASSOC);
         $user = $req->fetch();
