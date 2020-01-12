@@ -14,9 +14,7 @@ class ContactController
 
     public function checkForm($params) 
     {
-    // Vérification des champs vides
-    // Array ( [post] => Array ( [name] => Mirko [email] => mirkoventuri.web@gmail.com [phone] => 000000000 [message] => Coucou [submit] => ) ) 
-    print_r($params); 
+        // Vérification des champs vides
         if (empty($params['post']['name']) 
         || empty($params['post']['email']) 
         || empty($params['post']['phone']) 
@@ -37,13 +35,11 @@ class ContactController
         $to = 'mirkoventuri.web@gmail.com';
         $email_subject = "Blog de Mirko Venturi :  $name";
         $email_body = "Vous avez reçu un message depuis le formulaire de contact du Blog.\n\n"."Détails :\n\nNom : $name\n\nEmail : $email_address\n\nTélephone : $phone\n\nMessage:\n$message";
-        $headers = "From: noreply@gmail.com\n"; // This is the email address the generated message will be from. We recommend using something like noreply@yourdomain.com.
+        $headers = "From: noreply@gmail.com\n"; // Utiliser noreply@yourdomain.com.
         $headers .= "Répondre à : $email_address";   
         mail($to,$email_subject,$email_body,$headers);
 
-        $this->sent->redirect('/View/404.php');
-        //redirect "message envoyé";
-        //rediriger vers une nouvelle page (message envoyé);
+        $this->sent->redirect('/View/mail.php');
     }
 
 }
