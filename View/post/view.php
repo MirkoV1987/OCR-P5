@@ -89,9 +89,10 @@
     <h1 class="text-warning">Commentaires</h1>
       <?php foreach($comments as $comment): ?> 
         <div class="my-4 shadow-lg p-3 mb-1 bg-white rounded">
-          <div class="row">
-            <div class="col-lg-4 text-center">
-              <h4 class="section-subheading text-uppercase text-left"><?= $comment['pseudo']; ?></h4><time><?= isset($date_add) ? $comment['date_add_fr'] : ''; ?></time>
+        <div class="row">
+            <div class="col-lg-4 text-left font-weight-bold">
+              <h4 class="section-subheading text-uppercase text-left"><?= $comment['pseudo']; ?></h4>
+              <time class="section-subheading text-muted text-bold">Publié le <?= $comment['date_add']; ?></time>
             </div>
           </div>
           <div class="row my-4">
