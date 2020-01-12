@@ -41,7 +41,7 @@ class CommentManager extends \Framework\Model
 
         } 
 
-        $req = $this->getDb()->prepare("SELECT id, pseudo, content, DATE_FORMAT(date_add, '%d/%m/%Y à %Hh%imin%ss') AS date_add_fr, post_id FROM comment WHERE post_id = :post_id AND active = :active ORDER BY date_add DESC"); 
+        $req = $this->getDb()->prepare("SELECT id, pseudo, content, DATE_FORMAT(date_add, '%d/%m/%Y à %Hh%i') AS date_add, post_id FROM comment WHERE post_id = :post_id AND active = :active ORDER BY date_add DESC"); 
         $req->execute(array(':post_id' => $post_id, ':active' => $active) );
         $req->setFetchMode(\PDO::FETCH_ASSOC);
         $comment = $req->fetchAll();
