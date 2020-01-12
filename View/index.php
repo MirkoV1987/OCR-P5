@@ -20,9 +20,9 @@
   <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
   <!-- Custom styles for this template -->
-  <link href="/Public/css/agency.min.css" rel="stylesheet">
-  <script src="/Public/notification-js/src/notification.js"></script>
-  <link rel="stylesheet" href="public/notification-js/src/notification.css">
+  <link href="/Public/css/agency.min.css" rel="stylesheet" type='text/css'>
+  <!-- <script src="/Public/notification-js/src/notification.js"></script> -->
+  <!-- <link rel="stylesheet" href="public/notification-js/src/notification.css" type='text/css'> -->
 </head>
 
 <body id="page-top">
@@ -414,7 +414,7 @@
 
   <!-- Contact form JavaScript -->
   <script src="/Public/js/jqBootstrapValidation.js"></script>
-  <script src="/Public/js/contact_me.js"></script>
+  <!-- <script src="/Public/js/contact_me.js"></script> -->
 
   <!-- Custom scripts for this template -->
   <script src="/Public/js/agency.min.js"></script>
