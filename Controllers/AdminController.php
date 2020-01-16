@@ -7,36 +7,28 @@ use \Framework;
 
 class AdminController extends \Framework\Controller
 {
-
-private $userManager;
+    private $userManager;
 
     public function __construct()
     {
-      $this->userManager = new \Manager\UserManager();
-      $this->postManager = new \Manager\PostManager();
-    } 
+        $this->userManager = new \Manager\UserManager();
+        $this->postManager = new \Manager\PostManager();
+    }
 
-    public function index() 
+    public function index()
     {
-    
-        if (empty(\Framework\Session::getSession()->getKey('user')['role'] ) ) {
-
+        if (empty(\Framework\Session::getSession()->getKey('user')['role'])) {
             $this->render("View/user/login.php");
-
         }
 
-        if (\Framework\Session::getSession()->getKey('user')['role'] != 2) { 
-
+        if (\Framework\Session::getSession()->getKey('user')['role'] != 2) {
             $this->render("View/user/login.php");
-
         }
 
-        $this->set('user', \Framework\Session::getSession()->getKey('user') );
+        $this->set('user', \Framework\Session::getSession()->getKey('user'));
 
-        if (\Framework\Session::getSession()->getKey('user')['role'] == 1) { 
-
+        if (\Framework\Session::getSession()->getKey('user')['role'] == 1) {
             $this->render("View/post/ConnectedView.php");
-
         }
 
         /*============Gestion des posts============*/
@@ -53,13 +45,11 @@ private $userManager;
 
         /*============Gestion des utilisateurs============*/
 
-        $userManager = new \Manager\UserManager();
-        $users = $userManager->getList();
+        $usersManager = new \Manager\UserManager();
+        $users = $usersManager->getList();
         $this->set('users', $users);
 
        
-        $this->render('View/admin/index.php');  
-              
+        $this->render('View/admin/index.php');
     }
-
 }
