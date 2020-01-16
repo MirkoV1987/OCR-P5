@@ -4,33 +4,30 @@ namespace Framework;
 
 class View
 {
-
     private $vars = array();
 
     public function render($view)
     {
-       ob_start();
+        ob_start();
 
-       foreach($this->vars as $key => $value) {
-
-       $$key = $value;
+        foreach ($this->vars as $key => $value) {
+            $$key = $value;
+        }
         
-       }
+        require_once($view);
         
-       require_once($view);
-
-       ob_end_flush();
+        ob_end_flush();
+        exit;
     }
 
     public function set($name, $value)
     {
-     $this->vars[$name] = $value;
+        $this->vars[$name] = $value;
     }
 
     public function redirect($url)
     {
-     header("Location: $url"); 
-     //exit;
+        header("Location: $url");
+        exit;
     }
-
 }
