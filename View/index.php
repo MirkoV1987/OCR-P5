@@ -21,8 +21,6 @@
 
   <!-- Custom styles for this template -->
   <link href="/Public/css/agency.min.css" rel="stylesheet" type='text/css'>
-  <!-- <script src="/Public/notification-js/src/notification.js"></script> -->
-  <!-- <link rel="stylesheet" href="public/notification-js/src/notification.css" type='text/css'> -->
 </head>
 
 <body id="page-top">
@@ -33,7 +31,7 @@
       <a class="navbar-brand js-scroll-trigger" href="#page-top">Mirko Venturi</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
-        <i class="fas fa-bars"></i>
+        <strong class="fas fa-bars"></strong>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav text-uppercase ml-auto">
@@ -67,7 +65,6 @@
   <header class="masthead" style="padding-bottom: 250px">
     <div class="container">
       <div class="intro-text">
-        <!-- <div class="intro-lead-in">Welcome To Our Studio!</div> -->
         <h1 class="intro-heading text-uppercase" style="margin-bottom: 20px;">Mirko Venturi</h1>
         <h2 class="section-subheading text-uppercase">Développeur PHP/Symfony <span class="text-warning">&</span> WebDesigner</h2>
       </div>
@@ -85,7 +82,7 @@
         <div class="col-lg-8 text-center">
           <h2 class="section-heading text-uppercase text-left text-warning">À propos</h2>
           <h3 class="section-heading text-left text-uppercase">Mirko VENTURI<br/> Développeur PHP/Symfony <span class="text-warning">&</span> WebDesigner</h3>
-          <i class="fas fa-user text-warning"> 32 ans</i>
+          <strong class="fas fa-user text-warning"> 32 ans</strong>
           <p class="text-black text-left">WebDesigner de formation et exerçant ce métier depuis quelques années, j'ai décidé de franchir le pas et de regarder de l'autre côté d'une page web.
                                           Curieux et passionné par l'informatique et plus particulièrement par le développement Web, j'ai pu acquérir de nombreuses compétences professionnelles en autodidacte et en suivant des cours en programmation PHP proposés par la Mairie de Paris dans le cadre du projet Paris Code.
                                           Le développement Back-End m'ayant beaucoup plus durant mes cours de programmation parisiens, je me suis lancé dans la formation <span class="text-warning font-weight-bold">Développeur d'applications PHP/Symfony (niveau II) chez OpenClassRooms.</span>
@@ -107,7 +104,7 @@
         <div class="col-md-3">
           <img class="rounded-circle" width="160px" src="/Public/img/skills/php.png" alt="php">
           <h4 class="service-heading">PHP Orienté Objet</h4>
-          <p class="text-black">Perfectionnement du langage PHP 7 et apprentissage du langage PHP POO dans le cadre de ma formation de <a class="text-warning font-weight-bold" href="https://openclassrooms.com/fr/paths/59-developpeur-dapplication-php-symfony" target="_blank">Développeur d'applications PHP/Symfony chez OpenClassRooms.</a></p>
+          <p class="text-black">Perfectionnement du langage PHP 7 et apprentissage du langage PHP POO dans le cadre de ma formation de <a class="text-warning font-weight-bold" href="https://openclassrooms.com/fr/paths/59-developpeur-dapplication-php-symfony" target="_blank" rel="noopener noreferrer">Développeur d'applications PHP/Symfony chez OpenClassRooms.</a></p>
         </div>
         <div class="col-md-3">
           <img class="rounded-circle" width="160px" src="/Public/img/skills/symfony.png" alt="symfony">
@@ -117,7 +114,7 @@
         <div class="col-md-3">
           <img class="rounded-circle" width="160px" src="/Public/img/skills/sql.png" alt="sql">
           <h4 class="service-heading">MySQL</h4>
-          <p class="text-black">Mise à jour permanente des compétences et perfectionnement du développement de bases de données avec MySQL avec <a class="text-warning font-weight-bold" href="https://openclassrooms.com/fr/" target="_blank">OpenClassRooms.</a></p>
+          <p class="text-black">Mise à jour permanente des compétences et perfectionnement du développement de bases de données avec MySQL avec <a class="text-warning font-weight-bold" href="https://openclassrooms.com/fr/" target="_blank" rel="noopener noreferrer">OpenClassRooms.</a></p>
         </div>
         <div class="col-md-3">
           <img class="rounded-circle" width="160px" src="/Public/img/skills/html5.png" alt="html5">
@@ -210,7 +207,7 @@
           <a class="portfolio-link" href="/post/view/<?= $post->getId(); ?>-<?= $post->getTitle(); ?>">
             <div class="portfolio-hover">
               <div class="portfolio-hover-content">
-                <i class="fas fa-plus fa-3x"></i>
+                <strong class="fas fa-plus fa-3x"></strong>
               </div>
             </div>
             <img class="img-fluid" src="/Public/img/<?= $post->getImageUrl(); ?>" alt="">
@@ -375,18 +372,18 @@
         <div class="col-md-4">
           <ul class="list-inline social-buttons">
             <li class="list-inline-item">
-              <a href="https://twitter.com/MirkoVenturi1" target="_blank">
-                <i class="fab fa-twitter"></i>
+              <a href="https://twitter.com/MirkoVenturi1" target="_blank" rel="noopener noreferrer">
+                <strong class="fab fa-twitter"></strong>
               </a>
             </li>
             <li class="list-inline-item">
-              <a href="https://www.facebook.com/mirko.venturi.79" target="_blank">
-                <i class="fab fa-facebook-f"></i>
+              <a href="https://www.facebook.com/mirko.venturi.79" target="_blank" rel="noopener noreferrer">
+                <strong class="fab fa-facebook-f"></strong>
               </a>
             </li>
             <li class="list-inline-item">
-              <a href="https://fr.linkedin.com/in/mirkoventuri?trk=people-guest_profile-result-card_result-card_full-click" target="_blank">
-                <i class="fab fa-linkedin-in"></i>
+              <a href="https://fr.linkedin.com/in/mirkoventuri?trk=people-guest_profile-result-card_result-card_full-click" target="_blank" rel="noopener noreferrer">
+                <strong class="fab fa-linkedin-in"></strong>
               </a>
             </li>
           </ul>
@@ -414,7 +411,6 @@
 
   <!-- Contact form JavaScript -->
   <script src="/Public/js/jqBootstrapValidation.js"></script>
-  <!-- <script src="/Public/js/contact_me.js"></script> -->
 
   <!-- Custom scripts for this template -->
   <script src="/Public/js/agency.min.js"></script>
