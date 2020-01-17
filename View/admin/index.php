@@ -24,17 +24,19 @@
 <body id="page-top">
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-fixed-top" id="mainNav">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-fixed-top" id="mainNav" aria-labelledby="menu"> 
       <div class="container">
           <a class="navbar-brand" href="#page-top" style="font-family: 'Vladimir Script'; font-size: 1.6em;">Blog de Mirko Venturi</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
-          <i class="fas fa-bars"></i>
+          <strong class="fas fa-bars"></strong>
         </button>
       </div>
       <a class="nav-link dropdown-toggle" href="/admin/index">
         <span class="mr-1 d-none d-lg-inline text-white middle">Bonjour, <?= $user['username']; ?></span>
-        <img class="img-profile rounded-circle img-thumbnail" src="/Public/img/user/<?= $user['imageUrl']; ?>" width="30px" height="auto">
+        <?php if (isset($user['imageUrl'])) : ?>
+        <img class="img-profile rounded-circle img-thumbnail" src="/Public/img/user/<?= $user['imageUrl']; ?>" width="30px" height="auto" alt="utilisateur">
+        <?php endif; ?>
       </a>
     </nav>
 
@@ -45,18 +47,18 @@
     <ul class="navbar-nav bg-gradient-primary align-items-bottom sidebar sidebar-dark accordion" id="accordionSidebar">
 
   <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
-        <div class="sidebar-brand-icon rotate-n-15">
-        <i class="fas fa-laugh-wink"></i>
+      <a class="sidebar-brand d-flex align-items-center justify-content-center">
+        <div class="sidebar-brand-icon rotate-n-15 text-white">
+        <strong class="fas fa-laugh-wink"></strong>
         </div>
-        <div class="sidebar-brand-text mx-3">Vue rapide</div>
+        <div class="sidebar-brand-text text-white mx-3">Vue rapide</div>
       </a>
 
     <!-- End of Sidebar -->
 
       <li class="nav-item active">
         <a class="nav-link" href="/admin/index">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <strong class="fas fa-fw fa-tachometer-alt"></strong>
         <span>Dashboard</span></a>
       </li>
       <hr class="sidebar-divider">
@@ -68,17 +70,19 @@
 
       <!-- Sidebar Toggler (Sidebar) -->
         <a class="btn btn-md btn-warning mx-2 my-2 px-2 text-lowercase text-center" href="/post/add/">
-          <i class="fas fa-plus px-1"></i>
+          <strong class="fas fa-plus px-1"></strong>
           <span>Ajouter un post</span>
         </a>
         <a class="btn btn-md btn-danger mx-2 px-2 text-lowercase text-center" href="/user/logout">
-          <i class="fas fa-sign-out-alt px-1"></i>
+          <strong class="fas fa-sign-out-alt px-1"></strong>
           <span>Déconnexion</span>
         </a>
+      <?php if (isset($user['imageUrl'])) : ?>  
       <img class="img-fluid my-4 px-2 py-2 " src="/Public/img/user/<?= $user['imageUrl']; ?>" alt="user" />
+      <?php endif; ?>
       <!--User add-->
         <a class="btn btn-md btn-warning mx-2 my-2 px-2 text-lowercase text-center" href="/user/add/">
-          <i class="fas fa-user px-1"></i>
+          <strong class="fas fa-user px-1"></strong>
           <span>Ajouter un profil</span>
         </a>
 
@@ -90,9 +94,9 @@
     <!-- Main Content -->
     <div id="content">
       <!-- Topbar -->
-      <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+      <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" aria-labelledby="navbar">
         <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">  
-        <i class="fa fa-bars"></i>
+        <strong class="fa fa-bars"></strong>
         </button>
         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
       </nav>
@@ -110,7 +114,7 @@
             <h6 class="m-0 font-weight-bold text-white">Articles récents</h6>
           </div>
           <div class="card-body">
-            <table class="table table-striped table-light text-center">
+            <table class="table table-striped table-light text-center" aria-describedby="liste des articles">
               <thead>
                 <tr>
                   <th scope="col">Id</th>
@@ -122,7 +126,7 @@
                 </tr>
               </thead>
               <tbody>
-                <?php foreach($posts as $post) :  ?> 
+                <?php foreach ($posts as $post) :  ?> 
                   <tr> 
                     <th scope="row"><?= $post->getId(); ?></th>
                       <td><?= $post->getAuthor(); ?></td>
@@ -142,7 +146,6 @@
         </div>
       </div> 
     </div>
-        <!-- </div> -->
 
             <div class="row">
 
@@ -154,7 +157,7 @@
                     <h6 class="m-0 font-weight-bold text-white">Commentaires récents</h6>
                   </div>
                     <div class="card-body">
-                      <table class="table table-striped table-light text-center">
+                      <table class="table table-striped table-light text-center" aria-describedby="liste des commentaires">
                           <thead>
                             <tr>
                               <th scope="col">Id</th>
@@ -165,7 +168,7 @@
                             </tr>
                           </thead>
                           <tbody>
-                          <?php foreach($comments as $comment): ?>   
+                          <?php foreach ($comments as $comment): ?>   
                             <tr>
                               <th scope="row">
                               <?= $comment->getId(); ?>
@@ -174,7 +177,7 @@
                               <td><?= $comment->getContent(); ?></td>
                               <td><?= $comment->getDate_add(); ?></td>
                               <td>
-                              <?php if(!$comment->getActive()) : ?> 
+                              <?php if (!$comment->getActive()) : ?> 
                               <a class="btn btn-sm btn-success shadow-sm my-2" data-toggle="modal" href="/comment/validate/<?= $comment->getId(); ?>">Valider</a>
                               <?php endif ?>
                               <a class="btn btn-sm btn-danger shadow-sm" data-toggle="modal" href="/comment/delete/<?= $comment->getId(); ?>">Supprimer</a>
@@ -195,7 +198,7 @@
                   <h6 class="m-0 font-weight-bold text-white">Utilisateurs</h6>
                 </div>
                   <div class="card-body">
-                    <table class="table table-striped table-light text-center">
+                    <table class="table table-striped table-light text-center" aria-describedby="liste des uilisateurs">
                       <thead>
                         <tr>
                           <th scope="col">Id</th>
@@ -206,7 +209,7 @@
                         </tr>
                       </thead>
                         <tbody>
-                          <?php foreach($users as $user): ?>   
+                          <?php foreach ($users as $user): ?>   
                             <tr>
                               <th scope="row">
                               <?= $user->getId(); ?>
@@ -250,7 +253,7 @@
 
   <!-- Scroll to Top Button-->
   <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
+    <strong class="fas fa-angle-up"></strong>
   </a>
 
   <!-- Bootstrap core JavaScript-->
