@@ -47,8 +47,12 @@ class Router
 
         if (class_exists($classController) ) {
             $control = new $classController;
+        }
+
+        if (method_exists($classController, $method) ) {
             $control->$method($params);
-        } else {
+        }
+        else {
             require_once('View/404.php'); 
             exit;
         }
