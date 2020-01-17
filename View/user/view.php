@@ -28,32 +28,34 @@
 <body id="page-top">
 
 <!-- Dashboard Navigation -->
-<nav class="navbar navbar-expand-md dashboardNav navbar-dark bg-dark navbar-fixed-top  py-3" id="mainNav" style="background-color:#000;">
+<nav class="navbar navbar-expand-md dashboardNav navbar-dark bg-dark navbar-fixed-top  py-3" id="mainNav" style="background-color:#000;" aria-labelledby="navbar">
   <div class="container">
     <div class="navbar navbar-expand-lg navbar-dark navbar-fixed-top" id="">
       <ul class="navbar-nav text-lowercase">
         <li class="nav-item active">
         <a class="nav-link" href="/admin/index">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <strong class="fas fa-fw fa-tachometer-alt"></strong>
         <span>Dashboard</span></a>
         </li>
       </ul>
     </div>
   <div>
     <a class="nav-link" href="/admin/index">
-      <span class="mr-2 d-none d-lg-inline text-white">Bonjour, <?= $user['username']; ?> 
-        <img class="img-profile rounded-circle img-thumbnail" src="/Public/img/user/<?= $user['imageUrl']; ?>" width="30px" height="auto">
+      <span class="mr-2 d-none d-lg-inline text-white">Bonjour, <?= $user['username']; ?>
+      <?php if (isset($user['imageUrl'])) : ?> 
+      <img class="img-profile rounded-circle img-thumbnail" src="/Public/img/user/<?= $user['imageUrl']; ?>" width="30px" height="auto" alt="utilisateur">
+      <?php endif; ?>
       </span>
     </a>
   </div>
 </nav>
 
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark navbar-fixed-top" id="mainNav" style="background-color:#000;">
+<nav class="navbar navbar-expand-lg navbar-dark navbar-fixed-top" id="mainNav" style="background-color:#000;" aria-labelledby="navbar">
   <div class="container">
     <a class="navbar-brand js-scroll-trigger" href="#page-top">Mirko Venturi</a>
       <a class="btn btn-md btn-danger mx-2 px-2 text-lowercase text-center" href="/user/logout">
-        <i class="fas fa-sign-out-alt px-1"></i><span>Déconnexion</span>
+        <strong class="fas fa-sign-out-alt px-1"></strong><span>Déconnexion</span>
       </a>
   </div>
 </nav>
@@ -70,12 +72,14 @@
             <div class="card-body">
               <div class="row my-6 py-4">
                 <div class="col-lg-4">
-                  <img class="img-fluid" src="/Public/img/user/<?= $user['imageUrl']; ?>" alt="ImgResponsive" width="260px" height="auto" />
+                <?php if (isset($user['imageUrl'])) : ?>
+                  <img class="img-fluid" src="/Public/img/user/<?= $user['imageUrl']; ?>" alt="utilisateur" width="260px" height="auto" />
+                <?php endif; ?>
                 </div>
               <div class="col-lg-6 py-2">
-                <h3 class="section-heading text-regular"><i class="fas fa-user"></i> Pseudo : <?= $user['username']; ?></h3>
-                <h4 class="section-subheading text-regular"><i class="fas fa-at"></i> Email : <?= $user['email']; ?></h4>
-                <h4 class="section-subheading text-regular"><i class="far fa-calendar-alt"></i> Date de création : <?= $user['date_add_fr']; ?></h4>
+                <h3 class="section-heading text-regular"><strong class="fas fa-user"></strong> Pseudo : <?= $user['username']; ?></h3>
+                <h4 class="section-subheading text-regular"><strong class="fas fa-at"></strong> Email : <?= $user['email']; ?></h4>
+                <h4 class="section-subheading text-regular"><strong class="far fa-calendar-alt"></strong> Date de création : <?= $user['date_add_fr']; ?></h4>
               </div>
             </div> 
           </div>
@@ -93,17 +97,17 @@
         <ul class="list-inline social-buttons">
           <li class="list-inline-item">
             <a href="#">
-              <i class="fab fa-twitter"></i>
+              <strong class="fab fa-twitter"></strong>
             </a>
           </li>
           <li class="list-inline-item">
             <a href="#">
-              <i class="fab fa-facebook-f"></i>
+              <strong class="fab fa-facebook-f"></strong>
             </a>
           </li>
           <li class="list-inline-item">
             <a href="#">
-              <i class="fab fa-linkedin-in"></i>
+              <strong class="fab fa-linkedin-in"></strong>
             </a>
           </li>
         </ul>

@@ -28,7 +28,7 @@
 <body id="page-top">
 
 <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark navbar-fixed-top" id="mainNav" style="background-color:#000;">
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-fixed-top" id="mainNav" style="background-color:#000;" aria-labelledby="navbar">
     <div class="container">
       <a class="navbar-brand" href="#page-top" style="font-family: 'Vladimir Script'; font-size: 1.6em;">Blog de Mirko Venturi</a>
     <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -36,7 +36,9 @@
     </div>
     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <span class="mr-2 d-none d-lg-inline text-white middle">Bonjour, <?= $user['username']; ?></span>
-      <img class="img-profile rounded-circle img-thumbnail" src="/Public/img/user/<?= $user['imageUrl']; ?>" width="30px" height="auto">
+    <?php if (isset($user['imageUrl'])) : ?>
+      <img class="img-profile rounded-circle img-thumbnail" src="/Public/img/user/<?= $user['imageUrl']; ?>" width="30px" height="auto" alt="utilisateur">
+    <?php endif; ?>
     </a>
   </nav>
 
@@ -49,13 +51,13 @@
   <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin/index">
       <div class="sidebar-brand-icon rotate-n-15">
-        <i class="fas fa-laugh-wink"></i>
+        <strong class="fas fa-laugh-wink"></strong>
       </div>
       <div class="sidebar-brand-text mx-3">Vue rapide</div>
     </a>
       <li class="nav-item active">
         <a class="nav-link" href="/admin/index">
-          <i class="fas fa-fw fa-tachometer-alt"></i><span>Dashboard</span>
+          <strong class="fas fa-fw fa-tachometer-alt"></strong><span>Dashboard</span>
         </a>
       </li>
 
@@ -73,9 +75,9 @@
     <a class="btn rounded-circle border-0 py-2 my-2" id="sidebarToggle" href="/admin/index"></a>
   </div>
     <a class="btn btn-md btn-warning mx-2 my-2 px-2 text-lowercase text-center" href="/post/add">
-      <i class="fas fa-plus px-1"></i><span>Ajouter un post</span></a>
+      <strong class="fas fa-plus px-1"></strong><span>Ajouter un post</span></a>
     <a class="btn btn-md btn-danger mx-2 px-2 text-lowercase text-center" href="/user/logout">
-      <i class="fas fa-sign-out-alt px-1"></i><span>Déconnexion</span></a>
+      <strong class="fas fa-sign-out-alt px-1"></strong><span>Déconnexion</span></a>
   </ul>
   <!-- End of Sidebar -->
 
@@ -86,9 +88,9 @@
   <div id="content">
 
   <!-- Topbar -->
-  <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+  <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" aria-labelledby="navbar">
     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-      <i class="fa fa-bars"></i>
+      <strong class="fa fa-bars"></strong>
     </button>
     <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
   </nav>
@@ -120,13 +122,13 @@
           <div class="form-group">
             <label for="date">Role :</label>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="role" id="role1" value="1" <?php if ($user['role'] == 1) { echo 'checked'; }; ?> >
+                <input class="form-check-input" type="radio" name="role" id="role1" value="1" <?php if ($user['role'] == 1) { echo 'checked';} ?> >
                 <label class="form-check-label" for="role">
                   Inscrit
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="role" id="role2" value="2" <?php if ($user['role'] == 2) { echo 'checked'; }; ?> >
+                <input class="form-check-input" type="radio" name="role" id="role2" value="2" <?php if ($user['role'] == 2) {echo 'checked';} ?> >
                 <label class="form-check-label" for="role">
                   Administrateur
                 </label>
@@ -167,7 +169,7 @@
 
   <!-- Scroll to Top Button-->
   <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
+    <strong class="fas fa-angle-up"></strong>
   </a>
 
   <!-- Bootstrap core JavaScript-->
