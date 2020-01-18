@@ -24,41 +24,32 @@
   <link href="/Public/css/agency.min.css" rel="stylesheet">
   <script src="/Public/vendor/jquery/jquery.min.js"></script>
   <script>href="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"</script>
-  <script src="/Public/js/notify.js"></script>
 
 </head>
 
 <body id="page-top">
 
 <!-- Dashboard Navigation -->
-<nav class="navbar navbar-expand-md dashboardNav navbar-dark bg-dark navbar-fixed-top py-3" aria-label="" id="mainNav" style="background-color:#000;">
+<nav class="navbar navbar-expand-md dashboardNav navbar-dark bg-dark navbar-fixed-top" style="min-height:50px" aria-label="" id="mainNav" style="background-color:#000;">
   <div class="container">
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      Menu
-      <em class="fas fa-bars"></em>
-    </button>
-    <div class="" id="">
-      <ul class="navbar-nav text-lowercase">
-        <li class="nav-item active">
-        <em class="fas fa-fw fa-tachometer-alt"></em>
-        <span>Dashboard</span>
-        </li>
-      </ul>
-    </div>
-    <div>
-      <span class="mr-2 d-none d-lg-inline text-white">Bonjour, <?= $user['username']; ?>
+    <div class="d-flex">
+      <div class="ml-auto"> 
+        <p class="text-white text-right">Bonjour, <?= $user['username']; ?>
         <?php if (isset($user['imageUrl'])) : ?>
-        <img class="img-profile rounded-circle img-thumbnail" src="/Public/img/user/<?= $user['imageUrl'];  ?>" width="30px" height="auto" alt="Utilisateur" /> 
+          <img class="img-profile rounded-circle img-thumbnail" src="/Public/img/user/<?= $user['imageUrl'];  ?>" width="30px" height="auto" alt="Utilisateur" /> 
         <?php endif; ?>
-      </span>
-        <a class="btn btn-md btn-danger mx-2 px-2 text-lowercase text-center" href="/user/logout">Déconnexion</a>
+        </p>
+      </div>
+      <div class="ml-auto">
+      <a class="btn btn-xs btn-danger text-lowercase mx-1 text-center" href="/user/logout">Déconnexion</a>
+      </div>
     </div>
   </div>
 </nav>
 
 <!-- Navigation -->
 
-<nav class="navbar navbar-expand-lg navbar-dark navbar-fixed-top" aria-label="" id="mainNav" style="background-color:#000;">
+<nav class="navbar navbar-expand-lg navbar-dark" aria-label="" id="mainNav" style="background-color:#000;">
   <div class="container">
     <a class="navbar-brand js-scroll-trigger" href="#page-top">Mirko Venturi</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
