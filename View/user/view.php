@@ -96,18 +96,23 @@
       <div class="col-md-4">
         <ul class="list-inline social-buttons">
           <li class="list-inline-item">
-            <a href="#">
+            <a href="https://twitter.com/MirkoVenturi1" target="_blank" rel="noopener noreferrer">
               <strong class="fab fa-twitter"></strong>
             </a>
           </li>
           <li class="list-inline-item">
-            <a href="#">
+            <a href="https://www.facebook.com/mirko.venturi.79" target="_blank" rel="noopener noreferrer">
               <strong class="fab fa-facebook-f"></strong>
             </a>
           </li>
           <li class="list-inline-item">
-            <a href="#">
+            <a href="https://fr.linkedin.com/in/mirkoventuri?trk=people-guest_profile-result-card_result-card_full-click" target="_blank" rel="noopener noreferrer">
               <strong class="fab fa-linkedin-in"></strong>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="https://github.com/MirkoV1987" target="_blank" rel="noopener noreferrer">
+              <strong class="fab fa-github" aria-hidden="true"></strong>
             </a>
           </li>
         </ul>
