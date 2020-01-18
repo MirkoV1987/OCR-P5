@@ -79,6 +79,7 @@
     <a class="btn btn-md btn-danger mx-2 px-2 text-lowercase text-center" href="/user/logout">
       <strong class="fas fa-sign-out-alt px-1"></strong><span>Déconnexion</span></a>
   </ul>
+  
   <!-- End of Sidebar -->
 
   <!-- Content Wrapper -->
@@ -154,10 +155,28 @@
       
   <!-- Footer -->
   <footer class="sticky-footer">
-    <div class="container my-auto">
-      <div class="copyright text-center my-auto">
-        <span>Copyright &copy;MIRKO VENTURI 2020</span>
+    <div class="container my-auto" style="color: #000; padding: 0 4px;">
+      <div class="row">
+        <div class="col-md-12 text-center"> 
+          <div class="list-inline-item social-buttons text-center py-4 px-4">
+              <a class="text-dark text-decoration-none px-1" href="https://twitter.com/MirkoVenturi1" target="_blank" rel="noopener noreferrer">
+              <strong class="fab fa-twitter text-black"></strong>
+              </a>
+              <a class="text-dark text-decoration-none px-1" href="https://www.facebook.com/mirko.venturi.79" target="_blank" rel="noopener noreferrer">
+              <strong class="fab fa-facebook-f"></strong>
+              </a>
+              <a class="text-dark text-decoration-none px-1" href="https://fr.linkedin.com/in/mirkoventuri?trk=people-guest_profile-result-card_result-card_full-click" target="_blank" rel="noopener noreferrer">
+              <strong class="fab fa-linkedin-in"></strong>
+              </a>
+              <a class="text-dark text-decoration-none px-1" href="https://github.com/MirkoV1987" target="_blank" rel="noopener noreferrer">
+              <strong class="fab fa-github" aria-hidden="true"></strong>
+              </a>
+          </div>  
+        </div>
       </div>
+    </div>
+    <div class="copyright text-center my-auto">
+      <span>Copyright &copy;MIRKO VENTURI 2020</span>
     </div>
   </footer>
   <!-- End of Footer -->
