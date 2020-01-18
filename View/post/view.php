@@ -33,7 +33,7 @@
       <a class="navbar-brand js-scroll-trigger" href="#page-top">Mirko Venturi</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
-        <i class="fas fa-bars"></i>
+        <strong class="fas fa-bars"></strong>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav text-uppercase ml-auto">
@@ -122,24 +122,29 @@
           <span class="copyright text-white">Copyright &copy;Mirko Venturi 2020</span>
         </div>
         <div class="col-md-4">
-          <ul class="list-inline social-buttons">
-            <li class="list-inline-item">
-              <a href="#">
-                <i class="fab fa-twitter"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-            </li>
-          </ul>
-        </div>
+        <ul class="list-inline social-buttons">
+          <li class="list-inline-item">
+            <a href="https://twitter.com/MirkoVenturi1" target="_blank" rel="noopener noreferrer">
+              <strong class="fab fa-twitter"></strong>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="https://www.facebook.com/mirko.venturi.79" target="_blank" rel="noopener noreferrer">
+              <strong class="fab fa-facebook-f"></strong>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="https://fr.linkedin.com/in/mirkoventuri?trk=people-guest_profile-result-card_result-card_full-click" target="_blank" rel="noopener noreferrer">
+              <strong class="fab fa-linkedin-in"></strong>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="https://github.com/MirkoV1987" target="_blank" rel="noopener noreferrer">
+              <strong class="fab fa-github" aria-hidden="true"></strong>
+            </a>
+          </li>
+        </ul>
+      </div>
         <div class="col-md-4">
           <ul class="list-inline quicklinks">
             <li class="list-inline-item">

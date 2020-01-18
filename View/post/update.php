@@ -28,11 +28,11 @@
 <body id="page-top">
 
     <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark navbar-fixed-top" id="mainNav" style="background-color:#000;">
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-fixed-top" id="mainNav" style="background-color:#000;" aria-labelledby="navbar">
     <div class="container">
       <a class="navbar-brand" href="#page-top" style="font-family: 'Vladimir Script'; font-size: 1.6em;">Blog de Mirko Venturi</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu <i class="fas fa-bars"></i>
+        Menu <strong class="fas fa-bars"></strong>
       </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
     </div>
@@ -40,7 +40,7 @@
     <!-- Nav Item - User Information -->
     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <span class="mr-2 d-none d-lg-inline text-white middle">Bonjour, <?= $user['username']; ?></span>
-      <img class="img-profile rounded-circle img-thumbnail" src="/Public/img/user/<?= $user['imageUrl']; ?>" width="30px" height="auto">
+      <img class="img-profile rounded-circle img-thumbnail" src="/Public/img/user/<?= $user['imageUrl']; ?>" width="30px" height="auto" alt="utilisateur">
     </a>
   </nav>
 
@@ -53,14 +53,14 @@
     <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin/index">
         <div class="sidebar-brand-icon rotate-n-15">
-        <i class="fas fa-laugh-wink"></i>
+        <strong class="fas fa-laugh-wink"></strong>
         </div>
         <div class="sidebar-brand-text mx-3">Vue rapide</div>
       </a>
 
       <li class="nav-item active">
         <a class="nav-link" href="/admin/index">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <strong class="fas fa-fw fa-tachometer-alt"></strong>
         <span>Dashboard</span></a>
       </li>
 
@@ -80,9 +80,9 @@
        <a class="btn rounded-circle border-0 py-2 my-2" id="sidebarToggle" href="/admin/index"></a>
       </div>
       <a class="btn btn-md btn-warning mx-2 my-2 px-2 text-lowercase text-center" href="/post/add">
-      <i class="fas fa-plus px-1"></i><span>Ajouter un post</span></a>
+      <strong class="fas fa-plus px-1"></strong><span>Ajouter un post</span></a>
       <a class="btn btn-md btn-danger mx-2 px-2 text-lowercase text-center" href="/user/logout">
-      <i class="fas fa-sign-out-alt px-1"></i><span>Déconnexion</span></a>
+      <strong class="fas fa-sign-out-alt px-1"></strong><span>Déconnexion</span></a>
 
   </ul>
   <!-- End of Sidebar -->
@@ -94,11 +94,11 @@
       <div id="content">
 
         <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" aria-labelledby="navbar">
 
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-            <i class="fa fa-bars"></i>
+            <strong class="fa fa-bars"></strong>
           </button>
 
             <!-- Page Heading -->
@@ -161,15 +161,32 @@
         </div>
         <!-- End of Main Content -->
         </div>
-      
-        <!-- Footer -->
-        <footer class="sticky-footer">
-          <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-              <span>Copyright &copy;MIRKO VENTURI 2020</span>
-            </div>
-          </div>
-        </footer>
+    <!-- Footer -->
+   <footer class="sticky-footer">
+    <div class="container my-auto" style="color: #000; padding: 0 4px;">
+      <div class="row">
+        <div class="col-md-12 text-center"> 
+          <div class="list-inline-item social-buttons text-center py-4 px-4">
+              <a class="text-dark text-decoration-none px-1" href="https://twitter.com/MirkoVenturi1" target="_blank" rel="noopener noreferrer">
+              <strong class="fab fa-twitter text-black"></strong>
+              </a>
+              <a class="text-dark text-decoration-none px-1" href="https://www.facebook.com/mirko.venturi.79" target="_blank" rel="noopener noreferrer">
+              <strong class="fab fa-facebook-f"></strong>
+              </a>
+              <a class="text-dark text-decoration-none px-1" href="https://fr.linkedin.com/in/mirkoventuri?trk=people-guest_profile-result-card_result-card_full-click" target="_blank" rel="noopener noreferrer">
+              <strong class="fab fa-linkedin-in"></strong>
+              </a>
+              <a class="text-dark text-decoration-none px-1" href="https://github.com/MirkoV1987" target="_blank" rel="noopener noreferrer">
+              <strong class="fab fa-github" aria-hidden="true"></strong>
+              </a>
+          </div>  
+        </div>
+      </div>
+    </div>
+    <div class="copyright text-center my-auto">
+      <span>Copyright &copy;MIRKO VENTURI 2020</span>
+    </div>
+  </footer>
         <!-- End of Footer -->
 
     </div>
@@ -180,7 +197,7 @@
 
   <!-- Scroll to Top Button-->
   <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
+    <strong class="fas fa-angle-up"></strong>
   </a>
 
   <!-- Bootstrap core JavaScript-->

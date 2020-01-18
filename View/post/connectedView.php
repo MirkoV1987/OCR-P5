@@ -23,6 +23,7 @@
   <!-- Custom styles for this template -->
   <link href="/Public/css/agency.min.css" rel="stylesheet">
   <script src="/Public/vendor/jquery/jquery.min.js"></script>
+  <script>href="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"</script>
   <script src="/Public/js/notify.js"></script>
 
 </head>
@@ -122,7 +123,7 @@
       </div>
         <div class="card-body">
           <!-- Comment Form -->
-          <form action="/comment/add/<?= $post['id']; ?>" method="POST">
+          <form action="/comment/add/<?= $post['id']; ?>" method="POST" id="form">
             <div class="form-group">
             <div>
             <p class="m-0 font-weight-bold text-black text-left text-uppercase my-4">
@@ -136,7 +137,8 @@
             <textarea type="textarea" class="form-control" name="content" id="message" rows="12" placeholder="Écrivez ici votre commentaire" required></textarea>
             </div>
             <div class="text-right">
-            <input type="submit" name="submit" id="sendComment" class="btn btn-warning" value="Envoyer le commentaire" onclick="$('.elem-demo').notify('I\'m to the right of this box', { position:'right' });">
+            <input type="submit" name="submit" id="sendComment" class="btn btn-warning" value="Envoyer le commentaire" >
+            <p><strong class="fas fa-info-circle text-warning"></strong><a class="show-alert" style="color: #000" href="#form">Info</a></p>
             </div>
           </form>
         </div>
@@ -179,18 +181,23 @@
       <div class="col-md-4">
         <ul class="list-inline social-buttons">
           <li class="list-inline-item">
-            <a href="#">
-              <em class="fab fa-twitter"></em>
+            <a href="https://twitter.com/MirkoVenturi1" target="_blank" rel="noopener noreferrer">
+              <strong class="fab fa-twitter"></strong>
             </a>
           </li>
           <li class="list-inline-item">
-            <a href="#">
-              <em class="fab fa-facebook-f"></em>
+            <a href="https://www.facebook.com/mirko.venturi.79" target="_blank" rel="noopener noreferrer">
+              <strong class="fab fa-facebook-f"></strong>
             </a>
           </li>
           <li class="list-inline-item">
-            <a href="#">
-              <em class="fab fa-linkedin-in"></em>
+            <a href="https://fr.linkedin.com/in/mirkoventuri?trk=people-guest_profile-result-card_result-card_full-click" target="_blank" rel="noopener noreferrer">
+              <strong class="fab fa-linkedin-in"></strong>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="https://github.com/MirkoV1987" target="_blank" rel="noopener noreferrer">
+              <strong class="fab fa-github" aria-hidden="true"></strong>
             </a>
           </li>
         </ul>
@@ -208,24 +215,24 @@
     </div>
   </div>
 </footer>
+<!-- JS dependencies -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.5/umd/popper.min.js"></script>
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="/Public/vendor/jquery/jquery.min.js"></script>
-  <script src="/Public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap 4 dependency -->
+<script src="/Public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Plugin JavaScript -->
-  <script src="/Public/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-  <!-- Contact form JavaScript -->
-  <script src="/Public/js/jqBootstrapValidation.js"></script>
-  <script src="/Public/js/contact_me.js"></script>
-
-  <!-- Custom scripts for this template -->
-  <script src="/Public/js/agency.min.js"></script>
-
-  <!-- Custom notify messages -->
-  <script src="/Public/vendor/jquery/jquery.min.js"></script>
-  <script src="/Public/js/notify.js"></script>
+<!-- bootbox code -->
+<script src="/Public/js/bootbox.js"></script>
+<script src="/Public/js/bootbox.locales.js"></script>
+  <script>
+        $(document).on("click", ".show-alert", function(e) {
+            bootbox.alert("Info - Avant publication, les commentaires seront validés par un administrateur.", function() {
+                console.log("Alert Callback");
+            });
+        });
+  </script>
 
 </body>
+
 </html>
