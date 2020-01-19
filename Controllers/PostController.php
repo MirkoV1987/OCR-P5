@@ -30,13 +30,19 @@ class PostController extends \Framework\Controller
         $id = (int)($extract[0]);
 
         if ($params['get'][0] && \Framework\Session::getSession()->getKey('user')['role']) {
-            if (\Framework\Session::getSession()->getKey('user')['role'] == 1
-            || \Framework\Session::getSession()->getKey('user')['role'] == 2) {
+            if (\Framework\Session::getSession()->getKey('user')['role'] == 2) {
                 $post = $this->manager->getPost($id);
                 $comments = $this->commentManager->getComment($id);
                 $this->set('comments', $comments);
                 $this->set('post', $post);
                 $this->render('View/post/connectedView.php');
+            }
+            if (\Framework\Session::getSession()->getKey('user')['role'] == 1) {
+                $post = $this->manager->getPost($id);
+                $comments = $this->commentManager->getComment($id);
+                $this->set('comments', $comments);
+                $this->set('post', $post);
+                $this->render('View/post/subscriberView.php');
             }
 
             return false;
