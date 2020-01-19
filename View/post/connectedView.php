@@ -32,19 +32,20 @@
 <!-- Dashboard Navigation -->
 <nav class="navbar navbar-expand-md dashboardNav navbar-dark bg-dark navbar-fixed-top" style="min-height:50px" aria-label="" id="mainNav" style="background-color:#000;">
   <div class="container">
-    <div class="d-flex">
-      <div class="ml-auto"> 
-        <p class="text-white text-right">Bonjour, <?= $user['username']; ?>
-        <?php if (isset($user['imageUrl'])) : ?>
-          <img class="img-profile rounded-circle img-thumbnail" src="/Public/img/user/<?= $user['imageUrl'];  ?>" width="30px" height="auto" alt="Utilisateur" /> 
-        <?php endif; ?>
-        </p>
-      </div>
-      <div class="ml-auto">
-      <a class="btn btn-xs btn-danger text-lowercase mx-1 text-center" href="/user/logout">Déconnexion</a>
+    <div class="col-lg-8 col-xs-2 col-sm-4 col-md-4">
+      <div class="items-justify-start">
+      <a class="btn btn-xs text-lowercase mx-1 text-center text-white" href="/admin/index"><strong class="fas fa-fw fa-tachometer-alt"></strong></span> Dashboard</span></a>
       </div>
     </div>
+    <div class="col-lg-4 col-xs-10 col-sm-8 col-md-8 text-white">
+      Bonjour, <?= $user['username']; ?>
+      <?php if (isset($user['imageUrl'])) : ?>
+        <img class="img-profile rounded-circle img-thumbnail" src="/Public/img/user/<?= $user['imageUrl'];  ?>" width="30px" height="auto" alt="Utilisateur" /> 
+      <?php endif; ?>
+      <a class="btn btn-xs btn-danger text-lowercase mx-1 text-center" href="/user/logout"><strong class="fas fa-sign-out-alt"></strong></span> Déconnexion</a>  
+   </div>   
   </div>
+</div>
 </nav>
 
 <!-- Navigation -->
