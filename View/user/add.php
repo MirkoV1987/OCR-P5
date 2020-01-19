@@ -28,13 +28,13 @@
 <body id="page-top">
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark navbar-fixed-top" id="mainNav" style="background-color:#000;">
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-fixed-top" id="mainNav" style="background-color:#000;" aria-labelledby="navbar">
     <div class="container">
       <a class="navbar-brand" href="#page-top" style="font-family: 'Vladimir Script'; font-size: 1.6em;">Blog de Mirko Venturi</a>
     </div>
       <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <span class="mr-2 d-none d-lg-inline text-white middle">Bonjour, <?= $user['username']; ?></span>
-        <img class="img-profile rounded-circle img-thumbnail" src="/Public/img/user/<?= $user['imageUrl']; ?>" width="30px" height="auto">
+        <img class="img-profile rounded-circle img-thumbnail" src="/Public/img/user/<?= $user['imageUrl']; ?>" width="30px" height="auto" alt="utilisateur">
       </a>
   </nav>
 
@@ -45,14 +45,14 @@
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
         <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
+          <strong class="fas fa-laugh-wink"></strong>
         </div>
         <div class="sidebar-brand-text mx-3">Vue rapide</div>
       </a>
       <!-- End of Sidebar -->
       <li class="nav-item active">
         <a class="nav-link" href="/admin/index">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <strong class="fas fa-fw fa-tachometer-alt"></strong>
           <span>Dashboard</span></a>
       </li>
 
@@ -70,7 +70,7 @@
       <a class="btn rounded-circle border-0 py-2 my-2" id="sidebarToggle" href="/admin/index"></a>
     </div>
       <a class="btn btn-md btn-danger mx-2 px-2 text-lowercase text-center" href="/user/logout">
-     <i class="fas fa-sign-out-alt px-1"></i><span>Déconnexion</span></a>
+     <strong class="fas fa-sign-out-alt px-1"></strong><span>Déconnexion</span></a>
 
   </ul>
   <!-- End of Sidebar -->
@@ -79,15 +79,15 @@
     <div id="content-wrapper" class="d-flex flex-column">
       <div id="content">
         <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" aria-labelledby="navbar">
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-            <i class="fa fa-bars"></i>
+            <strong class="fa fa-bars"></strong>
           </button>
             <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
         </nav>
         <!-- End of Topbar -->
 
-        <!-- Begin Page Content -->
+  <!-- Begin Page Content -->
   <div class="container-fluid">
     <div class="row-fluid">
       <div class="col d-flex justify-content-center">
@@ -103,31 +103,31 @@
                 <div class="form-group">
                   <label for="username">Username:</label>
                     <input type="text" class="form-control" name="username"  placeholder="pseudo" value="">
-                      <label for="email">Email :</label>
+                    <label for="email">Email :</label>
                     <input type="email" class="form-control" name="email"  placeholder="email" value="">
-                      <label for="password">Password :</label>
+                    <label for="password">Password :</label>
                     <input type="password" class="form-control" name="password" value="">
                   <div class="custom-control custom-switch">
                     <input type="checkbox" name="active" class="custom-control-input" id="activation">
-                      <label class="custom-control-label" for="activation">Activer</label>
+                    <label class="custom-control-label" for="activation">Activer</label>
                   </div>
                       <label for="date">Role :</label>
                   <div class="form-check">
                     <input class="form-check-input" type="radio" name="role" id="role1" value="1" checked>
-                      <label class="form-check-label" for="role">
-                        Inscrit
-                      </label>
+                    <label class="form-check-label" for="role">
+                      Inscrit
+                    </label>
                   </div>
                   <div class="form-check">
                     <input class="form-check-input" type="radio" name="role" id="role2" value="2">
-                      <label class="form-check-label" for="role">
+                    <label class="form-check-label" for="role">
                         Administrateur
-                      </label>
+                    </label>
                   </div>
-                      <label for="date">Date de création</label>
+                    <label for="date">Date de création</label>
                     <input type="date" class="form-control" name="date"  placeholder="Renseignez la date" value="">
                   </div>
-                      <label for="image">Téléverser une image :</label>
+                    <label for="image">Téléverser une image :</label>
                     <input type="file" name="imageUrl" id="fileToUpload" value="<?= isset($user) ? $user['imageUrl'] : '' ; ?>"> 
                   <div class="text-center">
                     <input type="submit" name="submit" class="btn btn-warning" value="ajouter">
@@ -143,13 +143,31 @@
 <!-- End of Main Content -->
 
 <!-- Footer -->
-  <footer class="sticky-footer">
-    <div class="container my-auto">
-      <div class="copyright text-center my-auto">
-        <span>Copyright &copy;MIRKO VENTURI 2020</span>
+<footer class="sticky-footer">
+    <div class="container my-auto" style="color: #000; padding: 0 4px;">
+      <div class="row">
+        <div class="col-md-12 text-center"> 
+          <div class="list-inline-item social-buttons text-center py-4 px-4">
+              <a class="text-dark text-decoration-none px-1" href="https://twitter.com/MirkoVenturi1" target="_blank" rel="noopener noreferrer">
+              <strong class="fab fa-twitter text-black"></strong>
+              </a>
+              <a class="text-dark text-decoration-none px-1" href="https://www.facebook.com/mirko.venturi.79" target="_blank" rel="noopener noreferrer">
+              <strong class="fab fa-facebook-f"></strong>
+              </a>
+              <a class="text-dark text-decoration-none px-1" href="https://fr.linkedin.com/in/mirkoventuri?trk=people-guest_profile-result-card_result-card_full-click" target="_blank" rel="noopener noreferrer">
+              <strong class="fab fa-linkedin-in"></strong>
+              </a>
+              <a class="text-dark text-decoration-none px-1" href="https://github.com/MirkoV1987" target="_blank" rel="noopener noreferrer">
+              <strong class="fab fa-github" aria-hidden="true"></strong>
+              </a>
+          </div>  
+        </div>
       </div>
     </div>
-  </footer>
+    <div class="copyright text-center my-auto">
+      <span>Copyright &copy;MIRKO VENTURI 2020</span>
+    </div>
+</footer>
 <!-- End of Footer -->
 
   </div>
@@ -159,7 +177,7 @@
 
   <!-- Scroll to Top Button-->
   <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
+    <strong class="fas fa-angle-up"></strong>
   </a>
 
   <!-- Bootstrap core JavaScript-->
