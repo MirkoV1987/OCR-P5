@@ -123,6 +123,28 @@
 
   <!-- Custom scripts for this template -->
   <script src="/Public/js/agency.min.js"></script>
+  
+  <script type="text/javascript">
+
+  $( "#register" ).click(function( event ) {
+  
+        var champA = document.getElementById("password").value;
+        var champB = document.getElementById("password-verify").value;
+        var div_comp = document.getElementById("divcomp");
+ 
+          if (champA == champB) {
+
+            divcomp.innerHTML = "Correct";
+          }
+          else
+          {
+            divcomp.innerHTML = "Les 2 champs mot de passe ne sont pas identiques !";
+            event.stopPropagation();
+            return false;
+          }
+    });
+
+</script>
 
 </body>
 
