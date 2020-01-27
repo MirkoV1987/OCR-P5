@@ -2,11 +2,11 @@
 
 namespace Model;
 
-use \Framework;
+use Framework\Entity;
 
-class Comment extends \Framework\Entity
+class Comment extends Entity
 {
-    private $id;
+    
     private $pseudo;
     private $content;
     private $date_add;
@@ -16,14 +16,6 @@ class Comment extends \Framework\Entity
     private $active;
 
     //SETTERS
-    
-    public function setId($id)
-    {
-        $id = (int) $id;
-        if ($id > 0) {
-            $this->id = $id;
-        }
-    }
 
     public function setPseudo(string $pseudo)
     {
@@ -71,11 +63,6 @@ class Comment extends \Framework\Entity
 
     //GETTERS
 
-    public function getId()
-    {
-        return $this->id;
-    }
-
     public function getPseudo()
     {
         return $this->pseudo;
@@ -88,12 +75,12 @@ class Comment extends \Framework\Entity
 
     public function getDate_add()
     {
-        return date("d/m/Y h:m", strtotime($this->date_add));
+        return date("d/m/Y", strtotime($this->date_add));
     }
 
     public function getDate_update()
     {
-        return date("d/m/Y h:m", strtotime($this->date_update));
+        return date("d/m/Y", strtotime($this->date_update));
     }
 
     public function getUser_id()

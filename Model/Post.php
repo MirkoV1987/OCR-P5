@@ -2,11 +2,10 @@
 
 namespace Model;
 
-use \Framework;
+use Framework\Entity;
 
-class Post extends \Framework\Entity
+class Post extends Entity
 {
-    private $id;
     private $user_id;
     private $author;
     private $title;
@@ -16,13 +15,6 @@ class Post extends \Framework\Entity
     private $content;
 
     //SETTERS
-    public function setId($id)
-    {
-        $id = (int) $id;
-        if ($id > 0) {
-            $this->id = $id;
-        }
-    }
 
     public function setUser_id($user_id)
     {
@@ -64,12 +56,12 @@ class Post extends \Framework\Entity
         }
     }
 
-    public function setDate_add($date_add)
+    public function setDate_add(string $date_add)
     {
         $this->date_add = $date_add;
     }
 
-    public function setDate_update($date_update)
+    public function setDate_update(string $date_update)
     {
         $this->date_update = $date_update;
     }
@@ -83,11 +75,6 @@ class Post extends \Framework\Entity
     }
 
     //GETTERS
-
-    public function getId()
-    {
-        return $this->id;
-    }
 
     public function getUser_id()
     {
@@ -116,12 +103,12 @@ class Post extends \Framework\Entity
 
     public function getDate_add()
     {
-        return date("d/m/Y h:m", strtotime($this->date_add));
+        return date("d/m/Y", strtotime($this->date_add));
     }
 
     public function getDate_update()
     {
-        return date("d/m/Y h:m", strtotime($this->date_update));
+        return date("d/m/Y", strtotime($this->date_update));
     }
 
     public function getContent()

@@ -2,18 +2,18 @@
 
 namespace Model;
 
-use \Framework;
+use Framework\Entity;
 
-class User extends \Framework\Entity
+class User extends Entity
 {
-    const ROLE = [
+  
+  const ROLE = [
    
   1 => 'member',
-  2 => 'admin'
+  2 => 'admin'  
 
   ];
 
-    private $id;
     private $username;
     private $email;
     private $password;
@@ -24,66 +24,56 @@ class User extends \Framework\Entity
 
     //SETTERS
 
-    public function setId(int $id)
-    {
-        $this->id = $id;
-    }
-
     public function setImageUrl($imageUrl)
     {
         $imageUrl = (string) $imageUrl;
-        if (is_string($imageUrl)) {
-            $this->imageUrl = $imageUrl;
-        }
+        if(is_string($imageUrl))
+           $this->imageUrl = $imageUrl;
     }
 
     public function setUsername(string $username)
     {
-        $this->username = $username;
+      $this->username = $username;
     }
 
     public function setEmail(string $email)
     {
-        $this->email = $email;
+      $this->email = $email;
     }
 
     public function setPassword(string $password)
     {
-        $password = (string) $password;
-        if (is_string($password)) {
-            $this->password = $password;
-        }
+      $password = (string) $password;
+      if (is_string($password)) { 
+      $this->password = $password;
+      }
     }
 
     public function setActive($active)
     {
-        $active = (int) $active;
-        if (is_int($active)) {
-            $this->active = $active;
+      $active = (int) $active;
+      if (is_int($active)) { 
+        $this->active = $active;
         }
     }
 
     public function setValidation_key(binary $validation_key)
     {
-        $this->validation_key = $validation_key;
+      $this->validation_key = $validation_key;
     }
 
     public function setRole($role)
     {
-        $this->role = $role;
-    }
+      $role = $role;
+      $this->role = $role;
+    }  
 
     public function setDate_add(string $date_add)
     {
-        $this->date_add = $date_add;
+      $this->date_add = $date_add;
     }
 
     //GETTERS
-
-    public function getId()
-    {
-        return $this->id;
-    }
 
     public function getImageUrl()
     {
@@ -92,41 +82,43 @@ class User extends \Framework\Entity
 
     public function getUsername()
     {
-        return $this->username;
+      return $this->username;
     }
 
     public function getEmail()
     {
-        return $this->email;
+      return $this->email;
     }
 
     public function getPassword()
     {
-        return $this->password;
+      return $this->password;
     }
 
     public function getActive() : int
     {
-        return (int) $this->active;
+      return (int) $this->active;
     }
 
     public function getValidation_key()
     {
-        return $this->validation_key;
+      return $this->validation_key;
     }
 
     public function getRole()
     {
-        return $this->role;
+      return $this->role;
     }
 
     public function getRoleString(): int
-    {
-        return self::ROLE[$this->role];
-    }
+  	{
+	    return self::ROLE[$this->role];
+	  }
 
     public function getDate_add()
     {
         return date("d/m/Y h:m", strtotime($this->date_add));
+        return $this->date_add;
     }
+    
 }
