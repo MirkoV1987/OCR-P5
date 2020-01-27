@@ -6,9 +6,24 @@ namespace Framework;
 
 abstract class Entity
 {
+    private $id;
+
     public function __construct(array $data)
     {
         $this->hydrate($data);
+    }
+
+    public function setId($id)
+    {
+        $id = (int) $id;
+        if ($id > 0) {
+            $this->id = $id;
+        }
+    }
+
+    public function getId()
+    {
+        return $this->id;
     }
 
     public function hydrate(array $data)
