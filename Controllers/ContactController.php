@@ -2,13 +2,13 @@
 
 namespace Controllers;
 
-use \Framework;
+use Framework\View;
 
 class ContactController
 {
     public function __construct()
     {
-        $this->sent = new \Framework\View;
+        $this->sent = new View();
     }
 
     public function checkForm($params)

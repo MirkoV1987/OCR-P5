@@ -2,16 +2,17 @@
 
 namespace Controllers;
 
-use \Manager;
-use \Framework;
+use Manager\UserManager;
+use Framework\View;
+use Framework\Session;
 
-class UserController extends \Framework\Controller
+class UserController extends View
 {
     private $userManager;
 
     public function __construct()
     {
-        $this->userManager = new \Manager\UserManager();
+        $this->userManager = new UserManager();
     }
 
     public function register($params)
@@ -34,13 +35,13 @@ class UserController extends \Framework\Controller
 
             $_SESSION['user'] = $user;
         
-            if (\Framework\Session::getSession()->getKey('user')['role']
-        && \Framework\Session::getSession()->getKey('user')['role'] == 2) {
+            if (Session::getSession()->getKey('user')['role']
+            && Session::getSession()->getKey('user')['role'] == 2) {
                 $this->redirect('/admin/index');
             }
         
-            if (\Framework\Session::getSession()->getKey('user')['role']
-        && \Framework\Session::getSession()->getKey('user')['role'] == 1) {
+            if (Session::getSession()->getKey('user')['role']
+            && Session::getSession()->getKey('user')['role'] == 1) {
                 $this->redirect('/');
             }
         }
@@ -56,10 +57,10 @@ class UserController extends \Framework\Controller
 
     public function view($params)
     {
-        $this->set('user', \Framework\Session::getSession()->getKey('user'));
+        $this->set('user', Session::getSession()->getKey('user'));
 
-        if (empty(\Framework\Session::getSession()->getKey('user')['role'])
-        || \Framework\Session::getSession()->getKey('user')['role'] != 2) {
+        if (empty(Session::getSession()->getKey('user')['role'])
+        || Session::getSession()->getKey('user')['role'] != 2) {
             return false;
         }
 
@@ -76,20 +77,20 @@ class UserController extends \Framework\Controller
 
     public function add($params)
     {
-        if (!empty($params['post']) 
-        && !empty(\Framework\Session::getSession()->getKey('user')['role']) 
-        && \Framework\Session::getSession()->getKey('user')['role'] == 2) {
+        if (!empty($params['post'])
+        && !empty(Session::getSession()->getKey('user')['role'])
+        && Session::getSession()->getKey('user')['role'] == 2) {
             $this->userManager->add($params);
             $this->redirect('/admin/index');
         }
       
-        $this->set('user', \Framework\Session::getSession()->getKey('user'));
+        $this->set('user', Session::getSession()->getKey('user'));
         $this->render('View/user/add.php');
     }
 
     public function update($params)
     {
-        if (\Framework\Session::getSession()->getKey('user')['role'] != 2) {
+        if (Session::getSession()->getKey('user')['role'] != 2) {
             $this->redirect('/admin/index');
         }
 
@@ -98,16 +99,12 @@ class UserController extends \Framework\Controller
             $this->redirect('/admin/index');
         }
 
-        $extract = explode('-', $params['get'][0]);
-        $id = intval($extract[0]);
-        $user = $this->userManager->getUser($id);
-        $this->set('user', $user);
         $this->render('View/user/update.php');
     }
 
     public function delete($params)
     {
-        if (\Framework\Session::getSession()->getKey('user')['role'] != 2) {
+        if (Session::getSession()->getKey('user')['role'] != 2) {
             $this->redirect('/user/login');
         }
  

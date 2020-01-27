@@ -2,16 +2,17 @@
 
 namespace Controllers;
 
-use \Manager;
-use \Framework;
+use Manager\CommentManager;
+use Framework\View;
+use Framework\Session;
 
-class CommentController extends \Framework\Controller
+class CommentController extends View
 {
     private $manager;
 
     public function __construct()
     {
-        $this->manager = new \Manager\CommentManager;
+        $this->manager = new CommentManager();
     }
 
     public function index($params)
@@ -32,12 +33,8 @@ class CommentController extends \Framework\Controller
         $this->set('comments', $comments);
         $this->set('post', $post);
 
-        if (!empty(\Framework\Session::getSession()->getKey('user')['role'])
-         && \Framework\Session::getSession()->getKey('user')['role'] == 2) {
-            $this->manager->getComment($post_id);
-            $this->set('comments', $comments);
-            $this->set('post', $post);
-
+        if (!empty(Session::getSession()->getKey('user')['role'])
+        && Session::getSession()->getKey('user')['role'] == 2) {
             $this->render('View/post/connectedView.php');
         }
       
@@ -46,7 +43,7 @@ class CommentController extends \Framework\Controller
 
     public function add($params)
     {
-        if (!empty($params['post']) && !empty(\Framework\Session::getSession()->getKey('user')['role'])) {
+        if (!empty($params['post']) && !empty(Session::getSession()->getKey('user')['role'])) {
             $this->manager->add($params);
             $post_id = $params['get'][0];
             $this->redirect('/post/view/'.$post_id);
@@ -57,7 +54,7 @@ class CommentController extends \Framework\Controller
 
     public function validate($params)
     {
-        if (\Framework\Session::getSession()->getKey('user')['role'] == 2) {
+        if (Session::getSession()->getKey('user')['role'] == 2) {
             $post_id = $params['get'][0];
             $this->manager->validate($post_id);
             $this->redirect('/admin/index');
@@ -68,7 +65,7 @@ class CommentController extends \Framework\Controller
 
     public function delete($params)
     {
-        if (\Framework\Session::getSession()->getKey('user')['role'] != 2) {
+        if (Session::getSession()->getKey('user')['role'] != 2) {
             $this->redirect('/post');
         }
 

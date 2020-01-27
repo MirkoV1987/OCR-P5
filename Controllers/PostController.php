@@ -2,18 +2,21 @@
 
 namespace Controllers;
 
-use \Manager;
-use \Framework;
+use Manager\UserManager;
+use Manager\PostManager;
+use Manager\CommentManager;
+use Framework\View;
+use Framework\Session;
 
-class PostController extends \Framework\Controller
+class PostController extends View
 {
     private $manager;
 
     public function __construct()
     {
-        $this->manager = new \Manager\PostManager;
-        $this->commentManager = new \Manager\CommentManager;
-        $this->userManager = new \Manager\UserManager;
+        $this->manager = new PostManager();
+        $this->commentManager = new CommentManager();
+        $this->userManager = new UserManager();
     }
 
     public function index()
@@ -25,33 +28,28 @@ class PostController extends \Framework\Controller
 
     public function view($params)
     {
-        $this->set('user', \Framework\Session::getSession()->getKey('user'));
+        $this->set('user', Session::getSession()->getKey('user'));
         $extract = explode('-', $params['get'][0]);
         $id = (int)($extract[0]);
 
-        if ($params['get'][0] && \Framework\Session::getSession()->getKey('user')['role']) {
-            if (\Framework\Session::getSession()->getKey('user')['role'] == 2) {
-                $post = $this->manager->getPost($id);
-                $comments = $this->commentManager->getComment($id);
-                $this->set('comments', $comments);
-                $this->set('post', $post);
+        $post = $this->manager->getPost($id);
+        $comments = $this->commentManager->getComment($id);
+        $this->set('comments', $comments);
+        $this->set('post', $post);
+
+        if ($params['get'][0] && Session::getSession()->getKey('user')['role']) {
+
+            if (Session::getSession()->getKey('user')['role'] == 2) {
                 $this->render('View/post/connectedView.php');
             }
-            if (\Framework\Session::getSession()->getKey('user')['role'] == 1) {
-                $post = $this->manager->getPost($id);
-                $comments = $this->commentManager->getComment($id);
-                $this->set('comments', $comments);
-                $this->set('post', $post);
+            
+            if (Session::getSession()->getKey('user')['role'] == 1) {
                 $this->render('View/post/subscriberView.php');
             }
 
             return false;
         }
 
-        $post = $this->manager->getPost($id);
-        $comments = $this->commentManager->getComment($id);
-        $this->set('comments', $comments);
-        $this->set('post', $post);
         $this->render('View/post/view.php');
     }
 
@@ -59,11 +57,11 @@ class PostController extends \Framework\Controller
    
     public function add($params)
     {
-        $this->set('user', \Framework\Session::getSession()->getKey('user'));
+        $this->set('user', Session::getSession()->getKey('user'));
 
         if (!empty($params['post'])) {
-            if (!empty(\Framework\Session::getSession()->getKey('user')['role'])
-            || \Framework\Session::getSession()->getKey('user')['role'] == 2) {
+            if (!empty(Session::getSession()->getKey('user')['role'])
+            || Session::getSession()->getKey('user')['role'] == 2) {
                 $this->manager->add($params);
                 $this->redirect('/admin/index');
             }
@@ -74,9 +72,9 @@ class PostController extends \Framework\Controller
 
     public function update($params)
     {
-        $this->set('user', \Framework\Session::getSession()->getKey('user'));
+        $this->set('user', Session::getSession()->getKey('user'));
       
-        if (\Framework\Session::getSession()->getKey('user')['role'] != 2) {
+        if (Session::getSession()->getKey('user')['role'] != 2) {
             $this->redirect('/admin/index');
         }
 
@@ -93,7 +91,7 @@ class PostController extends \Framework\Controller
 
     public function delete($params)
     {
-        if (\Framework\Session::getSession()->getKey('user')['role'] != 2) {
+        if (Session::getSession()->getKey('user')['role'] != 2) {
             $this->redirect('/');
         }
 

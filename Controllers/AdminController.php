@@ -2,50 +2,53 @@
 
 namespace Controllers;
 
-use \Manager;
-use \Framework;
+use Manager\UserManager;
+use Manager\PostManager;
+use Manager\CommentManager;
+use Framework\View;
+use Framework\Session;
 
-class AdminController extends \Framework\Controller
+class AdminController extends View
 {
     private $userManager;
 
     public function __construct()
     {
-        $this->userManager = new \Manager\UserManager();
-        $this->postManager = new \Manager\PostManager();
+        $this->userManager = new UserManager();
+        $this->postManager = new PostManager();
     }
 
     public function index()
     {
-        if (empty(\Framework\Session::getSession()->getKey('user')['role'])) {
+        if (empty(Session::getSession()->getKey('user')['role'])) {
             $this->render("View/user/login.php");
         }
 
-        if (\Framework\Session::getSession()->getKey('user')['role'] != 2) {
+        if (Session::getSession()->getKey('user')['role'] != 2) {
             $this->render("View/user/login.php");
         }
 
-        $this->set('user', \Framework\Session::getSession()->getKey('user'));
+        $this->set('user', Session::getSession()->getKey('user'));
 
-        if (\Framework\Session::getSession()->getKey('user')['role'] == 1) {
+        if (Session::getSession()->getKey('user')['role'] == 1) {
             $this->render("View/post/ConnectedView.php");
         }
 
         /*============Gestion des posts============*/
 
-        $postManager = new \Manager\PostManager();
+        $postManager = new PostManager();
         $posts = $postManager->getList();
         $this->set('posts', $posts);
 
         /*============Gestion des commentaires============*/
         
-        $commentManager = new \Manager\CommentManager();
+        $commentManager = new CommentManager();
         $comments = $commentManager->getList();
         $this->set('comments', $comments);
 
         /*============Gestion des utilisateurs============*/
 
-        $usersManager = new \Manager\UserManager();
+        $usersManager = new UserManager();
         $users = $usersManager->getList();
         $this->set('users', $users);
 
