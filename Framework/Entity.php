@@ -26,7 +26,7 @@ abstract class Entity
         return $this->id;
     }
 
-    public function hydrate(array $data)
+    protected function hydrate(array $data)
     {
         foreach ($data as $key => $value) {
             $method = 'set'.ucfirst($key);
