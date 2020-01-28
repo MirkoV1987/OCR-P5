@@ -317,6 +317,15 @@
     </div>
   </section>
 
+  <!-- CV download-->
+    <div class="container my-4">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <a class="btn rounded btn-md btn-warning text-center text-uppercase text-white font-weight-regular" href="/Public/img/Mirko%20Venturi%20-%20CV.pdf" target="_blank">Téléchargez mon CV</a>
+        </div>  
+      </div>
+    </div>
+
   <!-- Contact -->
   <section class="page-section" id="contact">
     <div class="container">
@@ -384,6 +393,11 @@
             <li class="list-inline-item">
               <a href="https://fr.linkedin.com/in/mirkoventuri?trk=people-guest_profile-result-card_result-card_full-click" target="_blank" rel="noopener noreferrer">
                 <strong class="fab fa-linkedin-in"></strong>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://github.com/MirkoV1987" target="_blank" rel="noopener noreferrer">
+                <strong class="fab fa-github" aria-hidden="true"></strong>
               </a>
             </li>
           </ul>
